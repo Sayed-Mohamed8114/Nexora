@@ -22,19 +22,20 @@ export default function Navbar() {
   }
 
   const navItem =
-    "relative cursor-pointer text-lg font-semibold text-sky-950 transition-all duration-500 hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-700 hover:after:w-full";
+    "relative cursor-pointer text-lg font-semibold text-sky-950 transition-all duration-500 hover:text-sky-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-sky-700 after:transition-all after:duration-700 hover:after:w-full";
 
   return (
-    <nav className="mt-4 h-[8vh] w-[85%] max-w-7xl rounded-2xl bg-white/20 px-5 text-white backdrop-blur-md flex items-center justify-between">
+    <nav className="mt-4 h-[8vh] w-[85%] max-w-7xl rounded-2xl  bg-white/50 px-5 shadow-2xl sticky top-2 z-50 text-white backdrop-blur-md flex items-center justify-between">
       <div className="flex items-center justify-center">
         <img src={comopleteLogo} alt="Nexora Logo" className="w-60" />
       </div>
 
       <ul className="flex items-center gap-5">
         <li className={navItem}>Home</li>
-        <li className={navItem}>How It Works</li>
-        <li className={navItem}>Rates & Reviews</li>
+        <li className={navItem}>Why Nexora?</li>
         <li className={navItem}>FAQs</li>
+
+        <li className={navItem}>Rates & Reviews</li>
       </ul>
 
       <div className="flex gap-3">

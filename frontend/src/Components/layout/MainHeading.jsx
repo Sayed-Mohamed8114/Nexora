@@ -1,4 +1,3 @@
-import React from "react";
 
 const MainHeading = ({ title, description }) => {
   return (

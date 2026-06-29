@@ -102,7 +102,7 @@ export default function WhyCreated() {
   const [hoveredWeek, setHoveredWeek] = useState(null);
 
   return (
-    <section className="relative w-[95%] rounded-2xl bg-white/10 px-5 text-black text-center backdrop-blur-xl mt-50 p-4 overflow-hidden items-start">
+    <section className="relative w-[95%] rounded-2xl bg-transparent px-5 text-black text-center  mt-11 p-4 overflow-hidden items-start">
       {/* subtle ambient blobs */}
       <div
         aria-hidden
