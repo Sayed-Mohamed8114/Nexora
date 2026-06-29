@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ===== Tailwind Theme ===== */
+@theme {
+  /* ===== Primary ===== */
+  --color-primary: #009ef7;
+  --color-primary-cyan: #17c9d3;
+  --color-primary-section: #fafbfc;
+
+  /* ===== Surface ===== */
+  --color-surface-highest: #dae2ff;
+  --color-surface-low: #4f5f7b;
+  --color-background: #f9f9ff;
+
+  /* ===== Slate ===== */
+  --color-slate-dark: #041b3c;
+  --color-slate-medium: #4f5f7b;
+  --color-slate-light: #c3c6d6;
+  --color-head-table: #e0e8ff;
+  --color-resend-container: #f1f3ff;
+  --color-muted-body: #434654;
+
+  /* ===== Semantic ===== */
+  /* --color-success: #74d3a7;
+  --color-success-text: #005235; */
+  --color-success: #82f9be;
+  --color-error: #ba1a1a;
+  --color-warning: #ffb300;
+  --color-invalid: #ffdad6;
+
+  /* ===== Text ===== */
+  --text-heading: 32px;
+  --text-title: 20px;
+  --text-nav: 14px;
+  --text-body: 16px;
+  --text-label: 11px;
+
+  /* ===== Font ===== */
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+
+  html {
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+}
