@@ -1,72 +1,118 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import comopleteLogo from "/completelogo.png";
+import { FaBars, FaXmark } from "react-icons/fa6";
+import Logo from "/completelogo.png";
+
+const navLinks = [
+  { label: "Home", sectionId: "home" },
+  { label: "Why Nexora?", sectionId: "why-nexora" },
+  { label: "FAQs", sectionId: "faqs" },
+  { label: "Rates & Reviews", sectionId: "reviews" },
+];
 
 export default function Navbar() {
-  {
-    /TODO/;
-  }
-  {
-    /*
-    make the loader to navigate between pages later 
-    */
-  }
-
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  function handleSignUP() {
-    navigate("/signup");
-  }
-
-  function handleSignIn() {
-    navigate("/signin");
-  }
-
   const navItem =
-    "relative cursor-pointer text-lg font-semibold text-sky-950 transition-all duration-500 hover:text-sky-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-sky-700 after:transition-all after:duration-700 hover:after:w-full";
+    "cursor-pointer rounded-md px-3 py-2 text-sm md:text-label lg:text-body font-semibold text-sky-950 transition hover:bg-sky-100 hover:text-sky-700";
+
+  function handleSectionClick(sectionId) {
+    const section = document.getElementById(sectionId);
+
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    setIsOpen(false);
+  }
 
   return (
-    <nav className="mt-4 h-[8vh] w-[85%] max-w-7xl rounded-2xl  bg-white/50 px-5 shadow-2xl sticky top-2 z-50 text-white backdrop-blur-md flex items-center justify-between">
-      <div className="flex items-center justify-center">
-        <img src={comopleteLogo} alt="Nexora Logo" className="w-60" />
+    <nav className="w-full max-w-6xl rounded-2xl border border-white/70 bg-white/75 px-4 py-3 shadow-xl shadow-sky-900/10 backdrop-blur md:rounded-full md:px-6">
+      <div className="flex items-center justify-between gap-4 h-[8vh]">
+        <button
+          type="button"
+          onClick={() => navigate("/")}
+          className="flex shrink-0 items-center"
+          aria-label="Go to home"
+        >
+          <img
+            src={Logo}
+            alt="Nexora Logo"
+            className="h-full w-35"
+          />
+        </button>
+
+        <ul className="hidden items-center gap-1 md:flex">
+          {navLinks.map((item) => (
+            <li
+              key={item.sectionId}
+              className={navItem}
+              onClick={() => handleSectionClick(item.sectionId)}
+            >
+              {item.label}
+            </li>
+          ))}
+        </ul>
+
+        <div className="hidden items-center gap-3 md:flex">
+          <button
+            onClick={() => navigate("/signin")}
+            className="rounded-lg border border-sky-200 bg-white px-5 py-2.5 text-sm md:text-label lg:text-body font-semibold text-sky-950 transition hover:border-sky-400 hover:text-sky-700"
+          >
+            Login
+          </button>
+
+          <button
+            onClick={() => navigate("/signup")}
+            className="rounded-lg bg-linear-to-r from-sky-700 to-sky-950 px-5 py-2.5 text-sm md:text-label lg:text-body font-semibold text-white shadow-md transition hover:-translate-y-0.5"
+          >
+            Sign up
+          </button>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setIsOpen((open) => !open)}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-sky-200 bg-white text-sky-950 md:hidden"
+          aria-label="Toggle navigation menu"
+          aria-expanded={isOpen}
+        >
+          {isOpen ? <FaXmark /> : <FaBars />}
+        </button>
       </div>
 
-      <ul className="flex items-center gap-5">
-        <li className={navItem}>Home</li>
-        <li className={navItem}>Why Nexora?</li>
-        <li className={navItem}>FAQs</li>
+      {isOpen && (
+        <div className="mt-4 border-t border-sky-100 pt-4 md:hidden">
+          <ul className="flex flex-col gap-1">
+            {navLinks.map((item) => (
+              <li
+                key={item.sectionId}
+                className={navItem}
+                onClick={() => handleSectionClick(item.sectionId)}
+              >
+                {item.label}
+              </li>
+            ))}
+          </ul>
 
-        <li className={navItem}>Rates & Reviews</li>
-      </ul>
-
-      <div className="flex gap-3">
-        <button
-          onClick={handleSignIn}
-          className="cursor-pointer bg-linear-to-r from-sky-700 to-sky-900 shadow-md px-6 py-3 rounded-lg border-none border-slate-500 text-white font-medium group"
-        >
-          <div className="relative overflow-hidden">
-            <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
-              Again?
-            </p>
-            <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <button
+              onClick={() => navigate("/signin")}
+              className="rounded-lg border border-sky-200 bg-white px-4 py-3 font-semibold text-sky-950"
+            >
               Login
-            </p>
-          </div>
-        </button>
+            </button>
 
-        <button
-          onClick={handleSignUP}
-          className="cursor-pointer bg-linear-to-r w-25 text-center from-sky-700 to-sky-950 shadow-md px-6 py-3 rounded-lg border-none border-slate-500 text-white font-medium group"
-        >
-          <div className="relative overflow-hidden w-full items-center justify-center">
-            <p className="group-hover:-translate-y-7 items-center duration-[1.125s]  ease-[cubic-bezier(0.19,1,0.22,1)]">
-              New?
-            </p>
-            <p className="absolute top-7 items-center left-0 group-hover:top-0 text-center duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
-              Signup
-            </p>
+            <button
+              onClick={() => navigate("/signup")}
+              className="rounded-lg bg-sky-900 px-4 py-3 font-semibold text-white"
+            >
+              Sign up
+            </button>
           </div>
-        </button>
-      </div>
+        </div>
+      )}
     </nav>
   );
 }

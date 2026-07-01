@@ -102,7 +102,10 @@ export default function WhyCreated() {
   const [hoveredWeek, setHoveredWeek] = useState(null);
 
   return (
-    <section className="relative w-[95%] rounded-2xl bg-transparent px-5 text-black text-center  mt-11 p-4 overflow-hidden items-start">
+    <section
+      id="why-nexora"
+      className="scroll-mt-28 relative w-full overflow-hidden rounded-2xl bg-transparent p-2 text-center text-black sm:p-4"
+    >
       {/* subtle ambient blobs */}
       <div
         aria-hidden
@@ -119,13 +122,13 @@ export default function WhyCreated() {
         }}
       />
 
-      <div className="relative p-5 mx-auto ">
+      <div className="relative mx-auto">
         {/* — section header — */}
-        <div className="mb-14 flex flex-col gap-3 justify-center items-center">
-          <h2 className="text-5xl font-bold bg-linear-to-b from-sky-800 to-sky-950 font-sans bg-clip-text text-transparent  leading-tight">
+        <div className="mb-10 flex flex-col items-center justify-center gap-3 md:mb-14">
+          <h2 className="bg-linear-to-b from-sky-800 to-sky-950 bg-clip-text font-sans text-3xl font-bold leading-tight text-transparent sm:text-4xl lg:text-5xl">
             Why we created Nexora ?
           </h2>
-          <p className="font-semibold tracking-wider text-lg mt-3">
+          <p className="mt-3 max-w-5xl text-base font-semibold leading-8 text-slate-medium sm:text-lg">
             Nexora was created to bridge that gap. By combining learning tools
             with intelligent analytics and real-time performance tracking, our
             platform helps students monitor their progress, recognize their
@@ -134,8 +137,8 @@ export default function WhyCreated() {
             make smarter decisions, stay motivated, and achieve greater academic
             success.{" "}
           </p>
-          <p className="font-bold tracking-wider text-2xl mt-3 text-start">
-            We also created a Visual representation of what we mean to make every thing clear to you.{" "}
+          <p className="mt-3 max-w-5xl text-center text-xl font-bold leading-8 text-sky-950 sm:text-2xl">
+            We also created a visual representation to make everything clear.
           </p>
         </div>
 
@@ -143,9 +146,9 @@ export default function WhyCreated() {
 
 
         {/* — charts grid — */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
           {/* Area chart – 3 cols */}
-          <div className="lg:col-span-3 bg-sky-950 border border-sky-800/50 rounded-3xl p-6">
+          <div className="rounded-2xl border border-sky-800/50 bg-sky-950 p-4 sm:p-6 lg:col-span-3">
             <div className="mb-6">
               <h3 className="text-sky-100 font-semibold text-lg">
                 Performance trajectory over 12 weeks
@@ -156,7 +159,7 @@ export default function WhyCreated() {
             </div>
 
             {/* legend */}
-            <div className="flex gap-5 mb-6">
+            <div className="mb-6 flex flex-wrap gap-5">
               <span className="flex items-center gap-2 text-sm text-sky-200">
                 <span className="w-5 h-0.5 bg-sky-400 rounded-full inline-block" />
                 With app
@@ -250,7 +253,7 @@ export default function WhyCreated() {
           </div>
 
           {/* Bar chart – 2 cols */}
-          <div className="lg:col-span-2 bg-sky-900 border border-sky-800/50 rounded-3xl p-6">
+          <div className="rounded-2xl border border-sky-800/50 bg-sky-900 p-4 sm:p-6 lg:col-span-2">
             <div className="mb-6">
               <h3 className="text-sky-100 font-semibold text-lg">
                 End-of-term outcomes
@@ -261,7 +264,7 @@ export default function WhyCreated() {
             </div>
 
             {/* legend */}
-            <div className="flex gap-5 mb-6">
+            <div className="mb-6 flex flex-wrap gap-5">
               <span className="flex items-center gap-2 text-sm text-sky-200">
                 <span className="w-3 h-3 rounded-sm bg-sky-400 inline-block" />
                 Tracked

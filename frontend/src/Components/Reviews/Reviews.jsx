@@ -29,8 +29,11 @@ const reviews = [
 
 export default function Reviews() {
   return (
-    <section className="w-[85%] py-10 flex flex-col items-center">
-      <h1 className="mt-6 text-5xl font-black bg-linear-to-b from-sky-900 to-black bg-clip-text text-transparent p-2">
+    <section
+      id="reviews"
+      className="scroll-mt-28 flex w-full flex-col items-center py-10"
+    >
+      <h1 className="mt-6 bg-linear-to-b from-sky-900 to-black bg-clip-text p-2 text-center text-3xl font-black text-transparent sm:text-4xl lg:text-5xl">
         What Students Say
       </h1>
 
@@ -41,21 +44,16 @@ export default function Reviews() {
 
       {/* Reviews */}
 
-      <div className="mt-16 grid grid-cols-3 gap-8">
-
+      <div className="mt-12 grid w-full grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
         {reviews.map((review) => (
-
           <div
             key={review.id}
-            className="group rounded-3xl   bg-sky-200/90 p-8 shadow-lg transition-all duration-500 hover:-translate-y-3 hover:shadow-sky-200"
+            className="group rounded-2xl bg-sky-100/90 p-6 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-sky-200 lg:p-8"
           >
-
             <div className="flex text-yellow-400">
-
               {[...Array(review.rating)].map((_, index) => (
                 <FaStar key={index} />
               ))}
-
             </div>
 
             <p className="mt-6 text-gray-600 leading-8 italic">
@@ -63,31 +61,19 @@ export default function Reviews() {
             </p>
 
             <div className="mt-8 flex items-center gap-4">
-
               <div className="flex h-14 w-14 items-center justify-center rounded-full bg-sky-600 text-xl font-bold text-white">
                 {review.name[0]}
               </div>
 
               <div>
+                <h3 className="font-bold text-lg">{review.name}</h3>
 
-                <h3 className="font-bold text-lg">
-                  {review.name}
-                </h3>
-
-                <p className="text-gray-500 text-sm">
-                  {review.role}
-                </p>
-
+                <p className="text-gray-500 text-sm">{review.role}</p>
               </div>
-
             </div>
-
           </div>
-
         ))}
-
       </div>
-
     </section>
   );
 }
