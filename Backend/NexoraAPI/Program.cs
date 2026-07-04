@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using NexoraAPI.Helpers;
 using NexoraAPI.Models;
+using NexoraAPI.Services.implementations;
 using NexoraAPI.Services.Implementations;
 using NexoraAPI.Services.Interfaces;
 using System.Text;
@@ -48,6 +49,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAcademicProfileService, AcademicProfileService>();
+builder.Services.AddScoped<ICourseService, CourseService>();
 
 // Database
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -91,15 +93,14 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 var app = builder.Build();
+app.UseDeveloperExceptionPage();
 
 // Configure HTTP pipeline
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
-app.UseHttpsRedirection();
+app.UseSwagger();
+app.UseSwaggerUI();
+
+//app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
