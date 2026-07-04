@@ -8,6 +8,8 @@ import { IoHome } from "react-icons/io5";
 
 export default function SignIn() {
   const [loading, setLoading] = useState(false);
+  const [email,setEmail] = useState("");
+  const [password , setPassword] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,6 +34,12 @@ export default function SignIn() {
       navigate("/signup");
     }, 2000);
   };
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    console.log(email);
+    console.log(password);
+  }
 
   return (
     <>
@@ -79,7 +87,9 @@ export default function SignIn() {
             </button>
           </div>
 
-          <form className="w-full md:w-[50%] rounded-2xl bg-transparent p-1 text-sky-900">
+          <form 
+          onSubmit={handleSubmit}
+          className="w-full md:w-[50%] rounded-2xl bg-transparent p-1 text-sky-900">
             <div className="mb-8">
               <div className="flex items-center gap-3">
                 <div className="relative h-4 w-4">
@@ -97,6 +107,8 @@ export default function SignIn() {
 
             <div className="relative mb-5">
               <input
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
                 type="email"
                 placeholder=" "
                 className="peer w-full rounded-lg border border-gray-300 bg-sky-100 px-3 pb-2 pt-6 font-serif font-semibold text-sky-900 outline-none transition focus:border-sky-400"
@@ -108,6 +120,8 @@ export default function SignIn() {
 
             <div className="relative mb-6">
               <input
+              value={password}
+              onChange={(e)=>{setPassword(e.target.value)}}
                 type="password"
                 placeholder=" "
                 className="peer w-full rounded-lg border border-gray-300 bg-sky-100 px-3 pb-2 pt-6 font-serif font-semibold text-sky-900 outline-none transition focus:border-sky-400"
