@@ -7,7 +7,35 @@ import { useEffect, useState } from "react";
 import { IoHome } from "react-icons/io5";
 
 export default function Register() {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  // formData 
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    role: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleSubmit =(e) => {
+    e.preventDefault();
+    console.log(formData);
+  }
+
+  //habdle change 
+  const handleChange=(e)=>{
+    setFormData({
+      ...formData,
+      // this line to take the name of the input field automatically
+      [e.target.name] : e.target.value,
+    })
+  }
+  // validation using js
+  //const [errors, setErrors] = useState({});
+
+
   useEffect(() => {
     if (loading) {
       document.body.style.overflow = "hidden";
@@ -19,7 +47,6 @@ export default function Register() {
       document.body.style.overflow = "auto";
     };
   }, [loading]);
-  const navigate = useNavigate();
 
   const handleGoHome = () => {
     setLoading(true);
@@ -44,14 +71,18 @@ export default function Register() {
           Nexora
         </h1>
 
-        <div className="relative z-10 flex
+        <div
+          className="relative z-10 flex
          flex-col-reverse lg:flex-row md:h-[90%] lg:h-[85%] 
          w-[95%] items-center justify-center lg:justify-start rounded-2xl
-          bg-white/50 px-4 py-10 shadow-xl shadow-sky-900/10 backdrop-blur sm:h-[80%] sm:w-[70%]">
+          bg-white/50 px-4 py-10 shadow-xl shadow-sky-900/10 backdrop-blur sm:h-[80%] sm:w-[70%]"
+        >
           <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-sky-400/10"></div>
 
-          <div className="relative hidden h-full w-[90%] lg:w-[45%] flex-col md:h-[15%] 
-           lg:h-auto justify-center overflow-hidden rounded-2xl p-10 text-sky-900 md:flex">
+          <div
+            className="relative hidden h-full w-[90%] lg:w-[45%] flex-col md:h-[15%] 
+           lg:h-auto justify-center overflow-hidden rounded-2xl p-10 text-sky-900 md:flex"
+          >
             <div className="flex flex-col">
               <h2 className="items-center lg:items-start justify-center font-extrabold  leading-tight flex lg:flex-col">
                 <span className="flex items-center gap-2 text-xl lg:text-6xl">
@@ -76,16 +107,23 @@ export default function Register() {
                 better learning decisions.
               </p>
             </div>
-            <button className="flex p-2 gap-3 text-[9px] md:text-xl
+            <button
+              className="flex p-2 gap-3 text-[9px] md:text-xl
              text-sky-800 font-bold mt-10 items-center text-start 
-             justify-center lg:justify-start cursor-pointer">
+             justify-center lg:justify-start cursor-pointer"
+            >
               <IoHome />
-              <a onClick={handleGoHome} className="text-[9px] lg:text-[17px] ">Return to home page ?</a>
+              <a onClick={handleGoHome} className="text-[9px] lg:text-[17px] ">
+                Return to home page ?
+              </a>
             </button>
           </div>
 
-          <form className="w-full md:w-[50%] md:h-[95%] rounded-2xl bg-transparent
-           p-1 text-sky-900 overflow-y-auto max-h-full">
+          <form
+          onSubmit={handleSubmit}
+            className="w-full md:w-[50%] md:h-[95%] rounded-2xl bg-transparent
+           p-1 text-sky-900 overflow-y-auto max-h-full"
+          >
             <div className="mb-6">
               <div className="flex items-center gap-3">
                 <div className="relative h-4 w-4">
@@ -101,6 +139,9 @@ export default function Register() {
               <div className="relative w-full">
                 <input
                   type="text"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  name="firstName"
                   placeholder=" "
                   className="peer w-full rounded-lg border border-gray-300 bg-sky-100 px-3 pb-2 pt-6 font-serif font-semibold text-sky-900 outline-none transition focus:border-sky-400"
                 />
@@ -111,12 +152,15 @@ export default function Register() {
 
               <div className="relative w-full">
                 <input
+                value={formData.lastName}
+                onChange={handleChange}
                   type="text"
                   placeholder=" "
+                  name="lastName"
                   className="peer w-full rounded-lg border border-gray-300 bg-sky-100 px-3 pb-2 pt-6 font-serif font-semibold text-sky-900 outline-none transition focus:border-sky-400"
                 />
                 <label className="absolute left-3 top-2 text-xs text-sky-800 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-black peer-focus:top-2 peer-focus:text-xs peer-focus:text-sky-700">
-                  Second Name
+                  Last Name
                 </label>
               </div>
             </div>
@@ -124,6 +168,9 @@ export default function Register() {
             <div className="relative mb-4">
               <input
                 type="email"
+                value={formData.email}
+                onChange={handleChange}
+                name="email"
                 placeholder=" "
                 className="peer w-full rounded-lg border border-gray-300 bg-sky-100 px-3 pb-2 pt-6 font-serif font-semibold text-sky-900 outline-none transition focus:border-sky-400"
               />
@@ -134,7 +181,9 @@ export default function Register() {
 
             <div className="relative mb-4">
               <select
-                defaultValue=""
+              name="role"
+                value={formData.role}
+                onChange={handleChange}
                 className="peer w-full cursor-pointer rounded-lg border border-gray-300 bg-sky-100 px-3 pb-2 pt-6 font-serif font-semibold text-sky-900 outline-none transition focus:border-sky-400"
               >
                 <option value="" disabled hidden></option>
@@ -151,6 +200,9 @@ export default function Register() {
               <input
                 type="password"
                 placeholder=" "
+                value={formData.password}
+                name="password"
+                onChange={handleChange}
                 className="peer w-full rounded-lg border border-gray-300 bg-sky-100 px-3 pb-2 pt-6 font-serif font-semibold text-sky-900 outline-none transition focus:border-sky-400"
               />
               <label className="absolute left-3 top-2 text-xs text-sky-800 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-black peer-focus:top-2 peer-focus:text-xs peer-focus:text-sky-700">
@@ -162,6 +214,9 @@ export default function Register() {
               <input
                 type="password"
                 placeholder=" "
+                value={formData.confrimPassword}
+                onChange={handleChange}
+                name="confirmPassword"
                 className="peer w-full rounded-lg border border-gray-300 bg-sky-100 px-3 pb-2 pt-6 font-serif font-semibold text-sky-900 outline-none transition focus:border-sky-400"
               />
               <label className="absolute left-3 top-2 text-xs text-sky-800 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-black peer-focus:top-2 peer-focus:text-xs peer-focus:text-sky-700">
