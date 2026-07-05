@@ -34,11 +34,13 @@ export default function Hero() {
   return (
     <>
       {loading && <Loader />}
+
       <section
         id="home"
-        className="scroll-mt-28 flex min-h-[calc(100vh-112px)] w-full items-center justify-center py-8 md:py-12"
+        className="relative scroll-mt-28 flex min-h-[calc(100vh-112px)] w-full items-center justify-center py-8 md:py-12"
       >
-        <div className="flex max-w-4xl flex-col items-center text-center">
+
+        <div className=" relative flex max-w-4xl z-10 flex-col items-center text-center">
           <h1 className="max-w-4xl text-4xl font-black leading-tight text-sky-950 sm:text-5xl lg:text-6xl">
             Transform Learning into Measurable Success
           </h1>
@@ -49,7 +51,7 @@ export default function Hero() {
             academic excellence.
           </p>
 
-          <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+          <div className="mt-8 flex w-full flex-col z-30 gap-3 sm:w-auto sm:flex-row">
             <button
               onClick={navigateSignupPage}
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-linear-to-r from-sky-700 to-sky-950 px-6 py-3 font-semibold text-white shadow-lg shadow-sky-900/20 transition duration-300 hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-sky-300"
@@ -60,7 +62,7 @@ export default function Hero() {
 
             <button
               onClick={NavigateSigninPage}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-sky-200 bg-white/80 px-6 py-3 font-semibold text-sky-950 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-sky-400 hover:bg-white focus:outline-none focus:ring-4 focus:ring-sky-200"
+              className="inline-flex min-h-12  items-center justify-center gap-2 rounded-lg border border-sky-200 bg-white/80 px-6 py-3 font-semibold text-sky-950 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-sky-400 hover:bg-white focus:outline-none focus:ring-4 focus:ring-sky-200"
             >
               Login
               <SlLogin />
