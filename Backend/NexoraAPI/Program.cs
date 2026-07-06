@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using NexoraAPI.Helpers;
+using NexoraAPI.Hubs;
 using NexoraAPI.Models;
 using NexoraAPI.Services.implementations;
 using NexoraAPI.Services.Implementations;
@@ -13,6 +14,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add Controllers
 builder.Services.AddControllers();
+
+// Add SignalR
+builder.Services.AddSignalR();
 
 builder.Services.AddCors(options =>
 {
@@ -61,6 +65,13 @@ builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAcademicProfileService, AcademicProfileService>();
 builder.Services.AddScoped<ICourseService, CourseService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
+builder.Services.AddScoped<ISkillService, SkillService>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
+builder.Services.AddScoped<ICourseSkillTagService, CourseSkillTagService>();
+
+// Background Service for auto-notifications (runs every 24h)
+builder.Services.AddHostedService<NotificationBackgroundService>();
 
 // Database
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -119,5 +130,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// SignalR Hub endpoint
+// Frontend connects to: /hubs/notifications
+app.MapHub<NotificationHub>("/hubs/notifications");
 
 app.Run();

@@ -38,7 +38,7 @@ namespace NexoraAPI.Services.Implementations
                 issuer: _jwtSettings.Issuer,
                 audience: _jwtSettings.Audience,
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(_jwtSettings.DurationInMinutes),
+                expires: DateTime.Now.AddMinutes(_jwtSettings.DurationInMinutes),
                 signingCredentials: creds
             );
 

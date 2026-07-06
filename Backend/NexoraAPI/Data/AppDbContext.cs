@@ -31,6 +31,11 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<Vle> Vles { get; set; }
 
+    public virtual DbSet<StudentSkill> StudentSkills { get; set; }
+
+    public virtual DbSet<Notification> Notifications { get; set; }
+
+    public virtual DbSet<CourseSkillTag> CourseSkillTags { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -273,6 +278,50 @@ public partial class AppDbContext : DbContext
             entity.HasOne(d => d.Course).WithMany(p => p.Vles)
                 .HasForeignKey(d => new { d.CodeModule, d.CodePresentation })
                 .HasConstraintName("FK__vle__3C69FB99");
+        });
+
+        modelBuilder.Entity<StudentSkill>(entity =>
+        {
+            entity.ToTable("StudentSkills");
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.SkillName).HasMaxLength(100).IsRequired();
+            entity.Property(e => e.TargetLevel).HasMaxLength(20).HasDefaultValue("Beginner");
+            entity.Property(e => e.AddedAt).HasColumnType("datetime");
+
+            entity.HasOne(e => e.User)
+                .WithMany()
+                .HasForeignKey(e => e.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<CourseSkillTag>(entity =>
+        {
+            entity.ToTable("CourseSkillTags");
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.CodeModule).HasMaxLength(45).IsUnicode(false).IsRequired();
+            entity.Property(e => e.CodePresentation).HasMaxLength(45).IsUnicode(false).IsRequired();
+            entity.Property(e => e.SkillName).HasMaxLength(100).IsRequired();
+            entity.Property(e => e.Level).HasMaxLength(20).HasDefaultValue("Beginner");
+
+            entity.HasOne(e => e.Course)
+                .WithMany()
+                .HasForeignKey(e => new { e.CodeModule, e.CodePresentation })
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<Notification>(entity =>
+        {
+            entity.ToTable("Notifications");
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Title).HasMaxLength(200).IsRequired();
+            entity.Property(e => e.Message).HasMaxLength(1000).IsRequired();
+            entity.Property(e => e.Type).HasMaxLength(50).HasDefaultValue("General");
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+
+            entity.HasOne(e => e.User)
+                .WithMany()
+                .HasForeignKey(e => e.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         });
 
         OnModelCreatingPartial(modelBuilder);

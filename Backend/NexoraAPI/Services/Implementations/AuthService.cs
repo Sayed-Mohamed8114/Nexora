@@ -65,7 +65,7 @@ namespace NexoraAPI.Services.Implementations
                 Email = dto.Email,
                 EmailVerified = true, // Set to true because the Regex format is valid
                 Role = dto.Role,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTime.Now
             };
 
 
@@ -90,7 +90,7 @@ namespace NexoraAPI.Services.Implementations
             if (!validPassword)
                 return null;
 
-            user.LastLogin = DateTime.UtcNow;
+            user.LastLogin = DateTime.Now;
             await _context.SaveChangesAsync();
 
             var token = _jwtService.GenerateToken(user);

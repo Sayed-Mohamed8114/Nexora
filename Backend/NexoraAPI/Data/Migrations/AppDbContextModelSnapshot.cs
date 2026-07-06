@@ -79,6 +79,86 @@ namespace NexoraAPI.Data.Migrations
                     b.ToTable("courses", (string)null);
                 });
 
+            modelBuilder.Entity("NexoraAPI.Models.CourseSkillTag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CodeModule")
+                        .IsRequired()
+                        .HasMaxLength(45)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(45)");
+
+                    b.Property<string>("CodePresentation")
+                        .IsRequired()
+                        .HasMaxLength(45)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(45)");
+
+                    b.Property<string>("Level")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasDefaultValue("Beginner");
+
+                    b.Property<string>("SkillName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CodeModule", "CodePresentation");
+
+                    b.ToTable("CourseSkillTags", (string)null);
+                });
+
+            modelBuilder.Entity("NexoraAPI.Models.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("General");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications", (string)null);
+                });
+
             modelBuilder.Entity("NexoraAPI.Models.StudentAssessment", b =>
                 {
                     b.Property<int?>("DateSubmitted")
@@ -208,6 +288,39 @@ namespace NexoraAPI.Data.Migrations
                     b.HasIndex("CodeModule", "CodePresentation", "IdStudent");
 
                     b.ToTable("studentRegistration", (string)null);
+                });
+
+            modelBuilder.Entity("NexoraAPI.Models.StudentSkill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AddedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("SkillName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("TargetLevel")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasDefaultValue("Beginner");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("StudentSkills", (string)null);
                 });
 
             modelBuilder.Entity("NexoraAPI.Models.StudentVle", b =>
@@ -360,6 +473,28 @@ namespace NexoraAPI.Data.Migrations
                     b.Navigation("Course");
                 });
 
+            modelBuilder.Entity("NexoraAPI.Models.CourseSkillTag", b =>
+                {
+                    b.HasOne("NexoraAPI.Models.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("CodeModule", "CodePresentation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+                });
+
+            modelBuilder.Entity("NexoraAPI.Models.Notification", b =>
+                {
+                    b.HasOne("NexoraAPI.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("NexoraAPI.Models.StudentAssessment", b =>
                 {
                     b.HasOne("NexoraAPI.Models.Assessment", "IdAssessmentNavigation")
@@ -389,6 +524,17 @@ namespace NexoraAPI.Data.Migrations
                         .HasConstraintName("FK__studentRegistrat__412EB0B6");
 
                     b.Navigation("StudentInfo");
+                });
+
+            modelBuilder.Entity("NexoraAPI.Models.StudentSkill", b =>
+                {
+                    b.HasOne("NexoraAPI.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("NexoraAPI.Models.StudentVle", b =>
