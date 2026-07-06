@@ -6,10 +6,16 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { IoHome } from "react-icons/io5";
 import { register } from "../../Services/AuthServices";
+import { ErrorFlash, SuccessFlash } from "@/Components/UI/FlashMessages";
 
 export default function Register() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [flash, setFlash] = useState({
+    show: false,
+    type: "",
+    message: "",
+  });
   // formData
   const [formData, setFormData] = useState({
     firstName: "",
@@ -29,12 +35,21 @@ export default function Register() {
       !formData.password.trim() ||
       !formData.role
     ) {
-      alert("Please fill all required fields.");
+      setFlash({
+        show: true,
+        type: "error",
+        message: "please fill all the fields first",
+      });
       return;
     }
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match.");
+      const message1 = "Passwords do not match.";
+      setFlash({
+        show: true,
+        type: "error",
+        message: message1,
+      });
       return;
     }
     try {
@@ -47,15 +62,33 @@ export default function Register() {
         role: Number(formData.role),
       };
       await register(payload);
-      alert("account created successfully");
-      navigate("/signin");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        role: "",
+        password: "",
+        confirmPassword: "",
+      });
+
+      setFlash({
+        show: true,
+        type: "success",
+        message: "Acc created successfully, signin to access dasboard",
+      });
+      setTimeout(() => {
+        navigate("/signin");
+      }, 2700);
     } catch (error) {
-      const message =
+      const message2 =
         error.response?.data?.message ||
         error.response?.data ||
         "Failed to create your account.";
-
-      console.log(message);
+      setFlash({
+        show: true,
+        type: "error",
+        message: message2,
+      });
     } finally {
       setLoading(false);
     }
@@ -69,8 +102,6 @@ export default function Register() {
       [e.target.name]: e.target.value,
     });
   };
-  // validation using js
-  //const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (loading) {
@@ -83,6 +114,21 @@ export default function Register() {
       document.body.style.overflow = "auto";
     };
   }, [loading]);
+
+  // flash rendering
+  useEffect(() => {
+    if (!flash.show) return;
+
+    const timer = setTimeout(() => {
+      setFlash((prev) => ({
+        ...prev,
+        show: false,
+      }));
+    }, 2500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [flash.show]);
 
   const handleGoHome = () => {
     setLoading(true);
@@ -101,6 +147,12 @@ export default function Register() {
   return (
     <>
       {loading && <Loader />}
+      {flash.show &&
+        (flash.type === "error" ? (
+          <ErrorFlash content={flash.message} />
+        ) : (
+          <SuccessFlash content={flash.message} />
+        ))}
 
       <div className="relative flex h-screen w-full items-center justify-center overflow-hidden bg-linear-to-r from-sky-100 to-sky-300">
         <h1 className="absolute -translate-y-80 md:-translate-y-97 select-none bg-linear-to-r from-sky-800/40 to-sky-800/80 bg-clip-text text-8xl font-black font-serif text-transparent md:text-9xl">

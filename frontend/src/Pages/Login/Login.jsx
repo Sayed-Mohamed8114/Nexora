@@ -5,14 +5,19 @@ import Loader from "../../Components/Loader/Loader";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { IoHome } from "react-icons/io5";
-import {login} from "../../Services/AuthServices";
-
+import { login } from "../../Services/AuthServices";
+import { ErrorFlash, SuccessFlash } from "@/Components/UI/FlashMessages";
 
 export default function SignIn() {
-  const [loading, setLoading] = useState(false);
-  const [email,setEmail] = useState("");
-  const [password , setPassword] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [flash, setFlash] = useState({
+    type: "",
+    message: "",
+    show: false,
+  });
 
   useEffect(() => {
     document.body.style.overflow = loading ? "hidden" : "auto";
@@ -21,6 +26,19 @@ export default function SignIn() {
       document.body.style.overflow = "auto";
     };
   }, [loading]);
+
+  useEffect(() => {
+    if (!flash.show) return;
+
+    const timer = setTimeout(() => {
+      setFlash((prev) => ({
+        ...prev,
+        show: false,
+      }));
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, [flash.show]);
 
   const handleGoHome = () => {
     setLoading(true);
@@ -37,42 +55,72 @@ export default function SignIn() {
     }, 2000);
   };
 
-  const handleSubmit = async (e) =>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!email.trim() || !password.trim()){
-      alert("please enter your email and password");
+    if (!email.trim() || !password.trim()) {
+      setFlash({
+        show: true,
+        type: "error",
+        message: "Please enter your email and password.",
+      });
       return;
     }
     try {
       setLoading(true);
       const response = await login({
-        email,password,
+        email,
+        password,
       });
       const token = response.token;
-      localStorage.setItem("token",token);
-      console.log(token);
-      navigate('/dashboard');      
+      localStorage.setItem("token", token);
+      setEmail("");
+      setPassword("");
+      setFlash({
+        show: true,
+        type: "success",
+        message: "Login successful. Redirecting to your dashboard...",
+      });
+
+      setTimeout(() => {
+        navigate("/my-dashboard");
+      }, 2800);
     } catch (error) {
-      console.log(error.response?.data || error.message);
-      alert(error.response?.data || "Login failed");
-    }finally{
+      const message =
+        error.response?.data?.message ||
+        error.response?.data ||
+        "Login failed.";
+
+      setFlash({
+        show: true,
+        type: "error",
+        message,
+      });
+    } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <>
       {loading && <Loader />}
+      {flash.show &&
+        (flash.type === "error" ? (
+          <ErrorFlash content={flash.message} />
+        ) : (
+          <SuccessFlash content={flash.message} />
+        ))}
 
       <div className="relative flex h-screen w-full items-center justify-center overflow-hidden bg-linear-to-r from-sky-100 to-sky-300">
         <h1 className="absolute -translate-y-80 md:-translate-y-97 select-none bg-linear-to-r from-sky-800/40 to-sky-800/80 bg-clip-text text-8xl font-black font-serif text-transparent md:text-9xl">
           Nexora
         </h1>
 
-        <div className="relative z-10 flex
+        <div
+          className="relative z-10 flex
          flex-col-reverse lg:flex-row md:h-[70%] lg:h-[85%] 
          w-[95%] items-center justify-center lg:justify-start rounded-2xl
-          bg-white/50 px-4 py-10 shadow-xl shadow-sky-900/10 backdrop-blur sm:h-[80%] sm:w-[70%]">
+          bg-white/50 px-4 py-10 shadow-xl shadow-sky-900/10 backdrop-blur sm:h-[80%] sm:w-[70%]"
+        >
           <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-sky-400/10"></div>
 
           <div className="relative hidden h-full w-[90%] lg:w-[45%] flex-col items- justify-center overflow-hidden rounded-2xl p-10 text-sky-900 md:flex">
@@ -102,13 +150,16 @@ export default function SignIn() {
             </div>
             <button className="flex p-2 gap-3 text-[9px] md:text-xl text-sky-800 font-bold mt-10 items-center text-start justify-center lg:justify-start cursor-pointer">
               <IoHome />
-              <a onClick={handleGoHome} className="text-[9px] lg:text-xl">Return to home page ?</a>
+              <a onClick={handleGoHome} className="text-[9px] lg:text-xl">
+                Return to home page ?
+              </a>
             </button>
           </div>
 
-          <form 
-          onSubmit={handleSubmit}
-          className="w-full md:w-[50%] rounded-2xl bg-transparent p-1 text-sky-900">
+          <form
+            onSubmit={handleSubmit}
+            className="w-full md:w-[50%] rounded-2xl bg-transparent p-1 text-sky-900"
+          >
             <div className="mb-8">
               <div className="flex items-center gap-3">
                 <div className="relative h-4 w-4">
@@ -126,8 +177,8 @@ export default function SignIn() {
 
             <div className="relative mb-5">
               <input
-              value={email}
-              onChange={(e)=>setEmail(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 placeholder=" "
                 className="peer w-full rounded-lg border border-gray-300 bg-sky-100 px-3 pb-2 pt-6 font-serif font-semibold text-sky-900 outline-none transition focus:border-sky-400"
@@ -139,8 +190,10 @@ export default function SignIn() {
 
             <div className="relative mb-6">
               <input
-              value={password}
-              onChange={(e)=>{setPassword(e.target.value)}}
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
                 type="password"
                 placeholder=" "
                 className="peer w-full rounded-lg border border-gray-300 bg-sky-100 px-3 pb-2 pt-6 font-serif font-semibold text-sky-900 outline-none transition focus:border-sky-400"
