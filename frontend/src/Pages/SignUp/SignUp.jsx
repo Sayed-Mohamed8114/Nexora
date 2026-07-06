@@ -55,7 +55,7 @@ export default function Register() {
         error.response?.data ||
         "Failed to create your account.";
 
-      alert(message);
+      console.log(message);
     } finally {
       setLoading(false);
     }
