@@ -1,5 +1,13 @@
 public class UpdateAcademicProfileDto
 {
+    // Personal Details
+    public string? FirstName { get; set; }
+
+    public string? LastName { get; set; }
+
+    public string? Email { get; set; }
+
+    // Academic Details
     public string? Gender { get; set; }
 
     public string? HighestEducation { get; set; }

@@ -55,24 +55,45 @@ namespace NexoraAPI.Services.Implementations
         public async Task<bool> UpdateProfileAsync(int userId, UpdateAcademicProfileDto dto)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
-            if (user == null || !user.StudentId.HasValue)
+            if (user == null)
                 return false;
 
-            var student = await _context.StudentInfos
-                .FirstOrDefaultAsync(s => s.IdStudent == user.StudentId.Value);
+            // Update User fields if provided
+            if (dto.FirstName != null)
+                user.FirstName = dto.FirstName;
 
-            if (student == null)
-                return false;
+            if (dto.LastName != null)
+                user.LastName = dto.LastName;
 
-            student.Gender = dto.Gender;
-            student.HighestEducation = dto.HighestEducation;
-            student.AgeBand = dto.AgeBand;
-            student.Region = dto.Region;
-            student.ImdBand = dto.ImdBand;
-            student.Disability = dto.Disability;
+            if (dto.Email != null)
+            {
+                if (user.Email != dto.Email)
+                {
+                    user.Email = dto.Email;
+                    user.EmailVerified = false; // Reset verification if email changed
+                }
+            }
+
+            // Update StudentInfo fields if user has a StudentId
+            if (user.StudentId.HasValue)
+            {
+                var student = await _context.StudentInfos
+                    .FirstOrDefaultAsync(s => s.IdStudent == user.StudentId.Value);
+
+                if (student != null)
+                {
+                    student.Gender = dto.Gender;
+                    student.HighestEducation = dto.HighestEducation;
+                    student.AgeBand = dto.AgeBand;
+                    student.Region = dto.Region;
+                    student.ImdBand = dto.ImdBand;
+                    student.Disability = dto.Disability;
+                    student.StudiedCredits = dto.StudiedCredits;
+                    student.NumOfPrevAttempts = dto.NumOfPrevAttempts;
+                }
+            }
 
             await _context.SaveChangesAsync();
-
             return true;
         }
     }

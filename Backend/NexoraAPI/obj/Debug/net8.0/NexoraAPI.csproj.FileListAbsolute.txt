@@ -442,4 +442,3 @@ D:\Nexora\Backend\NexoraAPI\obj\Debug\net8.0\refint\NexoraAPI.dll
 D:\Nexora\Backend\NexoraAPI\obj\Debug\net8.0\NexoraAPI.pdb
 D:\Nexora\Backend\NexoraAPI\obj\Debug\net8.0\NexoraAPI.genruntimeconfig.cache
 D:\Nexora\Backend\NexoraAPI\obj\Debug\net8.0\ref\NexoraAPI.dll
-D:\Nexora\Backend\NexoraAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
