@@ -5,7 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/Components/Ui/dropdown-menu";
+} from "@/Components/UI/dropdown-menu";
 import { getCurrentUser } from "@/Services/user";
 import {
   EllipsisVertical,
