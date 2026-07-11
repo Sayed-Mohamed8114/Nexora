@@ -8,7 +8,7 @@ const DashboardLayout = ({ children }) => {
       <div className="ms-0 md:ms-50 w-full overflow-x-hidden md:w-[calc(100%-12.5rem)]">
         <Topbar />
 
-        <div className="mt-10 p-8 bg-linear-to-r from-sky-50 to-sky-200 min-h-[calc(100vh-64px)] h-auto">
+        <div className="mt-10 p-8 bg-linear-to-r from-sky-50 to-sky-200 min-h-[calc(100vh-40px)] h-auto">
           {children}
         </div>
       </div>

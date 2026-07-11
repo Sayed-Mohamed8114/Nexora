@@ -5,15 +5,14 @@ import {
   BookOpen,
   Lightbulb,
   ChartColumn,
-  Settings,
 } from "lucide-react";
 
 export const sidebarLinksForStudent = [
-  // {
-  //   path: "/dashboard",
-  //   label: "Global Dashboard",
-  //   icon: LayoutDashboard,
-  // },
+  {
+    path: "/dashboard",
+    label: "Global Dashboard",
+    icon: LayoutDashboard,
+  },
   {
     path: "/dashboard",
     label: "Dashboard",
@@ -39,19 +38,11 @@ export const sidebarLinksForStudent = [
     label: "Reports",
     icon: ChartColumn,
   },
-  {
-    path: "/settings",
-    label: "Settings",
-    icon: Settings,
-  },
+
 ];
 
 export const sidebarLinksForAdmin = [
-  // {
-  //   path: "/dashboard",
-  //   label: "Global Dashboard",
-  //   icon: LayoutDashboard,
-  // },
+  
   {
     path: "/dashboard",
     label: "Dashboard",
@@ -68,14 +59,14 @@ export const sidebarLinksForAdmin = [
     icon: BookOpen,
   },
   {
+    path: "/recommendations",
+    label: "Recommendations",
+    icon: Lightbulb,
+  },
+  {
     path: "/reports",
     label: "Reports",
     icon: ChartColumn,
-  },
-  {
-    path: "/settings",
-    label: "Settings",
-    icon: Settings,
   },
 ];
 

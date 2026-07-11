@@ -6,7 +6,7 @@ const Topbar = () => {
   const [user, setUser] = useState({});
   useEffect(() => {
     getCurrentUser().then((res) => {
-      if (res) setUser(res);
+      if (res.success) setUser(res.data);
     });
   }, []);
   return (
