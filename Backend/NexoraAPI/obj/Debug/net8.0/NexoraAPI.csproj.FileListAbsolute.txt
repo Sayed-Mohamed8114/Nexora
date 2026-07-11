@@ -294,8 +294,6 @@ D:\khloud mostafa\COURSES\رواد\Mega\Nexora\Backend\NexoraAPI\obj\Debug\net8.
 D:\khloud mostafa\COURSES\رواد\Mega\Nexora\Backend\NexoraAPI\obj\Debug\net8.0\NexoraAPI.genruntimeconfig.cache
 D:\khloud mostafa\COURSES\رواد\Mega\Nexora\Backend\NexoraAPI\obj\Debug\net8.0\ref\NexoraAPI.dll
 D:\khloud mostafa\COURSES\رواد\Mega\Nexora\Backend\NexoraAPI\bin\Debug\net8.0\dotnet-tools.json
-D:\Nexora\Backend\NexoraAPI\bin\Debug\net8.0\appsettings.Development.json
-D:\Nexora\Backend\NexoraAPI\bin\Debug\net8.0\appsettings.json
 D:\Nexora\Backend\NexoraAPI\bin\Debug\net8.0\dotnet-tools.json
 D:\Nexora\Backend\NexoraAPI\bin\Debug\net8.0\NexoraAPI.staticwebassets.endpoints.json
 D:\Nexora\Backend\NexoraAPI\bin\Debug\net8.0\NexoraAPI.exe
@@ -442,3 +440,5 @@ D:\Nexora\Backend\NexoraAPI\obj\Debug\net8.0\refint\NexoraAPI.dll
 D:\Nexora\Backend\NexoraAPI\obj\Debug\net8.0\NexoraAPI.pdb
 D:\Nexora\Backend\NexoraAPI\obj\Debug\net8.0\NexoraAPI.genruntimeconfig.cache
 D:\Nexora\Backend\NexoraAPI\obj\Debug\net8.0\ref\NexoraAPI.dll
+D:\Nexora\Backend\NexoraAPI\bin\Debug\net8.0\appsettings.example.json
+D:\Nexora\Backend\NexoraAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
