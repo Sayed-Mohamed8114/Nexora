@@ -101,7 +101,7 @@ builder.Services.AddSwaggerGen(options =>
         Scheme = "bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "Enter JWT Token in the format: Bearer {your token}"
+        Description = "Enter your valid JWT token here (without the 'Bearer ' prefix)."
     });
 
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
