@@ -1,5 +1,5 @@
 D:\Nexora\Backend\NexoraAPI\obj\Release\net8.0\PubTmp\Out\NexoraAPI.exe
-D:\Nexora\Backend\NexoraAPI\obj\Release\net8.0\PubTmp\Out\dotnet-tools.json
+D:\Nexora\Backend\NexoraAPI\obj\Release\net8.0\PubTmp\Out\appsettings.json
 D:\Nexora\Backend\NexoraAPI\obj\Release\net8.0\PubTmp\Out\NexoraAPI.dll
 D:\Nexora\Backend\NexoraAPI\obj\Release\net8.0\PubTmp\Out\NexoraAPI.runtimeconfig.json
 D:\Nexora\Backend\NexoraAPI\obj\Release\net8.0\PubTmp\Out\NexoraAPI.pdb
