@@ -28,6 +28,8 @@ public partial class AppDbContext : DbContext
     public virtual DbSet<StudentVle> StudentVles { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
+    
+    public virtual DbSet<UserProfile> UserProfiles { get; set; }
 
     public DbSet<Recommendation> Recommendations { get; set; }
 
@@ -245,6 +247,11 @@ public partial class AppDbContext : DbContext
                 .HasForeignKey(e => e.StudentId)
                 .HasPrincipalKey(s => s.IdStudent)
                 .IsRequired(false);
+                
+            entity.HasOne(e => e.Profile)
+                .WithOne(p => p.User)
+                .HasForeignKey<UserProfile>(p => p.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<Vle>(entity =>

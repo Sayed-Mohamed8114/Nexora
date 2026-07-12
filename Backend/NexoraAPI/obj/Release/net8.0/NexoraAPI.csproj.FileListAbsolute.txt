@@ -148,8 +148,6 @@ D:\khloud mostafa\COURSES\رواد\Mega\Nexora\Backend\NexoraAPI\obj\Release\net
 D:\khloud mostafa\COURSES\رواد\Mega\Nexora\Backend\NexoraAPI\obj\Release\net8.0\NexoraAPI.genruntimeconfig.cache
 D:\khloud mostafa\COURSES\رواد\Mega\Nexora\Backend\NexoraAPI\obj\Release\net8.0\ref\NexoraAPI.dll
 D:\khloud mostafa\COURSES\رواد\Mega\Nexora\Backend\NexoraAPI\bin\Release\net8.0\dotnet-tools.json
-D:\Nexora\Backend\NexoraAPI\bin\Release\net8.0\appsettings.json
-D:\Nexora\Backend\NexoraAPI\bin\Release\net8.0\dotnet-tools.json
 D:\Nexora\Backend\NexoraAPI\bin\Release\net8.0\NexoraAPI.staticwebassets.endpoints.json
 D:\Nexora\Backend\NexoraAPI\bin\Release\net8.0\NexoraAPI.exe
 D:\Nexora\Backend\NexoraAPI\bin\Release\net8.0\NexoraAPI.deps.json
@@ -296,3 +294,4 @@ D:\Nexora\Backend\NexoraAPI\obj\Release\net8.0\refint\NexoraAPI.dll
 D:\Nexora\Backend\NexoraAPI\obj\Release\net8.0\NexoraAPI.pdb
 D:\Nexora\Backend\NexoraAPI\obj\Release\net8.0\NexoraAPI.genruntimeconfig.cache
 D:\Nexora\Backend\NexoraAPI\obj\Release\net8.0\ref\NexoraAPI.dll
+D:\Nexora\Backend\NexoraAPI\bin\Release\net8.0\appsettings.json

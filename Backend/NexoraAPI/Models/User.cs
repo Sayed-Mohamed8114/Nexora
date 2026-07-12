@@ -26,4 +26,5 @@ public partial class User
 
     public DateTime? CreatedAt { get; set; }
 
+    public virtual UserProfile? Profile { get; set; }
 }
