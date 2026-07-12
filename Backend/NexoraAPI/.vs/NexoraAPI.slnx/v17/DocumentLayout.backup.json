@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\Nexora\\Backend\\NexoraAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\services\\implementations\\profileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:services\\implementations\\profileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -21,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\nexoraapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
       "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:nexoraapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -74,28 +78,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "StudentInfo.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\StudentInfo.cs",
-              "RelativeDocumentMoniker": "Models\\StudentInfo.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\StudentInfo.cs",
-              "RelativeToolTip": "Models\\StudentInfo.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAA1wBAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-11T23:31:14.933Z",
+              "Title": ".gitignore",
+              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-12T12:28:51.794Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ProfileService.cs",
               "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Services\\Implementations\\ProfileService.cs",
               "RelativeDocumentMoniker": "Services\\Implementations\\ProfileService.cs",
@@ -108,32 +116,44 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ProfileController.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Controllers\\ProfileController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProfileController.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Controllers\\ProfileController.cs",
-              "RelativeToolTip": "Controllers\\ProfileController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAADwvz8AAAABAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-11T22:10:55.149Z",
+              "WhenOpened": "2026-07-05T16:34:04.808Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "NexoraAPI.http",
+              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\NexoraAPI.http",
+              "RelativeDocumentMoniker": "NexoraAPI.http",
+              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\NexoraAPI.http",
+              "RelativeToolTip": "NexoraAPI.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-07-05T23:37:13.047Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-11T23:24:49.887Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "StudentSkill.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\StudentSkill.cs",
-              "RelativeDocumentMoniker": "Models\\StudentSkill.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\StudentSkill.cs",
-              "RelativeToolTip": "Models\\StudentSkill.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T13:28:29.993Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "20260706133741_Edits.cs",
               "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Data\\Migrations\\20260706133741_Edits.cs",
               "RelativeDocumentMoniker": "Data\\Migrations\\20260706133741_Edits.cs",
@@ -145,33 +165,43 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "StudentSkill.cs",
+              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\StudentSkill.cs",
+              "RelativeDocumentMoniker": "Models\\StudentSkill.cs",
+              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\StudentSkill.cs",
+              "RelativeToolTip": "Models\\StudentSkill.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-05T16:34:04.808Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-06T13:28:29.993Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProfileController.cs",
+              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Controllers\\ProfileController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProfileController.cs",
+              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Controllers\\ProfileController.cs",
+              "RelativeToolTip": "Controllers\\ProfileController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAADwvz8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-11T22:10:55.149Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StudentInfo.cs",
+              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\StudentInfo.cs",
+              "RelativeDocumentMoniker": "Models\\StudentInfo.cs",
+              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\StudentInfo.cs",
+              "RelativeToolTip": "Models\\StudentInfo.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA1wBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-11T23:31:14.933Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "NexoraAPI.http",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\NexoraAPI.http",
-              "RelativeDocumentMoniker": "NexoraAPI.http",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\NexoraAPI.http",
-              "RelativeToolTip": "NexoraAPI.http",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2026-07-05T23:37:13.047Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
@@ -179,25 +209,11 @@
               "RelativeToolTip": "Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-04T13:09:26.008Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-04T13:09:26.008Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-07-11T23:24:49.887Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "NotificationHub.cs",
               "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Hubs\\NotificationHub.cs",
               "RelativeDocumentMoniker": "Hubs\\NotificationHub.cs",
@@ -209,7 +225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "20260711193317_Recommend.cs",
               "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Data\\Migrations\\20260711193317_Recommend.cs",
               "RelativeDocumentMoniker": "Data\\Migrations\\20260711193317_Recommend.cs",
@@ -221,7 +237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "site77622-WebDeploy.pubxml",
               "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Properties\\PublishProfiles\\site77622-WebDeploy.pubxml",
               "RelativeDocumentMoniker": "Properties\\PublishProfiles\\site77622-WebDeploy.pubxml",
@@ -233,7 +249,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "CourseSkillTag.cs",
               "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\CourseSkillTag.cs",
               "RelativeDocumentMoniker": "Models\\CourseSkillTag.cs",
@@ -245,7 +261,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "site77826-WebDeploy.pubxml",
               "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Properties\\PublishProfiles\\site77826-WebDeploy.pubxml",
               "RelativeDocumentMoniker": "Properties\\PublishProfiles\\site77826-WebDeploy.pubxml",
@@ -257,7 +273,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "20260705234405_InitialCreatee.cs",
               "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Data\\Migrations\\20260705234405_InitialCreatee.cs",
               "RelativeDocumentMoniker": "Data\\Migrations\\20260705234405_InitialCreatee.cs",
@@ -269,7 +285,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "20260704130437_InitialCreate.cs",
               "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Migrations\\20260704130437_InitialCreate.cs",
               "RelativeDocumentMoniker": "Migrations\\20260704130437_InitialCreate.cs",
