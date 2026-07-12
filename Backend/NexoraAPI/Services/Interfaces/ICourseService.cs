@@ -1,4 +1,4 @@
-﻿using NexoraAPI.Models;
+using NexoraAPI.Models;
 
 namespace NexoraAPI.Services.Interfaces
 {
@@ -9,5 +9,8 @@ namespace NexoraAPI.Services.Interfaces
         Task<Course> AddCourseAsync(Course course);
         Task<Course?> UpdateCourseAsync(string codeModule, string codePresentation, Course course);
         Task<bool> DeleteCourseAsync(string codeModule, string codePresentation);
+        Task<IEnumerable<Course>> GetCoursesByTutorIdAsync(int tutorId);
+        Task<bool> EnrollStudentAsync(int studentId, string codeModule, string codePresentation);
+        Task<bool> UnenrollStudentAsync(int studentId, string codeModule, string codePresentation);
     }
 }

@@ -88,6 +88,12 @@ public partial class AppDbContext : DbContext
                 .HasMaxLength(45)
                 .IsUnicode(false)
                 .HasColumnName("code_presentation");
+
+            entity.HasOne(e => e.Tutor)
+                .WithMany()
+                .HasForeignKey(e => e.TutorId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("FK_Courses_Tutors");
         });
 
         modelBuilder.Entity<StudentAssessment>(entity =>
