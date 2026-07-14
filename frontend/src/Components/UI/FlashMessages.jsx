@@ -7,7 +7,7 @@ export function SuccessFlash({ content }) {
         text-green-900 dark:text-green-100 p-2 rounded-lg flex items-center 
         transition duration-300 ease-in-out hover:bg-green-200
          dark:hover:bg-green-800 transform hover:scale-105
-         fixed top-5 right-5 z-50 w-80 shadow-xl animate-slide-down
+         fixed top-5 right-5 z-999 w-80 shadow-xl animate-slide-down
          "
     >
       <svg
@@ -33,7 +33,7 @@ export function ErrorFlash({ content }) {
   return (
     <div
       role="alert"
-      className="bg-red-100 fixed top-5 right-5 z-50 w-80 shadow-xl animate-slide-down
+      className="bg-red-100 fixed top-5 right-5 z-999 w-80 shadow-xl animate-slide-down
        dark:bg-red-900 border-l-4 border-red-500 dark:border-red-700
         text-red-900 dark:text-red-100 p-2 rounded-lg flex items-center 
         transition duration-300 ease-in-out hover:bg-red-200

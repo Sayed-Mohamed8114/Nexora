@@ -54,6 +54,8 @@ const Courses = () => {
     loadCourses();
   }, []);
 
+
+
   if (loading) {
     return <Loader />;
   }

@@ -6,7 +6,7 @@ function AddCourseForm() {
 
   return (
     <form onclick={handleCreateCourse} className="h-[75vh]">
-
+        
     </form>
   )
 }
