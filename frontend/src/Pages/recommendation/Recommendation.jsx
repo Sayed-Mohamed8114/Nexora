@@ -32,7 +32,7 @@ const Recommendation = () => {
               stiffness: 250,
               damping: 25,
             }}
-            className="fixed -bottom-24 right-6 w-[50%] h-full"
+            className="fixed -bottom-24 right-6 w-[50%] h-full "
           >
             <ChatPage />
           </motion.div>

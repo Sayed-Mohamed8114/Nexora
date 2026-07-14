@@ -1,43 +1,62 @@
 import { Link } from "react-router-dom";
 import DropdownMenuComponent from "./DropDownMenuComponent";
 
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, onEnroll }) => {
   return (
-    <Link
-      to="/courses"
-      className="block bg-white rounded-lg border border-[#E5E7EB] p-3 pb-1 w-full cursor-pointer hover:border-primary-container transition-colors relative"
-    >
-      <div className="relative">
-        <img
-          src={`${course.image}`}
-          alt={`${course.title} thumbnail`}
-          className="w-full h-52 object-cover rounded-t-md"
-        />
-        <div className="absolute top-3 right-3 z-100">
-          <DropdownMenuComponent />
+    <div className="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+      <div className="flex justify-between items-start p-5">
+        <div>
+          <h2 className="text-xl justify-between items-start p-5">
+            {course.codeModule}
+          </h2>
+          <p className="text-sm text-slate-500 mt-1">
+            Presentation: {course.codePresentation}
+          </p>
         </div>
+        <DropdownMenuComponent />
       </div>
+      <div className="px-5 space-y-3">
+        <div className="flex justify-between">
+          <span className="text-slate-700">Tutor</span>
+          <span className="font-medium">
+            {course.tutor
+              ? `${course.tutor.firstName} ${course.tutor.lastName}`
+              : "unknown"}
+          </span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-slate-500">Students</span>
 
-      <div className="py-4">
-        <h3 className="font-semibold text-title text-slate-dark mb-1">
-          {course.title}
-        </h3>
-        <p className="text-label text-slate-medium line-clamp-2">
-          {course.description}
-        </p>
-        <div className="flex flex-wrap gap-2 mt-3">
-          {course.skills?.map((skill, index) => (
-            <span
-              key={index}
-              className="border border-slate-light px-2 py-1 rounded-sm text-label text-slate-medium font-normal"
-            >
-              {skill}
-            </span>
-          ))}
+          <span className="font-medium">
+            {course.studentInfos?.length ?? 0}
+          </span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-slate-500">Assessments</span>
+
+          <span className="font-medium">{course.assessments?.length ?? 0}</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-slate-500">Activities</span>
+
+          <span className="font-medium">{course.vles?.length ?? 0}</span>
         </div>
       </div>
-    </Link>
+      <div className="flex gap-3 p-5">
+        <Link
+          to={`/api/courses/${course.codeModule}/${course.codePresentation}`}
+          className="flex-1 border border-slate-300 rounded-lg py-2 text-center hover:slate-100 transition"
+        >
+          Details
+        </Link>
+        <button
+          onClick={() => onEnroll(course.codeModule, course.codePresentation)}
+          className="flex-1 bg-primary text-white roudend-lg py-2 hover:opacity-90 transition"
+        >
+          Enroll
+        </button>
+      </div>
+    </div>
   );
 };
-
 export default CourseCard;
