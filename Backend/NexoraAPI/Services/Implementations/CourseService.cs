@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using NexoraAPI.DTOs.Courses;
 using NexoraAPI.Models;
 using NexoraAPI.Services.Interfaces;
 
@@ -171,6 +172,43 @@ namespace NexoraAPI.Services.implementations
 
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<IEnumerable<EnrolledCourseDto>> GetEnrolledCoursesAsync(int studentId)
+        {
+            var enrollments = await _context.StudentInfos
+                .Where(si => si.IdStudent == studentId)
+                .Include(si => si.Course)
+                    .ThenInclude(c => c.Tutor)
+                .Include(si => si.Course)
+                    .ThenInclude(c => c.CourseSkillTags)
+                .ToListAsync();
+
+            return enrollments.Select(si => new EnrolledCourseDto
+            {
+                CodeModule        = si.Course.CodeModule,
+                CodePresentation  = si.Course.CodePresentation,
+                Name              = si.Course.Name,
+                Description       = si.Course.Description,
+                Hours             = si.Course.Hours,
+                TutorId           = si.Course.TutorId,
+                TutorName         = si.Course.Tutor != null
+                                        ? $"{si.Course.Tutor.FirstName} {si.Course.Tutor.LastName}".Trim()
+                                        : string.Empty,
+                Skills            = si.Course.CourseSkillTags.Select(t => t.SkillName).ToList(),
+                FinalResult       = si.FinalResult,
+                NumOfPrevAttempts = si.NumOfPrevAttempts,
+                StudiedCredits    = si.StudiedCredits
+            });
+        }
+
+        public async Task<User?> GetUserWithStudentIdAsync(int userId)
+        {
+            return await _context.Users
+                .AsNoTracking()
+                .Where(u => u.Id == userId)
+                .Select(u => new User { Id = u.Id, StudentId = u.StudentId })
+                .FirstOrDefaultAsync();
         }
     }
 }
