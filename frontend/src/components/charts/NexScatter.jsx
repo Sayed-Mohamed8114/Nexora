@@ -30,7 +30,7 @@ export default function NexScatter({
   yLabel,
 }) {
   return (
-    <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
+    <div className=" p-5 rounded-2xl bg-transparent">
       <h3 className="mb-4 text-sm font-semibold text-title">{title}</h3>
 
       <ResponsiveContainer width="100%" height={320}>

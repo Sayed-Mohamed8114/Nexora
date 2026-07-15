@@ -1,16 +1,16 @@
-import { useFilters } from "../context/FilterContext";
-import { filterStudents } from "../data/useData";
+import { useFilters } from "@/components/context/FilterContext";
+import { filterStudents } from "@/components/data/useData";
 import {
   computePlatformKPIs,
   computeAvgClicksByModule,
   computeAvgScoreByModule,
   computeModuleRanking,
   computeRateByModule,
-} from "../utils/kpiCalculators";
-import { formatK, formatPct, formatScore } from "../utils/formatters";
-import KPICard from "../components/cards/KPICard";
-import NexVBar from "../components/charts/NexVBar";
-import NexHBar from "../components/charts/NexHBar";
+} from "@/components/utils/KpiCalculators";
+import { formatK, formatPct, formatScore } from "@/components/utils/formatters";
+import KPICard from "@/components/cards/KPICard";
+import NexVBar from "@/components/charts/NexVBar";
+import NexHBar from "@/components/charts/NexHBar";
 import {
   Users,
   Monitor,

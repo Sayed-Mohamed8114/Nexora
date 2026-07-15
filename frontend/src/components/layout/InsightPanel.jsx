@@ -22,7 +22,7 @@ const item = {
 };
 
 export default function InsightPanel({
-  insights,
+  insights = [],
   title = "Key Insights",
 }) {
   const visible = insights.slice(0, 6);
@@ -40,30 +40,38 @@ export default function InsightPanel({
         </h3>
       </div>
 
-      {/* Insights list */}
-      <motion.ul
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="space-y-3"
-      >
-        {visible.map((insight, i) => (
-          <motion.li
-            key={i}
-            variants={item}
-            className="flex items-start gap-3 text-sm leading-relaxed text-body"
-          >
-            {/* Blue dot */}
-            <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-primary" />
-            <span>{insight}</span>
-          </motion.li>
-        ))}
-      </motion.ul>
-
-      {insights.length > 6 && (
-        <p className="mt-3 text-xs text-slate-400">
-          +{insights.length - 6} more insights
+      {/* إذا لم توجد Insights */}
+      {visible.length === 0 ? (
+        <p className="text-sm text-slate-500">
+          No insights available.
         </p>
+      ) : (
+        <>
+          {/* Insights List */}
+          <motion.ul
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="space-y-3"
+          >
+            {visible.map((insight, index) => (
+              <motion.li
+                key={index}
+                variants={item}
+                className="flex items-start gap-3 text-sm leading-relaxed text-body"
+              >
+                <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-primary" />
+                <span>{insight}</span>
+              </motion.li>
+            ))}
+          </motion.ul>
+
+          {insights.length > 6 && (
+            <p className="mt-3 text-xs text-slate-400">
+              +{insights.length - 6} more insights
+            </p>
+          )}
+        </>
       )}
     </div>
   );

@@ -1,16 +1,14 @@
-import { useFilters } from "../context/FilterContext";
-import { filterStudents } from "../data/useData";
+import { useFilters } from "@/components/context/FilterContext";
+import { filterStudents } from "@/components/data/useData";
 import {
   computeExecutiveKPIs,
   computeOutcomeDistribution,
   computeRateByModule,
-  generateInsights,
-} from "../utils/kpiCalculators";
-import { formatK, formatPct, formatScore } from "../utils/formatters";
-import KPICard from "../components/cards/KPICard";
-import NexDonut from "../components/charts/NexDonut";
-import NexVBar from "../components/charts/NexVBar";
-import InsightPanel from "../components/InsightPanel";
+} from "@/components/utils/KpiCalculators";
+import { formatK, formatPct, formatScore } from "@/components/utils/formatters";
+import KPICard from "@/components/cards/KPICard";
+import NexDonut from "@/components/charts/NexDonut";
+import NexVBar from "@/components/charts/NexVBar";
 import {
   Users,
   GraduationCap,
@@ -31,7 +29,6 @@ export default function ExecutiveOverview({ data }) {
     students,
     "withdrawal"
   );
-  const insights = generateInsights(students);
 
   return (
     <div className="space-y-6">
@@ -76,7 +73,7 @@ export default function ExecutiveOverview({ data }) {
 
       {/* Middle Row */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
+        <div className="bg-white/50 px-4 py-3 shadow-xl shadow-sky-900/10 backdrop-blur rounded-lg items-center justify-center">
           <NexDonut
             title="Students Final Result Distribution"
             data={outcomeData}
@@ -114,7 +111,6 @@ export default function ExecutiveOverview({ data }) {
       </div>
 
       {/* Insights */}
-      <InsightPanel insights={insights} />
     </div>
   );
 }

@@ -1,14 +1,14 @@
-import { useFilters } from "../context/FilterContext";
-import { filterStudents } from "../data/useData";
+import { useFilters } from "@/components/context/FilterContext";
+import { filterStudents } from "@/components/data/useData";
 import {
   computeAcademicKPIs,
   computeAvgScoreByResult,
   computeAvgScoreByModule,
-} from "../utils/kpiCalculators";
-import { formatPct, formatScore } from "../utils/formatters";
-import KPICard from "../components/cards/KPICard";
-import NexVBar from "../components/charts/NexVBar";
-import NexHBar from "../components/charts/NexHBar";
+} from "@/components/utils/KpiCalculators";
+import { formatPct, formatScore } from "@/components/utils/formatters";
+import KPICard from "@/components/cards/KPICard";
+import NexVBar from "@/components/charts/NexVBar";
+import NexHBar from "@/components/charts/NexHBar";
 import {
   Star,
   Trophy,
@@ -27,6 +27,7 @@ const RESULT_COLORS = {
 export default function AcademicPerformance({ data }) {
   const { filters } = useFilters();
 
+  console.log(data)
   const students = filterStudents(data.students, filters);
   const kpis = computeAcademicKPIs(students);
   const avgScoreByResult = computeAvgScoreByResult(students);
@@ -42,7 +43,7 @@ export default function AcademicPerformance({ data }) {
       : 0;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 ">
       {/* KPI Cards Row */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
         <KPICard
@@ -51,6 +52,7 @@ export default function AcademicPerformance({ data }) {
           icon={Star}
           iconBg="#F59E0B"
           highlight
+          
         />
 
         <KPICard
@@ -84,7 +86,7 @@ export default function AcademicPerformance({ data }) {
 
       {/* Charts 2x2 Grid */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
+        <div className="bg-white/85 px-4 py-3 shadow-xl shadow-sky-900/10 backdrop-blur rounded-md items-center justify-center">
           <NexVBar
             title="Score Distribution"
             data={kpis.scoreDistribution}
@@ -92,7 +94,7 @@ export default function AcademicPerformance({ data }) {
           />
         </div>
 
-        <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
+        <div className="bg-white/75 px-4 py-3 shadow-xl shadow-sky-900/10 backdrop-blur rounded-md items-center justify-center">
           <NexHBar
             title="Average Score by Final Result"
             data={avgScoreByResult}
@@ -100,7 +102,7 @@ export default function AcademicPerformance({ data }) {
           />
         </div>
 
-        <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
+        <div className="bg-white/75 px-4 py-3 shadow-xl shadow-sky-900/10 backdrop-blur rounded-md items-center justify-center">
           <NexHBar
             title="Score by Education Level"
             data={kpis.scoreByEdu}
@@ -108,7 +110,7 @@ export default function AcademicPerformance({ data }) {
           />
         </div>
 
-        <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
+        <div className="bg-white/75 px-4 py-3 shadow-xl shadow-sky-900/10 backdrop-blur rounded-md items-center justify-center">
           <NexHBar
             title="Average Score by Module"
             data={avgScoreByModule}

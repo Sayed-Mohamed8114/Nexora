@@ -25,7 +25,7 @@ export default function NexHBar({
   const chartHeight = Math.max(220, sorted.length * 38 + 40);
 
   return (
-    <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
+    <div className="p-5 h-auto bg-transparent">
       <h3 className="mb-4 text-sm font-semibold text-title">{title}</h3>
 
       <ResponsiveContainer width="100%" height={chartHeight}>

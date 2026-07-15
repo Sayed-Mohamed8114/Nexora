@@ -38,8 +38,8 @@ const SidebarLg = () => {
        fixed top-0 left-0 h-screen w-50 p-4 pt-5 bg-linear-to-b from-sky-50 to-sky-100 border-none shadow-md">
         <Logo />
         <ul className=" w-full flex flex-col gap-4 mt-4">
-          {user.role === "Student"
-            ? sidebarLinksForStudent.map((link) => {
+          {user.role === "Tutor"
+            ? sidebarLinksForAdmin.map((link) => {
                 const Icon = link.icon;
                 return user ? (
                   <SidebarLink
@@ -53,7 +53,7 @@ const SidebarLg = () => {
                   <div className="animate-pulse bg-slate-light h-10 rounded-lg w-full "></div>
                 );
               })
-            : sidebarLinksForAdmin.map((link) => {
+            : sidebarLinksForStudent.map((link) => {
                 const Icon = link.icon;
                 return user ? (
                   <SidebarLink
