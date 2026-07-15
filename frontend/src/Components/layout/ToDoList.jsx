@@ -66,7 +66,7 @@ function TodoList() {
           {todos.map((todo) => (
             <div
               key={todo.id}
-              className="flex items-center justify-between bg-black  rounded-xl px-4 py-3 "
+              className="flex items-center justify-between bg-sky-800  rounded-xl px-4 py-3 "
             >
               <div className="flex items-center gap-3">
                 <input

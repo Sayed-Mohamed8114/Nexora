@@ -14,8 +14,8 @@ const SidebarLg = () => {
 
   useEffect(() => {
     getCurrentUser().then((res) => {
-      if (res) {
-        setUser(res);
+      if (res.success) {
+        setUser(res.data);
       }
     });
   }, []);

@@ -5,6 +5,7 @@ import {
   BookOpen,
   Lightbulb,
   ChartColumn,
+  Bell,
 } from "lucide-react";
 
 export const sidebarLinksForStudent = [
@@ -29,6 +30,12 @@ export const sidebarLinksForStudent = [
     icon: BookOpen,
   },
   {
+    path: "/mycourses",
+    label: "My Courses",
+    icon: BookOpen,
+  },
+
+  {
     path: "/recommendations",
     label: "Recommendations",
     icon: Lightbulb,
@@ -37,6 +44,11 @@ export const sidebarLinksForStudent = [
     path: "/reports",
     label: "Reports",
     icon: ChartColumn,
+  },
+  {
+    path: "/notification",
+    label: "Notifications",
+    icon: Bell,
   },
 ];
 
@@ -57,6 +69,11 @@ export const sidebarLinksForAdmin = [
     icon: BookOpen,
   },
   {
+    path: "/mycourses",
+    label: "My Courses",
+    icon: BookOpen,
+  },
+  {
     path: "/recommendations",
     label: "Recommendations",
     icon: Lightbulb,
@@ -65,6 +82,11 @@ export const sidebarLinksForAdmin = [
     path: "/reports",
     label: "Reports",
     icon: ChartColumn,
+  },
+  {
+    path: "/notification",
+    label: "Notifications",
+    icon: Bell,
   },
 ];
 

@@ -17,6 +17,8 @@ import Overview from "@/Pages/global-dashboard/analysis/ExecutiveOverview";
 import ModulePerfo from "@/Pages/global-dashboard/analysis/ModulePerformance";
 import Platformsuccess from "@/Pages/global-dashboard/analysis/PlatformSuccess";
 import Studentrisk from "@/Pages/global-dashboard/analysis/StudentRisk";
+import MyCourses from "@/Pages/my-courses/MyCourses";
+import Notification from "@/Pages/notification/Notification";
 
 export default function AppRouter() {
   return (
@@ -31,6 +33,8 @@ export default function AppRouter() {
         <Route path="/courses" element={<Courses />} />
         <Route path="/recommendations" element={<Recommendation />} />
         <Route path="/reports" element={<Reports />} />
+        <Route path="/mycourses" element={<MyCourses />} />
+        <Route path="/notification" element={<Notification />} />
 
         {/* Global Dashboard */}
         <Route path="/GlobalDashboard" element={<GlobalDashboard />}>
@@ -45,10 +49,8 @@ export default function AppRouter() {
           <Route path="student-risk" element={<Studentrisk />} />
 
           <Route path="platform-success" element={<Platformsuccess />} />
-       
-          <Route
-            path="module-performance"
-            element={<ModulePerfo />}/> 
+
+          <Route path="module-performance" element={<ModulePerfo />} />
         </Route>
 
         {/* Authentication */}

@@ -59,8 +59,8 @@ const CourseCard = ({ course, onEnroll , onEdit , onDelete}) => {
           <span className="text-slate-500">Tutor</span>
 
           <span className="font-medium">
-            {course.tutor
-              ? `${course.tutor.firstName} ${course.tutor.lastName}`
+            {course.tutorName
+              ? `${course.tutorName} `
               : "Unknown"}
           </span>
         </div>
@@ -88,6 +88,7 @@ const CourseCard = ({ course, onEnroll , onEdit , onDelete}) => {
         >
           Details
         </Link>
+
 
         <button
           onClick={() => onEnroll(course.codeModule, course.codePresentation)}
