@@ -1,3 +1,4 @@
+using NexoraAPI.DTOs.Courses;
 using NexoraAPI.Models;
 
 namespace NexoraAPI.Services.Interfaces
@@ -12,5 +13,7 @@ namespace NexoraAPI.Services.Interfaces
         Task<IEnumerable<Course>> GetCoursesByTutorIdAsync(int tutorId);
         Task<bool> EnrollStudentAsync(int studentId, string codeModule, string codePresentation);
         Task<bool> UnenrollStudentAsync(int studentId, string codeModule, string codePresentation);
+        Task<IEnumerable<EnrolledCourseDto>> GetEnrolledCoursesAsync(int studentId);
+        Task<User?> GetUserWithStudentIdAsync(int userId);
     }
 }

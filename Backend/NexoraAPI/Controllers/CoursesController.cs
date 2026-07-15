@@ -178,5 +178,27 @@ namespace NexoraAPI.Controllers
 
             return Ok(new { message = "Successfully unenrolled." });
         }
+
+        /// <summary>
+        /// Returns all courses the authenticated student is enrolled in,
+        /// including enrollment-specific metadata (final result, credits, attempts).
+        /// </summary>
+        [HttpGet("enrolled")]
+        public async Task<IActionResult> GetEnrolledCourses()
+        {
+            var role = GetCurrentUserRole();
+            if (role != "Student") return Forbid("Only students can view their enrolled courses.");
+
+            var userId = GetCurrentUserId();
+            if (!userId.HasValue) return Unauthorized();
+
+            // Resolve the numeric StudentId linked to this user account.
+            // User.StudentId is the FK into StudentInfo.IdStudent; fall back to User.Id.
+            var user = await _courseService.GetUserWithStudentIdAsync(userId.Value);
+            var studentId = user?.StudentId ?? userId.Value;
+
+            var courses = await _courseService.GetEnrolledCoursesAsync(studentId);
+            return Ok(courses);
+        }
     }
 }
