@@ -1,17 +1,17 @@
-import { useFilters } from "../context/FilterContext";
-import { filterStudents } from "../data/useData";
+import { useFilters } from "@/components/context/FilterContext";
+import { filterStudents } from "@/components/data/useData";
 import {
   computePlatformKPIs,
   computeClicksByModule,
   computeClicksByResult,
   computeActivityTypeUsage,
-} from "../utils/kpiCalculators";
-import { formatK, formatPct, formatScore } from "../utils/formatters";
-import KPICard from "../components/cards/KPICard";
-import NexScatter from "../components/charts/NexScatter";
-import NexHBar from "../components/charts/NexHBar";
-import NexVBar from "../components/charts/NexVBar";
-import NexPie from "../components/charts/NexPie";
+} from "@/components/utils/KpiCalculators";
+import { formatK, formatPct, formatScore } from "@/components/utils/formatters";
+import KPICard from "@/components/cards/KPICard";
+import NexScatter from "@/components/charts/NexScatter";
+import NexHBar from "@/components/charts/NexHBar";
+import NexVBar from "@/components/charts/NexVBar";
+import NexPie from "@/components/charts/NexPie";
 import {
   Users,
   Monitor,
@@ -105,7 +105,7 @@ export default function PlatformSuccess({ data }) {
 
       {/* Charts 2x2 Grid */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
+        <div className="bg-white/90 px-4 py-3 shadow-xl shadow-sky-900/10 backdrop-blur rounded-md items-center justify-center">
           <NexScatter
             title="Clicks vs Score"
             data={scatterData}
@@ -130,7 +130,7 @@ export default function PlatformSuccess({ data }) {
           />
         </div>
 
-        <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
+        <div className="bg-white/25 px-4 py-3 shadow-xl shadow-sky-900/10 backdrop-blur rounded-xl items-center justify-center">
           <NexPie
             title="Activity Type Usage"
             data={activityUsage}

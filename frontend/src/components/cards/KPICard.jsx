@@ -14,7 +14,7 @@ export default function KPICard({
     <motion.div
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className={`relative flex items-center gap-4 overflow-hidden rounded-xl border border-border bg-card px-5 py-4 shadow-sm ${
+      className={`relative flex items-center gap-4 bg-sky-50 overflow-hidden rounded-xl border border-border bg-card px-5 py-4 shadow-sm ${
         highlight ? "ring-2 ring-amber-400/40" : ""
       }`}
     >

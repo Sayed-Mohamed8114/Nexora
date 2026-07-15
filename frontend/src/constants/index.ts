@@ -38,11 +38,9 @@ export const sidebarLinksForStudent = [
     label: "Reports",
     icon: ChartColumn,
   },
-
 ];
 
 export const sidebarLinksForAdmin = [
-  
   {
     path: "/dashboard",
     label: "Dashboard",

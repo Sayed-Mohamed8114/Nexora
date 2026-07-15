@@ -39,7 +39,7 @@ export default function NexDonut({ data, title, total }) {
   const grandTotal = data.reduce((sum, item) => sum + item.value, 0) || 0;
 
   return (
-    <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
+    <div className="bg-transparent p-5  h-auto rounded-2xl">
       <h3 className="mb-4 text-sm font-semibold text-title">{title}</h3>
 
       <ResponsiveContainer width="100%" height={280}>

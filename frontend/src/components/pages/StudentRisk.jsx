@@ -1,16 +1,16 @@
-import { useFilters } from "../context/FilterContext";
-import { filterStudents } from "../data/useData";
+import { useFilters } from "@/components/context/FilterContext";
+import { filterStudents } from "@/components/data/useData";
 import {
   computeStudentRiskKPIs,
   computePrevAttemptsByResult,
   computeAvgScoreByResult,
   computeClicksByResult,
   computeWithdrawalByCredits,
-} from "../utils/kpiCalculators";
-import { formatK } from "../utils/formatters";
-import KPICard from "../components/cards/KPICard";
-import NexVBar from "../components/charts/NexVBar";
-import NexHBar from "../components/charts/NexHBar";
+} from "@/components/utils/KpiCalculators";
+import { formatK } from "@/components/utils/formatters";
+import KPICard from "@/components/cards/KPICard";
+import NexVBar from "@/components/charts/NexVBar";
+import NexHBar from "@/components/charts/NexHBar";
 import {
   Users,
   AlertTriangle,
@@ -78,7 +78,7 @@ export default function StudentRisk({ data }) {
 
       {/* Charts 2x2 Grid */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
+        <div className="bg-white/30 px-4 py-3 shadow-xl shadow-sky-900/10 backdrop-blur rounded-md items-center justify-center">
           <NexVBar
             title="Previous Attempts vs Final Result"
             data={prevAttempts}
@@ -86,7 +86,7 @@ export default function StudentRisk({ data }) {
           />
         </div>
 
-        <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
+        <div className="bg-white/30 px-4 py-3 shadow-xl shadow-sky-900/10 backdrop-blur rounded-md items-center justify-center">
           <NexHBar
             title="Average Score by Final Result"
             data={avgScoreByResult}
@@ -94,7 +94,7 @@ export default function StudentRisk({ data }) {
           />
         </div>
 
-        <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
+        <div className="bg-white/30 px-4 py-3 shadow-xl shadow-sky-900/10 backdrop-blur rounded-md items-center justify-center">
           <NexVBar
             title="Clicks by Final Result"
             data={clicksByResult}
@@ -102,7 +102,7 @@ export default function StudentRisk({ data }) {
           />
         </div>
 
-        <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
+        <div className="bg-white/30 px-4 py-3 shadow-xl shadow-sky-900/10 backdrop-blur rounded-md items-center justify-center">
           <NexVBar
             title="Withdrawal by Studied Credits"
             data={withdrawalByCredits}
