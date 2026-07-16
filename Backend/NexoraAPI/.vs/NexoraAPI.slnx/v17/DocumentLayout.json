@@ -1,77 +1,120 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Nexora\\Backend\\NexoraAPI\\",
+  "WorkspaceRootPath": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\nexoraapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:nexoraapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\controllers\\analyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:controllers\\analyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\dtos\\analyticsdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:dtos\\analyticsdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\services\\implementations\\profileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:services\\implementations\\profileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\models\\studentinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:models\\studentinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\nexoraapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
-      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:nexoraapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\data\\migrations\\20260711193317_recommend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:data\\migrations\\20260711193317_recommend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\data\\migrations\\20260706133741_edits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:data\\migrations\\20260706133741_edits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\models\\courseskilltag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:models\\courseskilltag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\models\\studentskill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\models\\studentskill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:models\\studentskill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\hubs\\notificationhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\models\\courseskilltag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:models\\courseskilltag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\controllers\\recommendationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:controllers\\recommendationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\controllers\\skillscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:controllers\\skillscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\dtos\\studentprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:dtos\\studentprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\dtos\\recommendationresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:dtos\\recommendationresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\dtos\\recommendationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:dtos\\recommendationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\dtos\\apierrordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:dtos\\apierrordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\nexoraapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:nexoraapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\services\\implementations\\profileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:services\\implementations\\profileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\models\\studentinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:models\\studentinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\nexoraapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:nexoraapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\data\\migrations\\20260711193317_recommend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:data\\migrations\\20260711193317_recommend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\data\\migrations\\20260706133741_edits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:data\\migrations\\20260706133741_edits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\hubs\\notificationhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:hubs\\notificationhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\properties\\publishprofiles\\site77622-webdeploy.pubxml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\properties\\publishprofiles\\site77622-webdeploy.pubxml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:properties\\publishprofiles\\site77622-webdeploy.pubxml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\properties\\publishprofiles\\site77826-webdeploy.pubxml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\properties\\publishprofiles\\site77826-webdeploy.pubxml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:properties\\publishprofiles\\site77826-webdeploy.pubxml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Nexora\\Backend\\NexoraAPI\\Migrations\\20260704130437_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20260704130437_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Nexora\\Backend\\NexoraAPI\\Migrations\\20260704130437_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|d:\\nexora\\backend\\nexoraapi\\data\\migrations\\20260705234405_initialcreatee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|c:\\users\\el11_gazy\\downloads\\nexora\\backend\\nexoraapi\\data\\migrations\\20260705234405_initialcreatee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F756FE4-6A02-C3DE-85A8-4535BBDC294C}|NexoraAPI.csproj|solutionrelative:data\\migrations\\20260705234405_initialcreatee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -82,8 +125,16 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -91,10 +142,153 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "NexoraAPI",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\NexoraAPI.csproj",
+              "Title": "AnalyticsController.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Controllers\\AnalyticsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AnalyticsController.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Controllers\\AnalyticsController.cs",
+              "RelativeToolTip": "Controllers\\AnalyticsController.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAowHwAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T11:33:38.206Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DashboardController.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "Controllers\\DashboardController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T11:31:47.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "NotificationsController.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Controllers\\NotificationsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\NotificationsController.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Controllers\\NotificationsController.cs",
+              "RelativeToolTip": "Controllers\\NotificationsController.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T11:31:42.113Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RecommendationsController.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Controllers\\RecommendationsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RecommendationsController.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Controllers\\RecommendationsController.cs",
+              "RelativeToolTip": "Controllers\\RecommendationsController.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T11:31:32.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SkillsController.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Controllers\\SkillsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SkillsController.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Controllers\\SkillsController.cs",
+              "RelativeToolTip": "Controllers\\SkillsController.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T11:31:28.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T11:31:24.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "StudentProfileDto.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\DTOs\\StudentProfileDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\StudentProfileDto.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\DTOs\\StudentProfileDto.cs",
+              "RelativeToolTip": "DTOs\\StudentProfileDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T11:31:17.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RecommendationResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\DTOs\\RecommendationResponseDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\RecommendationResponseDto.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\DTOs\\RecommendationResponseDto.cs",
+              "RelativeToolTip": "DTOs\\RecommendationResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T11:31:14.45Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RecommendationDto.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\DTOs\\RecommendationDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\RecommendationDto.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\DTOs\\RecommendationDto.cs",
+              "RelativeToolTip": "DTOs\\RecommendationDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T11:31:10.635Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ApiErrorDto.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\DTOs\\ApiErrorDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\ApiErrorDto.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\DTOs\\ApiErrorDto.cs",
+              "RelativeToolTip": "DTOs\\ApiErrorDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T11:31:07.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AnalyticsDTOs.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\DTOs\\AnalyticsDTOs.cs",
+              "RelativeDocumentMoniker": "DTOs\\AnalyticsDTOs.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\DTOs\\AnalyticsDTOs.cs",
+              "RelativeToolTip": "DTOs\\AnalyticsDTOs.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA7wBQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T11:30:48.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "NexoraAPI.csproj",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\NexoraAPI.csproj",
               "RelativeDocumentMoniker": "NexoraAPI.csproj",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\NexoraAPI.csproj",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\NexoraAPI.csproj",
               "RelativeToolTip": "NexoraAPI.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -103,11 +297,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 16,
               "Title": ".gitignore",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\.gitignore",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\.gitignore",
               "RelativeDocumentMoniker": ".gitignore",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\.gitignore",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\.gitignore",
               "RelativeToolTip": ".gitignore",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
@@ -115,11 +309,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 17,
               "Title": "ProfileService.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Services\\Implementations\\ProfileService.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Services\\Implementations\\ProfileService.cs",
               "RelativeDocumentMoniker": "Services\\Implementations\\ProfileService.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Services\\Implementations\\ProfileService.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Services\\Implementations\\ProfileService.cs",
               "RelativeToolTip": "Services\\Implementations\\ProfileService.cs",
               "ViewState": "AgIAAC8AAAAAAAAAAAAYwDQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -127,11 +321,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 20,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Program.cs",
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -139,11 +333,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 21,
               "Title": "NexoraAPI.http",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\NexoraAPI.http",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\NexoraAPI.http",
               "RelativeDocumentMoniker": "NexoraAPI.http",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\NexoraAPI.http",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\NexoraAPI.http",
               "RelativeToolTip": "NexoraAPI.http",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
@@ -151,24 +345,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 14,
               "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-07-11T23:24:49.887Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 23,
               "Title": "20260706133741_Edits.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Data\\Migrations\\20260706133741_Edits.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Data\\Migrations\\20260706133741_Edits.cs",
               "RelativeDocumentMoniker": "Data\\Migrations\\20260706133741_Edits.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Data\\Migrations\\20260706133741_Edits.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Data\\Migrations\\20260706133741_Edits.cs",
               "RelativeToolTip": "Data\\Migrations\\20260706133741_Edits.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -176,35 +370,37 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 2,
               "Title": "StudentSkill.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\StudentSkill.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Models\\StudentSkill.cs",
               "RelativeDocumentMoniker": "Models\\StudentSkill.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\StudentSkill.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Models\\StudentSkill.cs",
               "RelativeToolTip": "Models\\StudentSkill.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAYwBUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T13:28:29.993Z"
+              "WhenOpened": "2026-07-06T13:28:29.993Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "ProfileController.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Controllers\\ProfileController.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Controllers\\ProfileController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProfileController.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Controllers\\ProfileController.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Controllers\\ProfileController.cs",
               "RelativeToolTip": "Controllers\\ProfileController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAADwvz8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-11T22:10:55.149Z"
+              "WhenOpened": "2026-07-11T22:10:55.149Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 18,
               "Title": "StudentInfo.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\StudentInfo.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Models\\StudentInfo.cs",
               "RelativeDocumentMoniker": "Models\\StudentInfo.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\StudentInfo.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Models\\StudentInfo.cs",
               "RelativeToolTip": "Models\\StudentInfo.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAA1wBAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -212,11 +408,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 19,
               "Title": "User.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\User.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Models\\User.cs",
               "RelativeToolTip": "Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -224,11 +420,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 24,
               "Title": "NotificationHub.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Hubs\\NotificationHub.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Hubs\\NotificationHub.cs",
               "RelativeDocumentMoniker": "Hubs\\NotificationHub.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Hubs\\NotificationHub.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Hubs\\NotificationHub.cs",
               "RelativeToolTip": "Hubs\\NotificationHub.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -236,11 +432,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 22,
               "Title": "20260711193317_Recommend.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Data\\Migrations\\20260711193317_Recommend.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Data\\Migrations\\20260711193317_Recommend.cs",
               "RelativeDocumentMoniker": "Data\\Migrations\\20260711193317_Recommend.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Data\\Migrations\\20260711193317_Recommend.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Data\\Migrations\\20260711193317_Recommend.cs",
               "RelativeToolTip": "Data\\Migrations\\20260711193317_Recommend.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -248,11 +444,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 25,
               "Title": "site77622-WebDeploy.pubxml",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Properties\\PublishProfiles\\site77622-WebDeploy.pubxml",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Properties\\PublishProfiles\\site77622-WebDeploy.pubxml",
               "RelativeDocumentMoniker": "Properties\\PublishProfiles\\site77622-WebDeploy.pubxml",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Properties\\PublishProfiles\\site77622-WebDeploy.pubxml",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Properties\\PublishProfiles\\site77622-WebDeploy.pubxml",
               "RelativeToolTip": "Properties\\PublishProfiles\\site77622-WebDeploy.pubxml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
@@ -260,23 +456,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 3,
               "Title": "CourseSkillTag.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\CourseSkillTag.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Models\\CourseSkillTag.cs",
               "RelativeDocumentMoniker": "Models\\CourseSkillTag.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Models\\CourseSkillTag.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Models\\CourseSkillTag.cs",
               "RelativeToolTip": "Models\\CourseSkillTag.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAYwBgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T13:28:40.882Z"
+              "WhenOpened": "2026-07-06T13:28:40.882Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 26,
               "Title": "site77826-WebDeploy.pubxml",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Properties\\PublishProfiles\\site77826-WebDeploy.pubxml",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Properties\\PublishProfiles\\site77826-WebDeploy.pubxml",
               "RelativeDocumentMoniker": "Properties\\PublishProfiles\\site77826-WebDeploy.pubxml",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Properties\\PublishProfiles\\site77826-WebDeploy.pubxml",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Properties\\PublishProfiles\\site77826-WebDeploy.pubxml",
               "RelativeToolTip": "Properties\\PublishProfiles\\site77826-WebDeploy.pubxml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
@@ -284,11 +481,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 28,
               "Title": "20260705234405_InitialCreatee.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Data\\Migrations\\20260705234405_InitialCreatee.cs",
+              "DocumentMoniker": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Data\\Migrations\\20260705234405_InitialCreatee.cs",
               "RelativeDocumentMoniker": "Data\\Migrations\\20260705234405_InitialCreatee.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Data\\Migrations\\20260705234405_InitialCreatee.cs",
+              "ToolTip": "C:\\Users\\EL11_gazy\\Downloads\\Nexora\\Backend\\NexoraAPI\\Data\\Migrations\\20260705234405_InitialCreatee.cs",
               "RelativeToolTip": "Data\\Migrations\\20260705234405_InitialCreatee.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -296,18 +493,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 27,
               "Title": "20260704130437_InitialCreate.cs",
               "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Migrations\\20260704130437_InitialCreate.cs",
-              "RelativeDocumentMoniker": "Migrations\\20260704130437_InitialCreate.cs",
               "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Migrations\\20260704130437_InitialCreate.cs",
-              "RelativeToolTip": "Migrations\\20260704130437_InitialCreate.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-04T13:04:37.65Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         }
