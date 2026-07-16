@@ -1,7 +1,7 @@
 import CourseCard from "@/Components/layout/CourseCard";
 import Loader from "@/Components/Loader/Loader";
 import DashboardLayout from "@/mainLayout/DashboardLayout";
-import { getCourses, enroll } from "@/Services/courses";
+import { getCourses, enroll, enrolled } from "@/Services/courses";
 import { AnimatePresence, motion } from "framer-motion";
 import { getCurrentUser } from "@/Services/user";
 import { useState, useEffect } from "react";
@@ -19,6 +19,7 @@ const Courses = () => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [showDeleteCard, setShowDeleteCard] = useState(false);
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
   const [flash, setFlash] = useState({
     type: "",
     show: false,
@@ -48,7 +49,15 @@ const Courses = () => {
       setLoading(false);
     }
   };
-  
+  const loadEnrolledCourses = async () => {
+    try {
+      const data = await enrolled();
+      setEnrolledCourses(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleEnroll = async (codeModule, codePresentation) => {
     try {
       await enroll(codeModule, codePresentation);
@@ -77,6 +86,8 @@ const Courses = () => {
   // get the current user role
   useEffect(() => {
     loadCourses();
+    loadEnrolledCourses();
+
     getCurrentUser().then((res) => {
       if (res.success) {
         setUser(res.data);
@@ -101,6 +112,22 @@ const Courses = () => {
   if (loading) {
     return <Loader />;
   }
+
+  const sortedCourses = [...courses].sort((a, b) => {
+  const aEnrolled = enrolledCourses.some(
+    (c) =>
+      c.codeModule === a.codeModule &&
+      c.codePresentation === a.codePresentation
+  );
+
+  const bEnrolled = enrolledCourses.some(
+    (c) =>
+      c.codeModule === b.codeModule &&
+      c.codePresentation === b.codePresentation
+  );
+
+  return Number(bEnrolled) - Number(aEnrolled);
+});
 
   return (
     <>
@@ -246,7 +273,7 @@ const Courses = () => {
         )}
 
         {/* Courses */}
-        {courses.length > 0 && (
+        {sortedCourses.length > 0 && (
           <section className="mt-8">
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {courses.map((course) => (
@@ -256,6 +283,7 @@ const Courses = () => {
                   onEnroll={handleEnroll}
                   onEdit={handleEdit}
                   onDelete={handleDeleteClick}
+                  enrolledCourses={enrolledCourses}
                 />
               ))}
             </div>
