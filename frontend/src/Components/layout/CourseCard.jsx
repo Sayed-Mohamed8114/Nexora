@@ -3,7 +3,7 @@ import DropdownMenuComponent from "./DropDownMenuComponent";
 import { useEffect, useState } from "react";
 import { getCurrentUser } from "@/Services/user";
 
-const CourseCard = ({ course, onEnroll , onEdit , onDelete}) => {
+const CourseCard = ({ course, onEnroll, onEdit, onDelete }) => {
   const [user, setUser] = useState(null);
 
   //get current user
@@ -30,7 +30,11 @@ const CourseCard = ({ course, onEnroll , onEdit , onDelete}) => {
           </p>
         </div>
         {user?.role === "Tutor" && (
-          <DropdownMenuComponent course={course} onEdit={onEdit} onDelete={onDelete}/>
+          <DropdownMenuComponent
+            course={course}
+            onEdit={onEdit}
+            onDelete={onDelete}
+          />
         )}
       </div>
 
@@ -59,9 +63,7 @@ const CourseCard = ({ course, onEnroll , onEdit , onDelete}) => {
           <span className="text-slate-500">Tutor</span>
 
           <span className="font-medium">
-            {course.tutorName
-              ? `${course.tutorName} `
-              : "Unknown"}
+            {course.tutorName ? `${course.tutorName} ` : "Unknown"}
           </span>
         </div>
 
@@ -84,18 +86,19 @@ const CourseCard = ({ course, onEnroll , onEdit , onDelete}) => {
       <div className="flex gap-3 p-5 ">
         <Link
           to={`/courses/${course.codeModule}/${course.codePresentation}`}
-          className="flex-1 rounded-lg border border-slate-300 py-2 text-center transition hover:bg-slate-100"
+          className="flex-1 rounded-lg border border-slate-300 bg-sky-700 text-white font-bold hover:text-sky-900 duration-700 py-2 text-center transition hover:bg-sky-400"
         >
           Details
         </Link>
 
-
-        <button
-          onClick={() => onEnroll(course.codeModule, course.codePresentation)}
-          className="flex-1 rounded-lg bg-sky-900 py-2 text-white transition hover:bg-sky-800"
-        >
-          Enroll
-        </button>
+        {user?.role === "Student" && (
+          <button
+            onClick={() => onEnroll(course.codeModule, course.codePresentation)}
+            className="flex-1 rounded-lg bg-sky-900 py-2 text-white transition font-bold hover:bg-sky-800"
+          >
+            Enroll
+          </button>
+        )}
       </div>
     </div>
   );
