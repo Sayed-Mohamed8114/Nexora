@@ -132,10 +132,12 @@ namespace NexoraAPI.Services.implementations
             var course = await GetCourseByCodeAsync(codeModule, codePresentation);
             if (course == null) return false;
 
-            // Check if already enrolled
+            // Check if already enrolled (idempotent)
             var existingInfo = await _context.StudentInfos
-                .FirstOrDefaultAsync(si => si.IdStudent == studentId && si.CodeModule == codeModule && si.CodePresentation == codePresentation);
-            
+                .FirstOrDefaultAsync(si => si.IdStudent == studentId
+                                        && si.CodeModule == codeModule
+                                        && si.CodePresentation == codePresentation);
+
             if (existingInfo != null) return true; // Already enrolled
 
             var studentInfo = new StudentInfo
@@ -143,33 +145,23 @@ namespace NexoraAPI.Services.implementations
                 IdStudent = studentId,
                 CodeModule = codeModule,
                 CodePresentation = codePresentation
-                // other default fields could be set here
-            };
-
-            var registration = new StudentRegistration
-            {
-                IdStudent = studentId,
-                CodeModule = codeModule,
-                CodePresentation = codePresentation,
-                DateRegistration = 0 // Using 0 as a default for now, could be current day offset
             };
 
             _context.StudentInfos.Add(studentInfo);
-            _context.StudentRegistrations.Add(registration);
             await _context.SaveChangesAsync();
             return true;
         }
 
         public async Task<bool> UnenrollStudentAsync(int studentId, string codeModule, string codePresentation)
         {
-            var registration = await _context.StudentRegistrations
-                .FirstOrDefaultAsync(sr => sr.IdStudent == studentId && sr.CodeModule == codeModule && sr.CodePresentation == codePresentation);
             var info = await _context.StudentInfos
-                .FirstOrDefaultAsync(si => si.IdStudent == studentId && si.CodeModule == codeModule && si.CodePresentation == codePresentation);
+                .FirstOrDefaultAsync(si => si.IdStudent == studentId
+                                        && si.CodeModule == codeModule
+                                        && si.CodePresentation == codePresentation);
 
-            if (registration != null) _context.StudentRegistrations.Remove(registration);
-            if (info != null) _context.StudentInfos.Remove(info);
+            if (info == null) return false; // Not enrolled
 
+            _context.StudentInfos.Remove(info);
             await _context.SaveChangesAsync();
             return true;
         }
