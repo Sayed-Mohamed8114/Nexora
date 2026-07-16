@@ -150,15 +150,13 @@ namespace NexoraAPI.Controllers
             var role = GetCurrentUserRole();
             if (role != "Student") return Forbid("Only students can enroll in courses.");
 
-            // In this system StudentId could be the User Id itself or a mapped StudentId.
-            // For simplicity, we use the User.Id to represent the student if StudentId is not present.
-            // Ideally we'd look up the User's mapped StudentId. Let's use UserId as a fallback.
             var userId = GetCurrentUserId();
             if (!userId.HasValue) return Unauthorized();
 
-            // Note: If you have a specific StudentId mapping in your DB, you would retrieve it here.
-            // We will use userId for the studentId in StudentInfos.
-            var success = await _courseService.EnrollStudentAsync(userId.Value, codeModule, codePresentation);
+            // Resolve the correct StudentId
+            var studentId = await _courseService.GetStudentIdForUserAsync(userId.Value) ?? userId.Value;
+
+            var success = await _courseService.EnrollStudentAsync(studentId, codeModule, codePresentation);
             if (!success) return BadRequest("Could not enroll in course.");
 
             return Ok(new { enrolled = true });
@@ -173,7 +171,10 @@ namespace NexoraAPI.Controllers
             var userId = GetCurrentUserId();
             if (!userId.HasValue) return Unauthorized();
 
-            var success = await _courseService.UnenrollStudentAsync(userId.Value, codeModule, codePresentation);
+            // Resolve the correct StudentId
+            var studentId = await _courseService.GetStudentIdForUserAsync(userId.Value) ?? userId.Value;
+
+            var success = await _courseService.UnenrollStudentAsync(studentId, codeModule, codePresentation);
             if (!success) return BadRequest("Could not unenroll from course.");
 
             return Ok(new { enrolled = false });
@@ -194,8 +195,7 @@ namespace NexoraAPI.Controllers
 
             // Resolve the numeric StudentId linked to this user account.
             // User.StudentId is the FK into StudentInfo.IdStudent; fall back to User.Id.
-            var user = await _courseService.GetUserWithStudentIdAsync(userId.Value);
-            var studentId = user?.StudentId ?? userId.Value;
+            var studentId = await _courseService.GetStudentIdForUserAsync(userId.Value) ?? userId.Value;
 
             var courses = await _courseService.GetEnrolledCoursesAsync(studentId);
             return Ok(courses);

@@ -14,6 +14,6 @@ namespace NexoraAPI.Services.Interfaces
         Task<bool> EnrollStudentAsync(int studentId, string codeModule, string codePresentation);
         Task<bool> UnenrollStudentAsync(int studentId, string codeModule, string codePresentation);
         Task<IEnumerable<EnrolledCourseDto>> GetEnrolledCoursesAsync(int studentId);
-        Task<User?> GetUserWithStudentIdAsync(int userId);
+        Task<int?> GetStudentIdForUserAsync(int userId);
     }
 }

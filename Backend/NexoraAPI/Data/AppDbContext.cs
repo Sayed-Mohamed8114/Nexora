@@ -248,12 +248,6 @@ public partial class AppDbContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
 
-            entity.HasOne<StudentInfo>()
-                .WithMany()
-                .HasForeignKey(e => e.StudentId)
-                .HasPrincipalKey(s => s.IdStudent)
-                .IsRequired(false);
-                
             entity.HasOne(e => e.Profile)
                 .WithOne(p => p.User)
                 .HasForeignKey<UserProfile>(p => p.UserId)

@@ -132,13 +132,13 @@ namespace NexoraAPI.Services.implementations
             var course = await GetCourseByCodeAsync(codeModule, codePresentation);
             if (course == null) return false;
 
-            // Check if already enrolled (idempotent)
-            var existingInfo = await _context.StudentInfos
-                .FirstOrDefaultAsync(si => si.IdStudent == studentId
-                                        && si.CodeModule == codeModule
-                                        && si.CodePresentation == codePresentation);
+            // Check if already enrolled in this course (idempotent)
+            var alreadyEnrolled = await _context.StudentInfos
+                .AnyAsync(si => si.IdStudent == studentId
+                             && si.CodeModule == codeModule
+                             && si.CodePresentation == codePresentation);
 
-            if (existingInfo != null) return true; // Already enrolled
+            if (alreadyEnrolled) return true;
 
             var studentInfo = new StudentInfo
             {
@@ -194,13 +194,12 @@ namespace NexoraAPI.Services.implementations
             });
         }
 
-        public async Task<User?> GetUserWithStudentIdAsync(int userId)
+        public async Task<int?> GetStudentIdForUserAsync(int userId)
         {
             return await _context.Users
-                .AsNoTracking()
                 .Where(u => u.Id == userId)
-                .Select(u => new User { Id = u.Id, StudentId = u.StudentId })
+                .Select(u => u.StudentId)
                 .FirstOrDefaultAsync();
         }
     }
-}
+}
