@@ -15,7 +15,19 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add Controllers
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .ConfigureApiBehaviorOptions(options =>
+    {
+        options.InvalidModelStateResponseFactory = context =>
+        {
+            var errorMessage = context.ModelState.Values
+                .SelectMany(v => v.Errors)
+                .Select(e => e.ErrorMessage)
+                .FirstOrDefault();
+
+            return new Microsoft.AspNetCore.Mvc.BadRequestObjectResult(new { message = errorMessage });
+        };
+    });
 
 // Add SignalR
 builder.Services.AddSignalR();
