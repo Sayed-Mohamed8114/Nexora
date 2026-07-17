@@ -32,7 +32,7 @@ namespace NexoraAPI.Controllers
             var result = await _authService.LoginAsync(dto);
 
             if (result == null)
-                return Unauthorized("Invalid StudentId or Password.");
+                return Unauthorized(new { message = "Invalid Email or Password." });
 
             return Ok(result);
         }
