@@ -22,22 +22,22 @@ namespace NexoraAPI.Services.Implementations
         {
             if (dto.Role == UserRole.Student)
             {
-                if (!dto.StudentId.HasValue)
-                    return (false, "Student ID is required when registering as a Student.");
+                if (dto.StudentId.HasValue)
+                {
+                    var studentExists = await _context.StudentInfos
+                        .AnyAsync(s => s.IdStudent == dto.StudentId.Value);
 
-                var studentExists = await _context.StudentInfos
-                    .AnyAsync(s => s.IdStudent == dto.StudentId.Value);
+                    if (!studentExists)
+                        return (false, $"Student ID '{dto.StudentId.Value}' was not found in the system. " +
+                                       "Please make sure you are using the ID assigned to you by your institution.");
 
-                if (!studentExists)
-                    return (false, $"Student ID '{dto.StudentId.Value}' was not found in the system. " +
-                                   "Please make sure you are using the ID assigned to you by your institution.");
+                    var userExists = await _context.Users
+                        .AnyAsync(u => u.StudentId == dto.StudentId.Value);
 
-                var userExists = await _context.Users
-                    .AnyAsync(u => u.StudentId == dto.StudentId.Value);
-
-                if (userExists)
-                    return (false, $"Student ID '{dto.StudentId.Value}' is already linked to an existing account. " +
-                                   "If this is your ID, please log in or contact support.");
+                    if (userExists)
+                        return (false, $"Student ID '{dto.StudentId.Value}' is already linked to an existing account. " +
+                                       "If this is your ID, please log in or contact support.");
+                }
             }
             else
             {
