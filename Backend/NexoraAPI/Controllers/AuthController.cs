@@ -18,12 +18,12 @@ namespace NexoraAPI.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto dto)
         {
-            var result = await _authService.RegisterAsync(dto);
+            var (success, error) = await _authService.RegisterAsync(dto);
 
-            if (!result)
-                return BadRequest("Registration failed.");
+            if (!success)
+                return BadRequest(new { message = error });
 
-            return Ok("Registered successfully.");
+            return Ok(new { message = "Registered successfully." });
         }
 
         [HttpPost("login")]
@@ -32,7 +32,7 @@ namespace NexoraAPI.Controllers
             var result = await _authService.LoginAsync(dto);
 
             if (result == null)
-                return Unauthorized("Invalid StudentId or Password.");
+                return Unauthorized(new { message = "Invalid Email or Password." });
 
             return Ok(result);
         }

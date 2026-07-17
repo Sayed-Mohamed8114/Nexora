@@ -13,4 +13,9 @@ public class CourseResponseDto
     public int? TutorId { get; set; }
     public string TutorName { get; set; } = string.Empty;
     public List<string> Skills { get; set; } = new();
+
+    /// <summary>
+    /// Total number of students currently enrolled in this course.
+    /// </summary>
+    public int EnrolledCount { get; set; }
 }

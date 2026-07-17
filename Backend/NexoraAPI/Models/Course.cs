@@ -30,6 +30,11 @@ public partial class Course
     [NotMapped]
     public List<string> Skills { get; set; } = new();
 
+    /// <summary>Number of students currently enrolled. Populated by the service layer.</summary>
+    [NotMapped]
+    public int EnrolledCount { get; set; }
+
+
     public int? TutorId { get; set; }
 
     [System.Text.Json.Serialization.JsonIgnore]

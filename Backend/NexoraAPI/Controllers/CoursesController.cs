@@ -39,7 +39,8 @@ namespace NexoraAPI.Controllers
             Hours = c.Hours,
             TutorId = c.TutorId,
             TutorName = c.TutorName,
-            Skills = c.Skills
+            Skills = c.Skills,
+            EnrolledCount = c.EnrolledCount
         };
 
         [HttpGet]

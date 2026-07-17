@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NexoraAPI.Models;
 
@@ -11,9 +12,11 @@ using NexoraAPI.Models;
 namespace NexoraAPI.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260717134435_enrolledcount")]
+    partial class enrolledcount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,43 +96,6 @@ namespace NexoraAPI.Data.Migrations
                     b.HasIndex("TutorId");
 
                     b.ToTable("courses", (string)null);
-                });
-
-            modelBuilder.Entity("NexoraAPI.Models.CourseReport", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CodeModule")
-                        .IsRequired()
-                        .HasColumnType("varchar(45)");
-
-                    b.Property<string>("CodePresentation")
-                        .IsRequired()
-                        .HasColumnType("varchar(45)");
-
-                    b.Property<string>("Comment")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CodeModule", "CodePresentation");
-
-                    b.ToTable("CourseReports");
                 });
 
             modelBuilder.Entity("NexoraAPI.Models.CourseSkillTag", b =>
@@ -614,17 +580,6 @@ namespace NexoraAPI.Data.Migrations
                         .HasConstraintName("FK_Courses_Tutors");
 
                     b.Navigation("Tutor");
-                });
-
-            modelBuilder.Entity("NexoraAPI.Models.CourseReport", b =>
-                {
-                    b.HasOne("NexoraAPI.Models.Course", "Course")
-                        .WithMany()
-                        .HasForeignKey("CodeModule", "CodePresentation")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Course");
                 });
 
             modelBuilder.Entity("NexoraAPI.Models.CourseSkillTag", b =>

@@ -41,6 +41,8 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<CourseSkillTag> CourseSkillTags { get; set; }
 
+    public virtual DbSet<CourseReport> CourseReports { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Assessment>(entity =>

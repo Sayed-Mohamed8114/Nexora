@@ -19,6 +19,7 @@ namespace NexoraAPI.Services.implementations
             var courses = await _context.Courses
                 .Include(c => c.Tutor)
                 .Include(c => c.CourseSkillTags)
+                .Include(c => c.StudentInfos)
                 .ToListAsync();
 
             foreach (var course in courses)
@@ -27,6 +28,7 @@ namespace NexoraAPI.Services.implementations
                     course.TutorName = $"{course.Tutor.FirstName} {course.Tutor.LastName}".Trim();
 
                 course.Skills = course.CourseSkillTags.Select(t => t.SkillName).ToList();
+                course.EnrolledCount = course.StudentInfos.Count;
             }
             return courses;
         }
@@ -36,6 +38,7 @@ namespace NexoraAPI.Services.implementations
             var course = await _context.Courses
                 .Include(c => c.Tutor)
                 .Include(c => c.CourseSkillTags)
+                .Include(c => c.StudentInfos)
                 .FirstOrDefaultAsync(c => c.CodeModule == codeModule && c.CodePresentation == codePresentation);
 
             if (course != null)
@@ -44,6 +47,7 @@ namespace NexoraAPI.Services.implementations
                     course.TutorName = $"{course.Tutor.FirstName} {course.Tutor.LastName}".Trim();
 
                 course.Skills = course.CourseSkillTags.Select(t => t.SkillName).ToList();
+                course.EnrolledCount = course.StudentInfos.Count;
             }
 
             return course;
@@ -114,6 +118,7 @@ namespace NexoraAPI.Services.implementations
             var courses = await _context.Courses
                 .Include(c => c.Tutor)
                 .Include(c => c.CourseSkillTags)
+                .Include(c => c.StudentInfos)
                 .Where(c => c.TutorId == tutorId)
                 .ToListAsync();
 
@@ -123,6 +128,7 @@ namespace NexoraAPI.Services.implementations
                     course.TutorName = $"{course.Tutor.FirstName} {course.Tutor.LastName}".Trim();
 
                 course.Skills = course.CourseSkillTags.Select(t => t.SkillName).ToList();
+                course.EnrolledCount = course.StudentInfos.Count;
             }
             return courses;
         }
@@ -149,6 +155,11 @@ namespace NexoraAPI.Services.implementations
 
             _context.StudentInfos.Add(studentInfo);
             await _context.SaveChangesAsync();
+
+            // Reflect the new enrollment in the in-memory count
+            course.EnrolledCount = await _context.StudentInfos
+                .CountAsync(si => si.CodeModule == codeModule && si.CodePresentation == codePresentation);
+
             return true;
         }
 
