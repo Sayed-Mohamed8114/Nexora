@@ -1,10 +1,10 @@
 import CourseCard from "@/Components/layout/CourseCard";
 import Loader from "@/Components/Loader/Loader";
 import DashboardLayout from "@/mainLayout/DashboardLayout";
-import { getCourses, enroll, enrolled } from "@/Services/courses";
+import { getCourses, enroll } from "@/Services/courses";
 import { AnimatePresence, motion } from "framer-motion";
 import { getCurrentUser } from "@/Services/user";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import AddCourseForm from "@/Components/layout/AddCourseForm";
 import { SuccessFlash, ErrorFlash } from "@/Components/UI/FlashMessages";
 import EditCourseForm from "@/Components/layout/EditCourseForm";
@@ -19,7 +19,8 @@ const Courses = () => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [showDeleteCard, setShowDeleteCard] = useState(false);
-  const [enrolledCourses, setEnrolledCourses] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filterModule, setFilterModule] = useState("");
   const [flash, setFlash] = useState({
     type: "",
     show: false,
@@ -49,15 +50,6 @@ const Courses = () => {
       setLoading(false);
     }
   };
-  const loadEnrolledCourses = async () => {
-    try {
-      const data = await enrolled();
-      setEnrolledCourses(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const handleEnroll = async (codeModule, codePresentation) => {
     try {
       await enroll(codeModule, codePresentation);
@@ -86,8 +78,6 @@ const Courses = () => {
   // get the current user role
   useEffect(() => {
     loadCourses();
-    loadEnrolledCourses();
-
     getCurrentUser().then((res) => {
       if (res.success) {
         setUser(res.data);
@@ -109,25 +99,26 @@ const Courses = () => {
     return () => clearTimeout(timer);
   }, [flash.show]);
 
+  // Filter courses based on search query and selected module
+  const filteredCourses = useMemo(() => {
+    return courses.filter((course) => {
+      const query = searchQuery.toLowerCase().trim();
+      const matchesSearch =
+        !query ||
+        course.name?.toLowerCase().includes(query) ||
+        course.codeModule?.toLowerCase().includes(query) ||
+        course.description?.toLowerCase().includes(query) ||
+        course.skills?.some((skill) => skill.toLowerCase().includes(query));
+
+      const matchesModule = !filterModule || course.codeModule === filterModule;
+
+      return matchesSearch && matchesModule;
+    });
+  }, [courses, searchQuery, filterModule]);
+
   if (loading) {
     return <Loader />;
   }
-
-  const sortedCourses = [...courses].sort((a, b) => {
-  const aEnrolled = enrolledCourses.some(
-    (c) =>
-      c.codeModule === a.codeModule &&
-      c.codePresentation === a.codePresentation
-  );
-
-  const bEnrolled = enrolledCourses.some(
-    (c) =>
-      c.codeModule === b.codeModule &&
-      c.codePresentation === b.codePresentation
-  );
-
-  return Number(bEnrolled) - Number(aEnrolled);
-});
 
   return (
     <>
@@ -236,17 +227,18 @@ const Courses = () => {
           <input
             type="text"
             placeholder="Search courses..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full sm:w-75 rounded-md border border-slate-light px-4 py-2 text-body text-slate-medium outline-none focus:border-primary"
           />
 
           {/* Filter */}
           <select
             className="w-full sm:w-62.5 rounded-md border border-slate-light px-4 py-2 text-body text-slate-medium outline-none focus:border-primary"
-            defaultValue=""
+            value={filterModule}
+            onChange={(e) => setFilterModule(e.target.value)}
           >
-            <option value="" disabled>
-              Filter by Module
-            </option>
+            <option value="">All Modules</option>
 
             {[...new Set(courses.map((course) => course.codeModule))].map(
               (module) => (
@@ -266,24 +258,23 @@ const Courses = () => {
         )}
 
         {/* Empty */}
-        {!error && courses.length === 0 && (
+        {!error && filteredCourses.length === 0 && (
           <div className="mt-12 text-center text-slate-500">
-            No courses available.
+            No courses found.
           </div>
         )}
 
         {/* Courses */}
-        {sortedCourses.length > 0 && (
+        {filteredCourses.length > 0 && (
           <section className="mt-8">
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {courses.map((course) => (
+              {filteredCourses.map((course) => (
                 <CourseCard
                   key={`${course.codeModule}-${course.codePresentation}`}
                   course={course}
                   onEnroll={handleEnroll}
                   onEdit={handleEdit}
                   onDelete={handleDeleteClick}
-                  enrolledCourses={enrolledCourses}
                 />
               ))}
             </div>
