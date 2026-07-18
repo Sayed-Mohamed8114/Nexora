@@ -265,6 +265,28 @@ namespace NexoraAPI.Services.implementations
 
             _context.StudentInfos.Remove(info);
             await _context.SaveChangesAsync();
+
+            // --- Notify the tutor (if the course has one) ---
+            var course = await GetCourseByCodeAsync(codeModule, codePresentation);
+            if (course != null && course.TutorId.HasValue)
+            {
+                var student = await _context.Users.FindAsync(userId);
+                var studentName = student != null
+                    ? $"{student.FirstName} {student.LastName}".Trim()
+                    : $"Student #{studentId}";
+
+                var courseName = string.IsNullOrWhiteSpace(course.Name)
+                    ? $"{codeModule} ({codePresentation})"
+                    : course.Name;
+
+                await _notificationService.SendNotificationAsync(
+                    userId: course.TutorId.Value,
+                    title: "🚪 Student Unenrolled",
+                    message: $"{studentName} has unenrolled from your course \"{courseName}\".",
+                    type: "Unenrollment"
+                );
+            }
+
             return true;
         }
 
