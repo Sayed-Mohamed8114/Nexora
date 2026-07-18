@@ -7,7 +7,7 @@ export const getNotifications = async () => {
 
 export const unreadCount = async () => {
   const response = await api.get("/api/Notifications/unread-count");
-  return response.data;
+  return response.data.unreadCount;
 };
 
 export const readNotification = async ({ notificationId }) => {
@@ -16,6 +16,6 @@ export const readNotification = async ({ notificationId }) => {
 };
 
 export const readAllNotifications = async () => {
-  const response = await api.get("/api/Notifications/read-all");
+  const response = await api.put("/api/Notifications/read-all");
   return response.data;
 };
