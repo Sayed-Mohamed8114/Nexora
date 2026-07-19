@@ -55,7 +55,7 @@ function PomodoroClock() {
   return (
     <div
       className="group overflow-hidden relative rounded-2xl shadow-inner shadow-white flex flex-col
-     justify-between items-center w-sm h-80 bg-gray-700 ext-gray-50 p-6"
+     justify-between items-center w-full h-80 bg-gray-700 text-gray-50 p-6"
     >
       {/* Background Glow */}
       <div className="after:absolute after:w-16 after:h-16 after:bg-white after:rounded-full after:blur-3xl after:bottom-24 after:right-10 before:absolute before:w-16 before:h-16 before:bg-sky-400 before:rounded-full before:blur-3xl before:top-10 before:left-8"></div>

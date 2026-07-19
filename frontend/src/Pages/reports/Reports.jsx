@@ -31,7 +31,7 @@ const Reports = () => {
   }
   return (
     <DashboardLayout>
-      <div className="flex flex-wrap items-center gap-5 w-full mt-10">
+      <div className="flex flex-wrap items-start justify-center sm:justify-start gap-5 w-full mt-10">
         {" "}
         {reports.map((report) => (
           <ReportCard

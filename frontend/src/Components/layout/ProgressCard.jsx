@@ -13,7 +13,7 @@ function ProgressCard() {
   const [range, setRange] = useState("30d");
 
   return (
-    <div className="bg-linear-to-b from-sky-900 to-sky-600 w-sm h-auto flex flex-col items-center justify-start py-2 px-2.5 rounded-b-2xl rounded-2xl">
+    <div className="bg-linear-to-b from-sky-900 to-sky-600 w-full lg:w-sm h-auto flex flex-col items-center justify-start py-2 px-2.5 rounded-b-2xl rounded-2xl">
       <div className=" flex items-center justify-between w-full">
         <h3 className="text-sky-50 font-bold text-2xl">Progress</h3>
         <select

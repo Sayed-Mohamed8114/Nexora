@@ -56,8 +56,8 @@ function ReportCard({ report, onSubmitted }) {
         ))}
 
       <div
-        className="bg-linear-to-b from-sky-50 to-sky-100 dark:bg-gray-900 rounded-2xl w-[30%] h-[50vh] 
-    shadow-md p-6 border border-gray-200 dark:border-gray-800 space-y-5"
+        className="bg-linear-to-b from-sky-50 to-sky-100 dark:bg-gray-900 rounded-2xl w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.25rem)] min-h-[480px] h-auto 
+    shadow-md p-6 border border-gray-200 dark:border-gray-800 space-y-5 flex flex-col justify-between"
       >
         <div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">

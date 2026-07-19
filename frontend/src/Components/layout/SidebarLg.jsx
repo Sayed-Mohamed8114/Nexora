@@ -35,7 +35,7 @@ const SidebarLg = () => {
       {loading && <Loader />}
 
       <aside className="hidden md:flex md:flex-col md:items-center md:gap-5.5 
-       fixed top-0 left-0 h-screen w-50 p-4 pt-5 bg-linear-to-b from-sky-50 to-sky-100 border-none shadow-md">
+       fixed top-0 left-0 h-screen w-55 p-4 pt-5 bg-linear-to-b from-sky-50 to-sky-100 border-none shadow-md">
         <Logo />
         <ul className=" w-full flex flex-col gap-4 mt-4">
           {user.role === "Tutor"

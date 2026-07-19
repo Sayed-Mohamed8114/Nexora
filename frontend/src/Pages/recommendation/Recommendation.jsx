@@ -23,8 +23,7 @@ const Recommendation = () => {
     try {
       setLoading(true);
       const data = await getRecommendation();
-      console.log("recommendation courses", data);
-      setCourses(data);
+      setCourses(data?.recommendations);
     } catch (error) {
       console.error(error);
       setFlash({

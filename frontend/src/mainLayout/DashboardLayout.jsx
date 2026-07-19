@@ -3,12 +3,12 @@ import Topbar from "@/Components/layout/Topbar";
 
 const DashboardLayout = ({ children }) => {
   return (
-    <section >
+    <section>
       <SidebarLg />
-      <div className="ms-0 md:ms-50 w-full overflow-x-hidden md:w-[calc(100%-12.5rem)]">
+      <div className="ms-0 md:ms-55 w-full overflow-x-hidden md:w-[calc(100%-12.5rem)]">
         <Topbar />
 
-        <div className="mt-10 p-7 bg-linear-to-r from-sky-50 to-sky-200 min-h-[calc(100vh-40px)] flex flex-col"> 
+        <div className="pt-20 px-4 pb-7 md:p-7 md:pt-24 bg-linear-to-r from-sky-50 to-sky-200 min-h-screen flex flex-col"> 
           {children}
         </div>
       </div>
