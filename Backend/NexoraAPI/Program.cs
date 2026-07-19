@@ -98,9 +98,9 @@ builder.Services.AddAuthentication(options =>
 });
 
 // Dependency Injection
-builder.Services.AddScoped<StudentProfileService>();
-builder.Services.AddScoped<RecommendationEngineService>();
-builder.Services.AddScoped<ResourceService>();
+builder.Services.AddScoped<IStudentProfileService, StudentProfileService>();
+builder.Services.AddScoped<IRecommendationEngineService, RecommendationEngineService>();
+builder.Services.AddScoped<IResourceService, ResourceService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -177,8 +177,21 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// SignalR Hub endpoint
-// Frontend connects to: /hubs/notifications
 app.MapHub<NotificationHub>("/hubs/notifications");
+
+// Seed Database Recommendations on Startup
+using (var scope = app.Services.CreateScope())
+{
+    try
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        await NexoraAPI.Helpers.DatabaseSeeder.SeedRecommendationsAsync(dbContext);
+    }
+    catch (System.Exception ex)
+    {
+        // Log database seeding error but do not block app startup
+        System.Console.WriteLine($"Error seeding recommendations: {ex.Message}");
+    }
+}
 
 app.Run();

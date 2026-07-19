@@ -1,10 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using NexoraAPI.DTOs;
 using NexoraAPI.Models;
+using NexoraAPI.Services.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace NexoraAPI.Services
+namespace NexoraAPI.Services.Implementations
 {
-    public class StudentProfileService
+    public class StudentProfileService : IStudentProfileService
     {
         private readonly AppDbContext _context;
 
@@ -64,21 +69,31 @@ namespace NexoraAPI.Services
                 .ToListAsync();
         }
 
-        public async Task<StudentProfileDto?> GetStudentProfileAsync(int studentId)
+        public async Task<int> GetTotalClicks(int studentId)
         {
             var user = await GetStudentBasicInfo(studentId);
 
             if (user == null)
-                return null;
+                return 0;
 
-            return new StudentProfileDto
-            {
-                StudentId = studentId,
-                StudentName = $"{user.FirstName} {user.LastName}",
-                AverageScore = await GetAverageScore(studentId),
-                Skills = await GetStudentSkills(studentId),
-                WeakSubjects = await GetWeakSubjects(studentId)
-            };
+            var resolvedStudentId = user.StudentId ?? user.Id;
+
+            return await _context.StudentVles
+                .Where(sv => sv.IdStudent == resolvedStudentId && sv.SumClick.HasValue)
+                .SumAsync(sv => sv.SumClick!.Value);
+        }
+
+        public string GetEngagementLevel(int totalClicks)
+        {
+            if (totalClicks >= 1500)
+                return "Very High";
+            if (totalClicks >= 800)
+                return "High";
+            if (totalClicks >= 300)
+                return "Medium";
+            if (totalClicks >= 50)
+                return "Low";
+            return "Inactive";
         }
 
         public string GetPerformanceLevel(double averageScore, bool hasAssessments)
@@ -98,52 +113,33 @@ namespace NexoraAPI.Services
             return "Needs Support";
         }
 
-        public async Task<RecommendationDashboardResponse?> GetDashboardDataAsync(int studentId)
+        public async Task<StudentProfileDto?> GetStudentProfileAsync(int studentId)
         {
-            var profile = await GetStudentProfileAsync(studentId);
-
-            if (profile == null)
-                return null;
-
             var user = await GetStudentBasicInfo(studentId);
 
-            bool hasAssessments = false;
+            if (user == null)
+                return null;
 
-            if (user != null)
-            {
-                var resolvedStudentId = user.StudentId ?? user.Id;
-                hasAssessments = await _context.StudentAssessments
-                    .AnyAsync(sa => sa.IdStudent == resolvedStudentId);
-            }
+            var averageScore = await GetAverageScore(studentId);
+            var resolvedStudentId = user.StudentId ?? user.Id;
+            var hasAssessments = await _context.StudentAssessments
+                .AnyAsync(sa => sa.IdStudent == resolvedStudentId);
+            
+            var totalClicks = await GetTotalClicks(studentId);
 
-            var response = new RecommendationDashboardResponse
+            return new StudentProfileDto
             {
-                StudentName = profile.StudentName,
-                AverageScore = Math.Round(profile.AverageScore, 2),
-                Status = GetPerformanceLevel(profile.AverageScore, hasAssessments)
+                StudentId = studentId,
+                StudentName = $"{user.FirstName} {user.LastName}",
+                AverageScore = averageScore,
+                PerformanceLevel = GetPerformanceLevel(averageScore, hasAssessments),
+                TotalClicks = totalClicks,
+                EngagementLevel = GetEngagementLevel(totalClicks),
+                Skills = await GetStudentSkills(studentId),
+                WeakSubjects = await GetWeakSubjects(studentId)
             };
-
-            if (!hasAssessments)
-            {
-                response.SystemMessage =
-                    "Welcome aboard! Here are some courses to kickstart your journey matching your selected interests.";
-            }
-            else if (profile.AverageScore < 50)
-            {
-                response.SystemMessage =
-                    "We noticed some subjects are challenging for you. Let's review these foundational courses to boost your score.";
-            }
-            else
-            {
-                response.SystemMessage =
-                    "Great progress! Keep up the good work with these advanced recommendations.";
-            }
-
-            response.WeakSubjectsCount = profile.WeakSubjects.Count;
-
-            response.SkillsCount = profile.Skills.Count;
-
-            return response;
         }
+
+
     }
 }

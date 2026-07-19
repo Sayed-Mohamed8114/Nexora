@@ -1,94 +1,92 @@
-﻿using NexoraAPI.DTOs;
+using Microsoft.EntityFrameworkCore;
+using NexoraAPI.DTOs.Courses;
+using NexoraAPI.Models;
+using NexoraAPI.Services.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace NexoraAPI.Services
+namespace NexoraAPI.Services.Implementations
 {
-    public class RecommendationEngineService
+    public class RecommendationEngineService : IRecommendationEngineService
     {
-        private readonly ResourceService _resourceService;
+        private readonly AppDbContext _context;
 
-        public RecommendationEngineService(ResourceService resourceService)
+        public RecommendationEngineService(AppDbContext context)
         {
-            _resourceService = resourceService;
+            _context = context;
         }
 
-        public async Task<List<RecommendationDto>> GenerateRecommendations(StudentProfileDto profile)
+        public async Task<List<CourseResponseDto>> GenerateRecommendationsAsync(int userId, int studentId)
         {
-            var recommendations = new List<RecommendationDto>();
+            // 1. Get student's selected skills
+            var studentSkills = await _context.StudentSkills
+                .Where(s => s.UserId == userId)
+                .Select(s => s.SkillName.ToLower().Trim())
+                .ToListAsync();
 
-            // ==========================
-            // Weak Subjects
-            // ==========================
-            foreach (var subject in profile.WeakSubjects.Distinct())
+            // 2. Get student's enrolled courses to exclude them
+            var enrolledModules = await _context.StudentInfos
+                .Where(s => s.IdStudent == studentId)
+                .Select(s => $"{s.CodeModule.ToLower().Trim()}|{s.CodePresentation.ToLower().Trim()}")
+                .ToListAsync();
+
+            var enrolledModulesSet = enrolledModules.ToHashSet();
+
+            // 3. Fetch all courses with their tutors, skill tags, and enrolled student counts
+            var allCourses = await _context.Courses
+                .Include(c => c.Tutor)
+                .Include(c => c.CourseSkillTags)
+                .Include(c => c.StudentInfos)
+                .ToListAsync();
+
+            var recommendedCourses = new List<Course>();
+
+            // 4. Find courses that match student's skills and are NOT enrolled
+            foreach (var course in allCourses)
             {
-                var resources = await _resourceService.GetResourcesBySubject(subject);
+                var courseKey = $"{course.CodeModule.ToLower().Trim()}|{course.CodePresentation.ToLower().Trim()}";
+                
+                // Exclude enrolled courses
+                if (enrolledModulesSet.Contains(courseKey))
+                    continue;
 
-                foreach (var resource in resources)
+                // Check if course teaches any of the student's skills
+                var courseSkills = course.CourseSkillTags
+                    .Select(t => t.SkillName.ToLower().Trim())
+                    .ToList();
+
+                bool matchesSkill = courseSkills.Any(cs => studentSkills.Contains(cs));
+
+                if (matchesSkill)
                 {
-                    recommendations.Add(new RecommendationDto
-                    {
-                        CourseCode = subject,
-                        CourseName = resource.Title,
-                        ResourceUrl = resource.ResourceUrl,
-                        Type = resource.Type,
-                        Priority = 100,
-                        Reason = $"Your performance in {subject} needs improvement."
-                    });
+                    recommendedCourses.Add(course);
                 }
             }
 
-            // ==========================
-            // Skills
-            // ==========================
-            foreach (var skill in profile.Skills.Distinct())
+            // 5. Fallback/Demo Mode: if no matches, recommend any courses they are not enrolled in yet
+            if (!recommendedCourses.Any())
             {
-                var resources = await _resourceService.GetResourcesBySubject(skill);
-
-                foreach (var resource in resources)
-                {
-                    recommendations.Add(new RecommendationDto
-                    {
-                        CourseCode = skill,
-                        CourseName = resource.Title,
-                        ResourceUrl = resource.ResourceUrl,
-                        Type = resource.Type,
-                        Priority = 70,
-                        Reason = $"Recommended because you are interested in {skill}."
-                    });
-                }
-            }
-
-            // ==========================
-            // Demo Mode
-            // ==========================
-            if (!recommendations.Any())
-            {
-                var resources = await _resourceService.GetAllRecommendations();
-
-                recommendations = resources
+                recommendedCourses = allCourses
+                    .Where(c => !enrolledModulesSet.Contains($"{c.CodeModule.ToLower().Trim()}|{c.CodePresentation.ToLower().Trim()}"))
                     .Take(5)
-                    .Select(r => new RecommendationDto
-                    {
-                        CourseCode = r.SubjectName,
-                        CourseName = r.Title,
-                        ResourceUrl = r.ResourceUrl,
-                        Type = r.Type,
-                        Priority = 50,
-                        Reason = "General recommendation for new students."
-                    })
                     .ToList();
             }
 
-            // ==========================
-            // Remove duplicates
-            // ==========================
-            recommendations = recommendations
-                .GroupBy(r => r.CourseName)
-                .Select(g => g.OrderByDescending(x => x.Priority).First())
-                .OrderByDescending(r => r.Priority)
-                .Take(5)
-                .ToList();
-
-            return recommendations;
+            // 6. Map to DTOs
+            return recommendedCourses.Select(c => new CourseResponseDto
+            {
+                CodeModule = c.CodeModule,
+                CodePresentation = c.CodePresentation,
+                Name = c.Name,
+                Description = c.Description,
+                Hours = c.Hours,
+                TutorId = c.TutorId,
+                TutorName = c.Tutor != null ? $"{c.Tutor.FirstName} {c.Tutor.LastName}".Trim() : string.Empty,
+                Skills = c.CourseSkillTags.Select(t => t.SkillName).ToList(),
+                EnrolledCount = c.StudentInfos.Count
+            }).ToList();
         }
     }
 }

@@ -1,92 +1,77 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NexoraAPI.DTOs;
-using NexoraAPI.Services;
+using NexoraAPI.DTOs.Recommendations;
+using NexoraAPI.Services.Interfaces;
+using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using NexoraAPI.Models;
 
 namespace NexoraAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class RecommendationsController : ControllerBase
     {
-        private readonly ResourceService _resourceService;
-        private readonly StudentProfileService _studentProfileService;
-        private readonly RecommendationEngineService _recommendationEngine;
+        private readonly IRecommendationEngineService _recommendationEngine;
+        private readonly AppDbContext _context;
 
         public RecommendationsController(
-            StudentProfileService studentProfileService,
-            RecommendationEngineService recommendationEngine,
-            ResourceService resourceService)
+            IRecommendationEngineService recommendationEngine,
+            AppDbContext context)
         {
-            _studentProfileService = studentProfileService;
             _recommendationEngine = recommendationEngine;
-            _resourceService = resourceService;
+            _context = context;
         }
 
         // ============================================================
-        // Returns all learning resources in the system.
-        // Used for the Resources page.
+        // Returns personalized course recommendations for the logged-in student.
         // ============================================================
-        [HttpGet("resources")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetResources()
-        {
-            var resources = await _resourceService.GetAllRecommendations();
-            return Ok(resources);
-        }
-
-        // ============================================================
-        // Returns dashboard information for a student.
-        // Used when opening the Recommendation page.
-        // ============================================================
-        [HttpGet("dashboard/{studentId}")]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetDashboard(int studentId)
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> GetStudentRecommendations()
         {
-            var dashboard = await _studentProfileService.GetDashboardDataAsync(studentId);
-
-            if (dashboard == null)
+            var userId = GetCurrentUserId();
+            if (userId == null)
             {
-                return NotFound(new ApiErrorDto
-                {
-                    Message = "Student profile not found."
-                });
+                return Unauthorized(new ApiErrorDto { Message = "User is not authenticated." });
             }
 
-            return Ok(dashboard);
-        }
+            // Fetch the user to get their StudentId and name
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.Id == userId.Value);
 
-        // ============================================================
-        // Returns personalized recommendations.
-        // ============================================================
-        [HttpGet("student/{studentId}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetStudentRecommendations(int studentId)
-        {
-            var profile = await _studentProfileService.GetStudentProfileAsync(studentId);
-
-            if (profile == null)
+            if (user == null)
             {
-                return NotFound(new ApiErrorDto
-                {
-                    Message = "Student not found."
-                });
+                return NotFound(new ApiErrorDto { Message = "User not found." });
             }
+
+            var studentId = user.StudentId ?? user.Id;
 
             var recommendations =
-                await _recommendationEngine.GenerateRecommendations(profile);
+                await _recommendationEngine.GenerateRecommendationsAsync(userId.Value, studentId);
 
             var response = new RecommendationResponseDto
             {
                 StudentId = studentId,
-                StudentName = profile.StudentName,
+                StudentName = $"{user.FirstName} {user.LastName}".Trim(),
                 RecommendationCount = recommendations.Count,
                 GeneratedAt = DateTime.Now,
                 Recommendations = recommendations
             };
 
             return Ok(response);
+        }
+
+        private int? GetCurrentUserId()
+        {
+            var claim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return int.TryParse(claim, out var id) ? id : null;
         }
     }
 }
