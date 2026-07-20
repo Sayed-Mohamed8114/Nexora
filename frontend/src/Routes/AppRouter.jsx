@@ -20,8 +20,7 @@ import Studentrisk from "@/Pages/global-dashboard/analysis/StudentRisk";
 import MyCourses from "@/Pages/my-courses/MyCourses";
 import Notification from "@/Pages/notification/Notification";
 
-// Assesments Pages 
-import AddAssessments from "@/Pages/Assessments/AddAssessments";
+
 
 
 export default function AppRouter() {
@@ -57,11 +56,7 @@ export default function AppRouter() {
           <Route path="module-performance" element={<ModulePerfo />} />
         </Route>
 
-        {/*assesments routes*/}
-        <Route
-          path="/courses/:codeModule/:codePresentation/assessment/add"
-          element={<AddAssessments />}
-        />
+
 
         {/* Authentication */}
         <Route path="/signin" element={<Signin />} />

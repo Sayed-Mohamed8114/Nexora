@@ -9,11 +9,13 @@ const CourseCard = ({
   onUnEnroll,
   onEdit,
   onDelete,
+  onAddAssessment,
   enrolledCourses = [],
   hideEnroll = false,
   showUnEnroll = false,
 }) => {
   const [user, setUser] = useState(null);
+
   useEffect(() => {
     getCurrentUser().then((res) => {
       if (res.success) {
@@ -86,32 +88,21 @@ const CourseCard = ({
 
         <div className="flex justify-between">
           <span className="text-slate-500">Students</span>
-          <span className="font-medium">
-            {course.enrolledCount ?? 0}
-          </span>
+          <span className="font-medium">{course.enrolledCount ?? 0}</span>
         </div>
       </div>
 
       {/* Buttons */}
       <div className="flex gap-3 p-5">
         {user?.role === "Student" ? (
-          <Link
-            to={`/courses/${course.codeModule}/${course.codePresentation}/assessment`}
-            className="flex-1 rounded-lg border border-slate-300 bg-sky-700 py-2 text-center font-bold text-white transition duration-700 hover:bg-sky-400 hover:text-sky-900"
-          >
-            Take Assessment
-          </Link>
-        ) : (
-          <Link
-            to={`/courses/${course.codeModule}/${course.codePresentation}/assessment/add`}
-            className="flex-1 rounded-lg border border-slate-300 bg-sky-700 py-2 text-center font-bold text-white transition duration-700 hover:bg-sky-400 hover:text-sky-900"
-          >
-            Add Assessment
-          </Link>
-        )}
-
-        {user?.role === "Student" && (
           <>
+            <Link
+              to={`/courses/${course.codeModule}/${course.codePresentation}/assessment`}
+              className="flex-1 rounded-lg border border-slate-300 bg-sky-700 py-2 text-center font-bold text-white transition duration-700 hover:bg-sky-400 hover:text-sky-900"
+            >
+              Take Assessment
+            </Link>
+
             {showUnEnroll ? (
               <button
                 onClick={() =>
@@ -139,6 +130,13 @@ const CourseCard = ({
               )
             )}
           </>
+        ) : (
+          <button
+            onClick={() => onAddAssessment(course)}
+            className="w-full rounded-lg border border-slate-300 bg-sky-700 py-2 text-center font-bold text-white transition duration-700 hover:bg-sky-400 hover:text-sky-900"
+          >
+            Add Assessment
+          </button>
         )}
       </div>
     </div>

@@ -9,8 +9,10 @@ import AddCourseForm from "@/Components/layout/AddCourseForm";
 import { SuccessFlash, ErrorFlash } from "@/Components/UI/FlashMessages";
 import EditCourseForm from "@/Components/layout/EditCourseForm";
 import DeleteCourseCard from "@/Components/layout/DeleteCourseCard";
+import AddAssessments from "@/Components/layout/AddAssessments";
 
 const Courses = () => {
+  const [showAssessmentForm, setShowAssessmentForm] = useState(false);
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -75,6 +77,10 @@ const Courses = () => {
     setShowDeleteCard(true);
   };
 
+  const handleAddAssessment = (course) => {
+    setSelectedCourse(course);
+    setShowAssessmentForm(true);
+  };
   // get the current user role
   useEffect(() => {
     loadCourses();
@@ -220,6 +226,35 @@ const Courses = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
+              <AnimatePresence>
+                {showAssessmentForm && selectedCourse && (
+                  <motion.div
+                    initial={{ x: 400, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: 400, opacity: 0 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 250,
+                      damping: 25,
+                    }}
+                    className="fixed top-60 right-0 z-999 w-[90%] md:w-[60%] lg:w-[45%] rounded-lg bg-white/40 p-3 shadow-2xl shadow-sky-900/10 backdrop-blur"
+                  >
+                    <AddAssessments
+                      courseName={selectedCourse.name}
+                      codeModule={selectedCourse.codeModule}
+                      codePresentation={selectedCourse.codePresentation}
+                      onClose={() => {
+                        setShowAssessmentForm(false);
+                        setSelectedCourse(null);
+                      }}
+                      onSuccess={() => {
+                        setShowAssessmentForm(false);
+                        setSelectedCourse(null);
+                      }}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </>
           )}
 
@@ -275,6 +310,7 @@ const Courses = () => {
                   onEnroll={handleEnroll}
                   onEdit={handleEdit}
                   onDelete={handleDeleteClick}
+                  onAddAssessment={handleAddAssessment}
                 />
               ))}
             </div>
