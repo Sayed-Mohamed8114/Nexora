@@ -41,7 +41,6 @@ namespace NexoraAPI.DTOs
 
     public class CreateAssessmentDto
     {
-        public int IdAssessment { get; set; }
         public string CodeModule { get; set; } = string.Empty;
         public string CodePresentation { get; set; } = string.Empty;
         public string AssessmentType { get; set; } = "Quiz";

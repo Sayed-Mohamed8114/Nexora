@@ -56,7 +56,7 @@ public partial class AppDbContext : DbContext
             entity.ToTable("assessments");
 
             entity.Property(e => e.IdAssessment)
-                .ValueGeneratedNever()
+                .ValueGeneratedOnAdd()
                 .HasColumnName("id_assessment");
             entity.Property(e => e.AssessmentType)
                 .HasMaxLength(45)

@@ -138,23 +138,20 @@ namespace NexoraAPI.Controllers
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(dto.CodeModule) || string.IsNullOrWhiteSpace(dto.CodePresentation))
+                {
+                    return BadRequest(new { success = false, message = "CodeModule and CodePresentation are required." });
+                }
+
                 // Verify the Course exists
                 var courseExists = await _context.Courses.AnyAsync(c => c.CodeModule == dto.CodeModule && c.CodePresentation == dto.CodePresentation);
                 if (!courseExists)
                 {
-                    return BadRequest(new { success = false, message = "Course not found. You must assign this assessment to a valid course." });
-                }
-
-                // Verify ID doesn't already exist
-                var assessmentExists = await _context.Assessments.AnyAsync(a => a.IdAssessment == dto.IdAssessment);
-                if (assessmentExists)
-                {
-                    return BadRequest(new { success = false, message = $"Assessment with ID {dto.IdAssessment} already exists. Please use a different ID." });
+                    return BadRequest(new { success = false, message = $"Course '{dto.CodeModule} / {dto.CodePresentation}' not found. You must assign this assessment to a valid course." });
                 }
 
                 var assessment = new Assessment
                 {
-                    IdAssessment = dto.IdAssessment,
                     CodeModule = dto.CodeModule,
                     CodePresentation = dto.CodePresentation,
                     AssessmentType = dto.AssessmentType,
@@ -164,11 +161,12 @@ namespace NexoraAPI.Controllers
                 _context.Assessments.Add(assessment);
                 await _context.SaveChangesAsync();
 
-                return Ok(new { success = true, message = "Assessment container created successfully. You can now add questions to it." });
+                return Ok(new { success = true, message = "Assessment container created successfully.", assessmentId = assessment.IdAssessment });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { success = false, message = "Failed to create assessment.", error = ex.Message });
+                var inner = ex.InnerException?.Message ?? ex.Message;
+                return StatusCode(500, new { success = false, message = "Failed to create assessment.", error = ex.Message, detail = inner });
             }
         }
 
