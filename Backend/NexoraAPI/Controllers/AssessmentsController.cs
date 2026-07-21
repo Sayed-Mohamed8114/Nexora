@@ -43,19 +43,29 @@ namespace NexoraAPI.Controllers
 
                 var studentId = user.StudentId ?? user.Id;
 
-                var assessments = await _context.StudentAssessments
+                var assessmentsRaw = await _context.StudentAssessments
                     .Include(sa => sa.IdAssessmentNavigation)
                     .Where(sa => sa.IdStudent == studentId)
-                    .Select(sa => new StudentAssessmentDto
+                    .Select(sa => new
                     {
-                        AssessmentId = sa.IdAssessment ?? 0,
+                        AssessmentId = sa.IdAssessment,
                         CodeModule = sa.IdAssessmentNavigation != null ? sa.IdAssessmentNavigation.CodeModule : "N/A",
                         AssessmentType = sa.IdAssessmentNavigation != null ? sa.IdAssessmentNavigation.AssessmentType : "N/A",
                         Score = sa.Score,
                         DateSubmitted = sa.DateSubmitted,
-                        IsBanked = sa.IsBanked == 1
+                        IsBanked = sa.IsBanked
                     })
                     .ToListAsync();
+
+                var assessments = assessmentsRaw.Select(sa => new StudentAssessmentDto
+                {
+                    AssessmentId = sa.AssessmentId ?? 0,
+                    CodeModule = sa.CodeModule,
+                    AssessmentType = sa.AssessmentType,
+                    Score = sa.Score,
+                    DateSubmitted = FormatDate(sa.DateSubmitted),
+                    IsBanked = sa.IsBanked == 1
+                }).ToList();
 
                 return Ok(new { success = true, data = assessments });
             }
@@ -338,6 +348,18 @@ namespace NexoraAPI.Controllers
             });
         }
 
+        private string FormatDate(int? dateInt)
+        {
+            if (!dateInt.HasValue) return "N/A";
+            string dateStr = dateInt.Value.ToString();
+            if (dateStr.Length != 8) return dateStr;
+            
+            if (DateTime.TryParseExact(dateStr, "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
+            {
+                return parsedDate.ToString("yyyy-MM-dd");
+            }
+            return dateStr;
+        }
 
     }
 }

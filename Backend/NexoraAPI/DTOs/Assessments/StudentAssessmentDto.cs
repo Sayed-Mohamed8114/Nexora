@@ -6,7 +6,7 @@ namespace NexoraAPI.DTOs
         public string? CodeModule { get; set; }
         public string? AssessmentType { get; set; }
         public double? Score { get; set; }
-        public int? DateSubmitted { get; set; }
+        public string? DateSubmitted { get; set; }
         public bool IsBanked { get; set; }
     }
 }
