@@ -1,7 +1,7 @@
 import CourseCard from "@/Components/layout/CourseCard";
 import Loader from "@/Components/Loader/Loader";
 import DashboardLayout from "@/mainLayout/DashboardLayout";
-import { getCourses, enroll } from "@/Services/courses";
+import { getCourses, enroll, enrolled } from "@/Services/courses";
 import { AnimatePresence, motion } from "framer-motion";
 import { getCurrentUser } from "@/Services/user";
 import { useState, useEffect, useMemo } from "react";
@@ -23,6 +23,7 @@ const Courses = () => {
   const [showDeleteCard, setShowDeleteCard] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterModule, setFilterModule] = useState("");
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
   const [flash, setFlash] = useState({
     type: "",
     show: false,
@@ -34,61 +35,86 @@ const Courses = () => {
     setShowEditForm(true);
   };
 
+  // Load all courses
   const loadCourses = async () => {
     try {
       setLoading(true);
       setError("");
+
       const data = await getCourses();
-      console.log(data);
       setCourses(data);
     } catch (error) {
       console.error(error);
+
       setFlash({
         show: true,
         type: "error",
-        message: "failed to get courses , login first",
+        message: "Failed to load courses. Please login first.",
       });
     } finally {
       setLoading(false);
     }
   };
+
+  // Load enrolled courses
+  const loadEnrolledCourses = async () => {
+    try {
+      const data = await enrolled();
+      setEnrolledCourses(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // Enroll in a course
   const handleEnroll = async (codeModule, codePresentation) => {
     try {
       await enroll(codeModule, codePresentation);
+
       setFlash({
         type: "success",
-        message: "successfully enrolled",
+        message: "Successfully enrolled.",
         show: true,
       });
-      await loadCourses();
+
+      // Refresh both lists
+      await Promise.all([loadCourses(), loadEnrolledCourses()]);
     } catch (err) {
-      console.log(err);
+      console.error(err);
+
       setFlash({
         type: "error",
-        message: "failed to enroll",
+        message: "Failed to enroll.",
         show: true,
       });
     }
   };
 
-  // delete course
-  const handleDeleteClick = async (course) => {
+  // Delete course
+  const handleDeleteClick = (course) => {
     setSelectedCourse(course);
     setShowDeleteCard(true);
   };
 
+  // Open Add Assessment form
   const handleAddAssessment = (course) => {
     setSelectedCourse(course);
     setShowAssessmentForm(true);
   };
-  // get the current user role
+
+  // Initial loading
   useEffect(() => {
-    loadCourses();
-    getCurrentUser().then((res) => {
+    const initializePage = async () => {
+      await Promise.all([loadCourses(), loadEnrolledCourses()]);
+
+      const res = await getCurrentUser();
+
       if (res.success) {
         setUser(res.data);
       }
-    });
+    };
+
+    initializePage();
   }, []);
 
   useEffect(() => {
@@ -311,6 +337,7 @@ const Courses = () => {
                   onEdit={handleEdit}
                   onDelete={handleDeleteClick}
                   onAddAssessment={handleAddAssessment}
+                  enrolledCourses={enrolledCourses}
                 />
               ))}
             </div>

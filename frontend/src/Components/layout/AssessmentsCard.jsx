@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import { CalendarDays, BookOpen, Users } from "lucide-react";
 
-const AssessmentCard = ({ assessment, isTutor = false, onAddQuestions }) => {
+const AssessmentCard = ({
+  assessment,
+  isTutor = false,
+  onAddQuestions,
+  studentResult,
+}) => {
   return (
     <div className="w-[95%] rounded-2xl border border-slate-200 bg-sky-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
       {/* Header */}
@@ -31,7 +36,9 @@ const AssessmentCard = ({ assessment, isTutor = false, onAddQuestions }) => {
 
         <div>
           <p className="text-sm text-slate-500">Presentation</p>
-          <p className="mt-1 font-semibold">{assessment.codePresentation}</p>
+          <p className="mt-1 font-semibold">
+            {assessment.codePresentation}
+          </p>
         </div>
 
         <div>
@@ -40,7 +47,9 @@ const AssessmentCard = ({ assessment, isTutor = false, onAddQuestions }) => {
             Questions
           </p>
 
-          <p className="mt-1 text-lg font-bold">{assessment.questionCount}</p>
+          <p className="mt-1 text-lg font-bold">
+            {assessment.questionCount}
+          </p>
         </div>
 
         <div>
@@ -56,23 +65,53 @@ const AssessmentCard = ({ assessment, isTutor = false, onAddQuestions }) => {
       </div>
 
       {/* Actions */}
-      <div className="mt-8 flex flex-wrap justify-end gap-3">
-        <Link
-          to={`/assessments/${assessment.idAssessment}`}
-          className="rounded-lg bg-sky-700 px-5 py-2 font-semibold text-white cursor-pointer duration-700 transition hover:bg-sky-800"
-        >
-          View Questions
-        </Link>
-
-        {isTutor && (
+      <div className="mt-8 flex flex-wrap justify-end  gap-6">
+        {isTutor ? (
           <>
-            <button
-               onClick={() => onAddQuestions(assessment)}
-              className="rounded-lg bg-green-700 px-5 py-2 font-semibold cursor-pointer duration-700 text-white transition hover:bg-green-600"
+            <Link
+              to={`/assessments/${assessment.idAssessment}`}
+              className="rounded-lg bg-sky-700 px-5 py-2 font-semibold text-white transition hover:bg-sky-800"
             >
-              Add Quiestions
+              View Questions
+            </Link>
+
+            <button
+              onClick={() => onAddQuestions(assessment)}
+              className="rounded-lg bg-green-700 px-5 py-2 font-semibold text-white transition hover:bg-green-600"
+            >
+              Add Questions
             </button>
           </>
+        ) : studentResult ? (
+          <>
+            <div className="rounded-lg items-center bg-green-100 px-5 py-2 flex gap-3 text-center">
+              <p className="text-sm font-medium text-green-700">
+                You got
+              </p>
+
+              <p className="mt-1 text-lg font-bold text-green-800">
+                {studentResult.score}%
+              </p>
+
+              <p className="mt-2 text-xs text-green-700">
+                Submitted on: {studentResult.dateSubmitted}
+              </p>
+            </div>
+
+            <button
+              disabled
+              className="cursor-not-allowed rounded-lg bg-slate-400 px-5 py-2 font-semibold text-white"
+            >
+              Already Completed
+            </button>
+          </>
+        ) : (
+          <Link
+            to={`/assessments/${assessment.idAssessment}/take`}
+            className="rounded-lg bg-sky-700 px-5 py-2 font-semibold text-white transition hover:bg-sky-600"
+          >
+            Start Assessment
+          </Link>
         )}
       </div>
     </div>

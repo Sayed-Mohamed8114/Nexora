@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Loader from "@/Components/Loader/Loader";
 import AssessmentCard from "@/Components/layout/AssessmentsCard";
-import { getCourseAssessments } from "@/Services/Assessments";
+import {
+  getCourseAssessments,
+  getStudentAssements,
+} from "@/Services/Assessments";
 import { getCurrentUser } from "@/Services/user";
 import { AnimatePresence, motion } from "framer-motion";
 import AddQuestionForm from "@/Components/layout/AddQuestionForm";
@@ -15,6 +18,18 @@ const CourseAssessments = () => {
   const [user, setUser] = useState(null);
   const [showQuestionForm, setShowQuestionForm] = useState(false);
   const [selectedAssessment, setSelectedAssessment] = useState(null);
+  const [studentResults, setStudentResult] = useState([]);
+
+  const loadStudentsAssessments = async () => {
+    try {
+      const response = await getStudentAssements();
+      if (response.success) {
+        setStudentResult(response.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleAddQuestions = (assessment) => {
     setSelectedAssessment(assessment);
@@ -36,7 +51,7 @@ const CourseAssessments = () => {
 
   useEffect(() => {
     loadAssessments();
-
+    loadStudentsAssessments();
     getCurrentUser().then((res) => {
       if (res.success) {
         setUser(res.data);
@@ -86,14 +101,27 @@ const CourseAssessments = () => {
             Back to courses dashboard
           </Link>
         </nav>
-        {assessments.map((assessment) => (
-          <AssessmentCard
-            key={assessment.idAssessment}
-            assessment={assessment}
-            onAddQuestions={handleAddQuestions}
-            isTutor={user?.role === "Tutor"}
-          />
-        ))}
+        {assessments.length === 0 ? (
+          <div className="col-span-full py-10 text-center text-lg font-medium text-slate-500">
+            No assessments yet.
+          </div>
+        ) : (
+          assessments.map((assessment) => {
+            const studentResult = studentResults.find(
+              (item) => item.assessmentId === assessment.idAssessment,
+            );
+
+            return (
+              <AssessmentCard
+                key={assessment.idAssessment}
+                assessment={assessment}
+                onAddQuestions={handleAddQuestions}
+                studentResult={studentResult}
+                isTutor={user?.role === "Tutor"}
+              />
+            );
+          })
+        )}
       </div>
     </>
   );

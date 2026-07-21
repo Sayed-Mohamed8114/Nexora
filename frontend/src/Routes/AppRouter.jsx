@@ -21,6 +21,7 @@ import MyCourses from "@/Pages/my-courses/MyCourses";
 import Notification from "@/Pages/notification/Notification";
 import CourseAssessments from "@/Pages/assesments/courseAssessments";
 import QuestionsPage from "@/Pages/assesments/QuestionsPage";
+import TakeAssessment from "@/Pages/assesments/TakeAssessment";
 
 export default function AppRouter() {
   return (
@@ -61,6 +62,10 @@ export default function AppRouter() {
           element={<CourseAssessments />}
         />
         <Route path="/assessments/:assessmentId" element={<QuestionsPage />} />
+        <Route
+          path="/assessments/:assessmentId/take"
+          element={<TakeAssessment />}
+        />
 
         {/* Authentication */}
         <Route path="/signin" element={<Signin />} />
