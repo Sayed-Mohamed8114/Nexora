@@ -135,18 +135,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RecommendationsController.cs",
-              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Controllers\\RecommendationsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\RecommendationsController.cs",
-              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Controllers\\RecommendationsController.cs",
-              "RelativeToolTip": "Controllers\\RecommendationsController.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-16T11:31:32.864Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\appsettings.json",
@@ -179,8 +167,19 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-05T16:34:04.808Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-05T16:34:04.808Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RecommendationsController.cs",
+              "DocumentMoniker": "D:\\Nexora\\Backend\\NexoraAPI\\Controllers\\RecommendationsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RecommendationsController.cs",
+              "ToolTip": "D:\\Nexora\\Backend\\NexoraAPI\\Controllers\\RecommendationsController.cs",
+              "RelativeToolTip": "Controllers\\RecommendationsController.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T11:31:32.864Z"
             },
             {
               "$type": "Document",

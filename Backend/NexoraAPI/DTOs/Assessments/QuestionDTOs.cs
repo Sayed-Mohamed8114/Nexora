@@ -35,8 +35,13 @@ namespace NexoraAPI.DTOs
 
     public class SubmitAnswersDto
     {
-        // Maps QuestionId -> Selected OptionId
-        public Dictionary<int, int> Answers { get; set; } = new();
+        public List<AnswerSubmissionDto> Answers { get; set; } = new();
+    }
+
+    public class AnswerSubmissionDto
+    {
+        public int QuestionId { get; set; }
+        public int OptionId { get; set; }
     }
 
     public class CreateAssessmentDto

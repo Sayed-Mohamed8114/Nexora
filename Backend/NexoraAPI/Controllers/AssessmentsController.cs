@@ -287,8 +287,10 @@ namespace NexoraAPI.Controllers
 
             foreach (var q in questions)
             {
-                if (submission.Answers.TryGetValue(q.Id, out int selectedOptionId))
+                var submittedAnswer = submission.Answers.FirstOrDefault(a => a.QuestionId == q.Id);
+                if (submittedAnswer != null)
                 {
+                    var selectedOptionId = submittedAnswer.OptionId;
                     var selectedOption = q.Options.FirstOrDefault(o => o.Id == selectedOptionId);
                     if (selectedOption != null && selectedOption.IsCorrect)
                     {
