@@ -30,15 +30,17 @@ Traditional learning platforms often provide grades without meaningful insights.
 
 ### Backend
 - ASP.NET Core 8 Web API
+- JWT Authentication & Authorization
 - SignalR
 - Entity Framework Core
-- Clean Architecture
 - SQL Server
+- Layered Architecture (3-Tier / N-Tier)
+
 
 
 ### Tools
 - Git & GitHub
-- Swagger
+- Swagger / OpenAPI Documentation
 - Visual Studio
 - VS Code
 
