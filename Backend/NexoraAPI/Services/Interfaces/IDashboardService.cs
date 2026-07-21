@@ -4,5 +4,5 @@ namespace NexoraAPI.Services.Interfaces;
 
 public interface IDashboardService
 {
-    Task<DashboardDto?> GetDashboardAsync(int userId);
+    Task<CombinedDashboardDto?> GetCombinedDashboardAsync(int userId);
 }

@@ -18,19 +18,29 @@ public class DashboardController : ControllerBase
     }
 
     /// <summary>
-    /// Returns the student's dashboard summary:
-    /// current GPA (%), total/completed/current courses, completion %, unread notifications.
+    /// Returns a unified student dashboard combining:
+    /// - Stat cards (GPA, courses, assessments)
+    /// - Real monthly assessment score chart (from actual submission dates)
+    /// - Skills enriched with real assessment scores and recommended courses
     /// </summary>
-    [HttpGet]
-    public async Task<IActionResult> GetDashboard()
+    [HttpGet("student-dashboard")]
+    public async Task<IActionResult> GetStudentDashboard()
     {
         var userId = GetCurrentUserId();
         if (userId == null) return Unauthorized();
 
-        var dashboard = await _dashboardService.GetDashboardAsync(userId.Value);
-        if (dashboard == null) return NotFound("User not found.");
+        try
+        {
+            var dashboard = await _dashboardService.GetCombinedDashboardAsync(userId.Value);
+            if (dashboard == null)
+                return NotFound(new { success = false, message = "User not found." });
 
-        return Ok(dashboard);
+            return Ok(new { success = true, data = dashboard });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { success = false, message = "Failed to load student dashboard.", error = ex.Message });
+        }
     }
 
     private int? GetCurrentUserId()
