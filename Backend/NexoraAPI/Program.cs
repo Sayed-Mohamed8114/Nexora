@@ -98,6 +98,7 @@ builder.Services.AddAuthentication(options =>
 });
 
 // Dependency Injection
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IStudentProfileService, StudentProfileService>();
 builder.Services.AddScoped<IRecommendationEngineService, RecommendationEngineService>();
 builder.Services.AddScoped<IResourceService, ResourceService>();

@@ -2,16 +2,20 @@ using Microsoft.EntityFrameworkCore;
 using NexoraAPI.DTOs.Dashboard;
 using NexoraAPI.Models;
 using NexoraAPI.Services.Interfaces;
+using System.Security.Claims;
 
 namespace NexoraAPI.Services.Implementations;
 
 public class DashboardService : IDashboardService
 {
     private readonly AppDbContext _context;
-
-    public DashboardService(AppDbContext context)
+    private readonly IHttpContextAccessor _httpContextAccessor;
+    public DashboardService(
+    AppDbContext context,
+    IHttpContextAccessor httpContextAccessor)
     {
         _context = context;
+        _httpContextAccessor = httpContextAccessor;
     }
 
     public async Task<CombinedDashboardDto?> GetCombinedDashboardAsync(int userId)
@@ -217,6 +221,108 @@ public class DashboardService : IDashboardService
             BestAssessmentScore       = bestScore,
             MonthlyAssessmentProgress = monthlyGroups,
             Skills                    = enrichedSkills
+        };
+    }
+
+    public async Task<TutorDashboardDto?> GetTutorDashboardAsync()
+    {
+        var userIdClaim = _httpContextAccessor.HttpContext?
+            .User
+            .FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        if (!int.TryParse(userIdClaim, out var tutorUserId))
+            return null;
+
+        var tutor = await _context.Users.FirstOrDefaultAsync(u => u.Id == tutorUserId);
+
+        if (tutor == null)
+            return null;
+
+        var tutorCourses = await _context.Courses
+            .Include(c => c.CourseSkillTags)
+            .Where(c => c.TutorId == tutorUserId)
+            .ToListAsync();
+
+        
+
+    var courseStatsList = new List<TutorCourseStatsDto>();
+
+        foreach (var c in tutorCourses)
+        {
+            // Active enrolled students (not withdrawn)
+            var enrolledStudentIds = await _context.StudentInfos
+                .Where(s => s.CodeModule == c.CodeModule 
+                         && s.CodePresentation == c.CodePresentation 
+                         && (s.FinalResult == null || s.FinalResult != "Withdrawn"))
+                .Select(s => s.IdStudent)
+                .Distinct()
+                .ToListAsync();
+
+            int enrolledCount = enrolledStudentIds.Count;
+
+            // Unenrolled students (from StudentRegistration with unregistration date or StudentInfo with "Withdrawn")
+            var unenrolledFromRegs = await _context.StudentRegistrations
+                .Where(sr => sr.CodeModule == c.CodeModule 
+                          && sr.CodePresentation == c.CodePresentation 
+                          && sr.DateUnregistration.HasValue 
+                          && sr.IdStudent.HasValue)
+                .Select(sr => sr.IdStudent!.Value)
+                .Distinct()
+                .ToListAsync();
+
+            var withdrawnFromInfo = await _context.StudentInfos
+                .Where(s => s.CodeModule == c.CodeModule 
+                         && s.CodePresentation == c.CodePresentation 
+                         && s.FinalResult == "Withdrawn")
+                .Select(s => s.IdStudent)
+                .Distinct()
+                .ToListAsync();
+
+            int unenrolledCount = unenrolledFromRegs.Union(withdrawnFromInfo).Distinct().Count();
+            int totalStudents = enrolledCount + unenrolledCount;
+
+            double successPercentage = totalStudents > 0
+                ? Math.Round((double)enrolledCount / totalStudents * 100, 1)
+                : 0;
+
+            int assessmentCount = await _context.Assessments
+                .CountAsync(a => a.CodeModule == c.CodeModule && a.CodePresentation == c.CodePresentation);
+
+            courseStatsList.Add(new TutorCourseStatsDto
+            {
+                CodeModule = c.CodeModule,
+                CodePresentation = c.CodePresentation,
+                Name = c.Name,
+                Description = c.Description,
+                Hours = c.Hours,
+                EnrolledCount = enrolledCount,
+                UnenrolledCount = unenrolledCount,
+                TotalStudentsCount = totalStudents,
+                SuccessPercentage = successPercentage,
+                AssessmentCount = assessmentCount,
+                Skills = c.CourseSkillTags.Select(t => t.SkillName).ToList()
+            });
+        }
+
+        int totalEnrolled = courseStatsList.Sum(cs => cs.EnrolledCount);
+        int totalUnenrolled = courseStatsList.Sum(cs => cs.UnenrolledCount);
+        int totalAllStudents = totalEnrolled + totalUnenrolled;
+        double overallSuccessPercentage = totalAllStudents > 0
+            ? Math.Round((double)totalEnrolled / totalAllStudents * 100, 1)
+            : 0;
+
+        return new TutorDashboardDto
+        {
+            TutorId = tutor.Id,
+            TutorName = $"{tutor.FirstName} {tutor.LastName}".Trim(),
+            TutorEmail = tutor.Email,
+            TotalCourses = courseStatsList.Count,
+            TotalEnrolledStudents = totalEnrolled,
+            TotalUnenrolledStudents = totalUnenrolled,
+            TotalStudents = totalAllStudents,
+            OverallSuccessPercentage = overallSuccessPercentage,
+            TotalAssessments = courseStatsList.Sum(cs => cs.AssessmentCount),
+            Courses = courseStatsList
         };
     }
 }

@@ -43,6 +43,32 @@ public class DashboardController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// Returns the dashboard for the currently authenticated tutor.
+    /// </summary>
+    [HttpGet("tutor-dashboard")]
+    public async Task<IActionResult> GetTutorDashboard()
+    {
+        try
+        {
+            var dashboard = await _dashboardService.GetTutorDashboardAsync();
+
+            if (dashboard == null)
+                return NotFound(new { success = false, message = "Tutor user not found." });
+
+            return Ok(new { success = true, data = dashboard });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new
+            {
+                success = false,
+                message = "Failed to load tutor dashboard.",
+                error = ex.Message
+            });
+        }
+    }
+
     private int? GetCurrentUserId()
     {
         var claim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
