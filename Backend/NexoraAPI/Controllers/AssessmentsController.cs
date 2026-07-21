@@ -7,7 +7,9 @@ using System.Security.Claims;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Threading.Tasks;
 using System;
+using NexoraAPI.Services.Interfaces;
 
 namespace NexoraAPI.Controllers
 {
@@ -17,10 +19,12 @@ namespace NexoraAPI.Controllers
     public class AssessmentsController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly INotificationService _notificationService;
 
-        public AssessmentsController(AppDbContext context)
+        public AssessmentsController(AppDbContext context, INotificationService notificationService)
         {
             _context = context;
+            _notificationService = notificationService;
         }
 
         // GET: api/Assessments/student
@@ -338,6 +342,11 @@ namespace NexoraAPI.Controllers
                     "INSERT INTO studentAssessment (id_student, id_assessment, score, date_submitted, is_banked) VALUES ({0}, {1}, {2}, {3}, 0)",
                     studentId, assessmentId, finalScore, dateSubmitted);
             }
+
+            // Send Real-Time Notification to the student
+            string title = "Assessment Graded";
+            string message = $"You scored {finalScore:F1}% on assessment {assessmentId}.";
+            await _notificationService.SendNotificationAsync(currentUserId, title, message, "Assessment");
 
             return Ok(new { 
                 success = true, 
