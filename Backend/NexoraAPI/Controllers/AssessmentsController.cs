@@ -261,6 +261,11 @@ namespace NexoraAPI.Controllers
         [HttpPost("{assessmentId}/submit-answers")]
         public async Task<ActionResult> SubmitAnswers(int assessmentId, [FromBody] SubmitAnswersDto submission)
         {
+            if (submission == null || submission.Answers == null)
+            {
+                return BadRequest(new { success = false, message = "Invalid submission payload. Please provide your answers." });
+            }
+
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int currentUserId))
             {
@@ -299,29 +304,30 @@ namespace NexoraAPI.Controllers
                 }
             }
 
-            double finalScore = (studentPoints / totalPossiblePoints) * 100;
+            double finalScore = 0;
+            if (totalPossiblePoints > 0)
+            {
+                finalScore = (studentPoints / totalPossiblePoints) * 100;
+            }
 
             var existingRecord = await _context.StudentAssessments
                 .FirstOrDefaultAsync(sa => sa.IdAssessment == assessmentId && sa.IdStudent == studentId);
 
+            var dateSubmitted = int.Parse(DateTime.UtcNow.ToString("yyyyMMdd"));
+
             if (existingRecord != null)
             {
-                existingRecord.Score = finalScore;
-                existingRecord.DateSubmitted = int.Parse(DateTime.UtcNow.ToString("yyyyMMdd"));
+                // Use raw SQL because StudentAssessment is a keyless entity (HasNoKey) and cannot be tracked/updated by EF directly
+                await _context.Database.ExecuteSqlRawAsync(
+                    "UPDATE studentAssessment SET score = {0}, date_submitted = {1} WHERE id_assessment = {2} AND id_student = {3}",
+                    finalScore, dateSubmitted, assessmentId, studentId);
             }
             else
             {
-                _context.StudentAssessments.Add(new StudentAssessment
-                {
-                    IdStudent = studentId,
-                    IdAssessment = assessmentId,
-                    Score = finalScore,
-                    DateSubmitted = int.Parse(DateTime.UtcNow.ToString("yyyyMMdd")),
-                    IsBanked = 0
-                });
+                await _context.Database.ExecuteSqlRawAsync(
+                    "INSERT INTO studentAssessment (id_student, id_assessment, score, date_submitted, is_banked) VALUES ({0}, {1}, {2}, {3}, 0)",
+                    studentId, assessmentId, finalScore, dateSubmitted);
             }
-
-            await _context.SaveChangesAsync();
 
             return Ok(new { 
                 success = true, 
