@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CreateAssessment } from "@/Services/Assessments";
-import { SuccessFlash, ErrorFlash } from "@/components/UI/FlashMessages";
+import { SuccessFlash, ErrorFlash } from "@/Components/UI/FlashMessages";
 
 const AddAssessments = ({
   courseName,

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Loader from "@/components/Loader/Loader";
-import AssessmentCard from "@/components/layout/AssessmentsCard";
+import Loader from "@/Components/Loader/Loader";
+import AssessmentCard from "@/Components/layout/AssessmentsCard";
 import {
   getCourseAssessments,
   getStudentAssements,
 } from "@/Services/Assessments";
 import { getCurrentUser } from "@/Services/user";
 import { AnimatePresence, motion } from "framer-motion";
-import AddQuestionForm from "@/components/layout/AddQuestionForm";
+import AddQuestionForm from "@/Components/layout/AddQuestionForm";
 
 const CourseAssessments = () => {
   const { codeModule, codePresentation } = useParams();

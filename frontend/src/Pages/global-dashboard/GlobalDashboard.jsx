@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "@/mainLayout/DashboardLayout";
 import { NavLink, Outlet } from "react-router-dom";
-import MainChart from "@/components/layout/MainChart";
+import MainChart from "@/Components/layout/MainChart";
 import { getCurrentUser } from "@/Services/user";
 import {
   buildAnalyticsData,

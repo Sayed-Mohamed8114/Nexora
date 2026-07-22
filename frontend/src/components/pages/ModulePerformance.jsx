@@ -1,23 +1,17 @@
-import { useFilters } from "@/components/context/FilterContext";
-import { filterStudents } from "@/components/data/useData";
+import { useFilters } from "@/Components/context/FilterContext";
+import { filterStudents } from "@/Components/data/useData";
 import {
   computePlatformKPIs,
   computeAvgClicksByModule,
   computeAvgScoreByModule,
   computeModuleRanking,
   computeRateByModule,
-} from "@/components/utils/KpiCalculators";
-import { formatK, formatPct, formatScore } from "@/components/utils/formatters";
-import KPICard from "@/components/cards/KPICard";
-import NexVBar from "@/components/charts/NexVBar";
-import NexHBar from "@/components/charts/NexHBar";
-import {
-  Users,
-  Monitor,
-  TrendingDown,
-  Star,
-  CheckCircle,
-} from "lucide-react";
+} from "@/Components/utils/KpiCalculators";
+import { formatK, formatPct, formatScore } from "@/Components/utils/formatters";
+import KPICard from "@/Components/cards/KPICard";
+import NexVBar from "@/Components/charts/NexVBar";
+import NexHBar from "@/Components/charts/NexHBar";
+import { Users, Monitor, TrendingDown, Star, CheckCircle } from "lucide-react";
 
 export default function ModulePerformance({ data }) {
   const { filters } = useFilters();
@@ -27,14 +21,11 @@ export default function ModulePerformance({ data }) {
   const avgClicksByModule = computeAvgClicksByModule(students);
   const avgScoreByModule = computeAvgScoreByModule(students);
   const moduleRanking = computeModuleRanking(students);
-  const withdrawalByModule = computeRateByModule(
-    students,
-    "withdrawal"
-  );
+  const withdrawalByModule = computeRateByModule(students, "withdrawal");
 
   // Sort withdrawal descending
   const withdrawalSorted = [...withdrawalByModule].sort(
-    (a, b) => b.value - a.value
+    (a, b) => b.value - a.value,
   );
 
   const totalStudents = students.length;

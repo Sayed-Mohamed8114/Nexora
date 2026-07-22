@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "@/mainLayout/DashboardLayout";
-import ProgressCard from "@/components/layout/ProgressCard";
-import PomodoroClock from "@/components/layout/PomodoroClock";
-import TodoList from "@/components/layout/ToDoList";
-import MainChart from "@/components/layout/MainChart";
-import ProgressBar from "@/components/layout/ProgressBar";
+import ProgressCard from "@/Components/layout/ProgressCard";
+import PomodoroClock from "@/Components/layout/PomodoroClock";
+import TodoList from "@/Components/layout/ToDoList";
+import MainChart from "@/Components/layout/MainChart";
+import ProgressBar from "@/Components/layout/ProgressBar";
 import { getCurrentUser } from "@/Services/user";
 import {
   getDashboardByRole,

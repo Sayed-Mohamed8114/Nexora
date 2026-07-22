@@ -1,14 +1,14 @@
-import { useFilters } from "@/components/context/FilterContext";
-import { filterStudents } from "@/components/data/useData";
+import { useFilters } from "@/Components/context/FilterContext";
+import { filterStudents } from "@/Components/data/useData";
 import {
   computeExecutiveKPIs,
   computeOutcomeDistribution,
   computeRateByModule,
-} from "@/components/utils/KpiCalculators";
-import { formatK, formatPct, formatScore } from "@/components/utils/formatters";
-import KPICard from "@/components/cards/KPICard";
-import NexDonut from "@/components/charts/NexDonut";
-import NexVBar from "@/components/charts/NexVBar";
+} from "@/Components/utils/KpiCalculators";
+import { formatK, formatPct, formatScore } from "@/Components/utils/formatters";
+import KPICard from "@/Components/cards/KPICard";
+import NexDonut from "@/Components/charts/NexDonut";
+import NexVBar from "@/Components/charts/NexVBar";
 import {
   Users,
   GraduationCap,
@@ -25,10 +25,7 @@ export default function ExecutiveOverview({ data }) {
   const outcomeData = computeOutcomeDistribution(students);
   const failByModule = computeRateByModule(students, "fail");
   const passByModule = computeRateByModule(students, "pass");
-  const withdrawalByModule = computeRateByModule(
-    students,
-    "withdrawal"
-  );
+  const withdrawalByModule = computeRateByModule(students, "withdrawal");
 
   return (
     <div className="space-y-6">

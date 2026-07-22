@@ -1,17 +1,17 @@
-import { useFilters } from "@/components/context/FilterContext";
-import { filterStudents } from "@/components/data/useData";
+import { useFilters } from "@/Components/context/FilterContext";
+import { filterStudents } from "@/Components/data/useData";
 import {
   computePlatformKPIs,
   computeClicksByModule,
   computeClicksByResult,
   computeActivityTypeUsage,
-} from "@/components/utils/KpiCalculators";
-import { formatK, formatPct, formatScore } from "@/components/utils/formatters";
-import KPICard from "@/components/cards/KPICard";
-import NexScatter from "@/components/charts/NexScatter";
-import NexHBar from "@/components/charts/NexHBar";
-import NexVBar from "@/components/charts/NexVBar";
-import NexPie from "@/components/charts/NexPie";
+} from "@/Components/utils/KpiCalculators";
+import { formatK, formatPct, formatScore } from "@/Components/utils/formatters";
+import KPICard from "@/Components/cards/KPICard";
+import NexScatter from "@/Components/charts/NexScatter";
+import NexHBar from "@/Components/charts/NexHBar";
+import NexVBar from "@/Components/charts/NexVBar";
+import NexPie from "@/Components/charts/NexPie";
 import {
   Users,
   Monitor,
@@ -46,12 +46,10 @@ export default function PlatformSuccess({ data }) {
       if (group.length === 0) return null;
 
       const avgClicks =
-        group.reduce((sum, student) => sum + student.clicks, 0) /
-        group.length;
+        group.reduce((sum, student) => sum + student.clicks, 0) / group.length;
 
       const avgScore =
-        group.reduce((sum, student) => sum + student.score, 0) /
-        group.length;
+        group.reduce((sum, student) => sum + student.score, 0) / group.length;
 
       return {
         name: result,
@@ -131,10 +129,7 @@ export default function PlatformSuccess({ data }) {
         </div>
 
         <div className="bg-white/25 px-4 py-3 shadow-xl shadow-sky-900/10 backdrop-blur rounded-xl items-center justify-center">
-          <NexPie
-            title="Activity Type Usage"
-            data={activityUsage}
-          />
+          <NexPie title="Activity Type Usage" data={activityUsage} />
         </div>
       </div>
     </div>

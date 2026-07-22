@@ -4,7 +4,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/UI/dropdown-menu";
+} from "@/Components/UI/dropdown-menu";
 
 import { EllipsisVertical, PencilIcon, TrashIcon } from "lucide-react";
 

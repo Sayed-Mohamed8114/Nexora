@@ -1,6 +1,6 @@
-import CourseCard from "@/components/layout/CourseCard";
+import CourseCard from "@/Components/layout/CourseCard";
 import DashboardLayout from "@/mainLayout/DashboardLayout";
-import Loader from "@/components/Loader/Loader";
+import Loader from "@/Components/Loader/Loader";
 import { enrolled, unEnroll } from "@/Services/courses";
 import { useEffect, useState } from "react";
 

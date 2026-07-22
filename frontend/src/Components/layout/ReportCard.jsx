@@ -1,7 +1,7 @@
 import { rateCourse } from "@/Services/reports";
 import { useState } from "react";
 import { Star, User, Calendar } from "lucide-react";
-import { SuccessFlash, ErrorFlash } from "@/components/UI/FlashMessages";
+import { SuccessFlash, ErrorFlash } from "@/Components/UI/FlashMessages";
 
 function ReportCard({ report, onSubmitted }) {
   const [rating, setRating] = useState(report.rating || 0);

@@ -1,7 +1,7 @@
-import { FilterProvider } from "@/components/context/FilterContext";
-import { useData } from "@/components/data/useData";
-import Loader from "@/components/Loader/Loader";
-import PlatformSuccess from "@/components/pages/PlatformSuccess";
+import { FilterProvider } from "@/Components/context/FilterContext";
+import { useData } from "@/Components/data/useData";
+import Loader from "@/Components/Loader/Loader";
+import PlatformSuccess from "@/Components/pages/PlatformSuccess";
 import { useOutletContext } from "react-router-dom";
 
 function Platformsuccess() {

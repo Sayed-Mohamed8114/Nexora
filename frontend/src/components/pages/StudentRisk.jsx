@@ -1,16 +1,16 @@
-import { useFilters } from "@/components/context/FilterContext";
-import { filterStudents } from "@/components/data/useData";
+import { useFilters } from "@/Components/context/FilterContext";
+import { filterStudents } from "@/Components/data/useData";
 import {
   computeStudentRiskKPIs,
   computePrevAttemptsByResult,
   computeAvgScoreByResult,
   computeClicksByResult,
   computeWithdrawalByCredits,
-} from "@/components/utils/KpiCalculators";
-import { formatK } from "@/components/utils/formatters";
-import KPICard from "@/components/cards/KPICard";
-import NexVBar from "@/components/charts/NexVBar";
-import NexHBar from "@/components/charts/NexHBar";
+} from "@/Components/utils/KpiCalculators";
+import { formatK } from "@/Components/utils/formatters";
+import KPICard from "@/Components/cards/KPICard";
+import NexVBar from "@/Components/charts/NexVBar";
+import NexHBar from "@/Components/charts/NexHBar";
 import {
   Users,
   AlertTriangle,

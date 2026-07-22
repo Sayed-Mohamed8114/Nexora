@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Loader from "@/components/Loader/Loader";
+import Loader from "@/Components/Loader/Loader";
 import { getAssesmentQuestions } from "@/Services/Assessments";
 import { getCurrentUser } from "@/Services/user";
-import QuestionCard from "@/components/layout/QuestionCard";
+import QuestionCard from "@/Components/layout/QuestionCard";
 
 const QuestionsPage = () => {
   const { assessmentId } = useParams();

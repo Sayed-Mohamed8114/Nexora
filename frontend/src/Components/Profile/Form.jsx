@@ -1,6 +1,6 @@
 import { getCurrentUser, updateProfile } from "@/Services/user";
 import { useEffect, useState } from "react";
-import { ErrorFlash, SuccessFlash } from "@/components/UI/FlashMessages";
+import { ErrorFlash, SuccessFlash } from "@/Components/UI/FlashMessages";
 
 export default function Form() {
   const [flash, setFlash] = useState({

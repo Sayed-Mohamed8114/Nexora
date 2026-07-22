@@ -1,5 +1,5 @@
-import SidebarLg from "@/components/layout/SidebarLg";
-import Topbar from "@/components/layout/Topbar";
+import SidebarLg from "@/Components/layout/SidebarLg";
+import Topbar from "@/Components/layout/Topbar";
 
 const DashboardLayout = ({ children }) => {
   return (

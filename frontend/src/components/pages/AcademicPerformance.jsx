@@ -1,21 +1,15 @@
-import { useFilters } from "@/components/context/FilterContext";
-import { filterStudents } from "@/components/data/useData";
+import { useFilters } from "@/Components/context/FilterContext";
+import { filterStudents } from "@/Components/data/useData";
 import {
   computeAcademicKPIs,
   computeAvgScoreByResult,
   computeAvgScoreByModule,
-} from "@/components/utils/KpiCalculators";
-import { formatPct, formatScore } from "@/components/utils/formatters";
-import KPICard from "@/components/cards/KPICard";
-import NexVBar from "@/components/charts/NexVBar";
-import NexHBar from "@/components/charts/NexHBar";
-import {
-  Star,
-  Trophy,
-  BookOpen,
-  BarChart3,
-  XCircle,
-} from "lucide-react";
+} from "@/Components/utils/KpiCalculators";
+import { formatPct, formatScore } from "@/Components/utils/formatters";
+import KPICard from "@/Components/cards/KPICard";
+import NexVBar from "@/Components/charts/NexVBar";
+import NexHBar from "@/Components/charts/NexHBar";
+import { Star, Trophy, BookOpen, BarChart3, XCircle } from "lucide-react";
 
 const RESULT_COLORS = {
   Pass: "#16C47F",
@@ -27,13 +21,15 @@ const RESULT_COLORS = {
 export default function AcademicPerformance({ data }) {
   const { filters } = useFilters();
 
-  console.log(data)
+  console.log(data);
   const students = filterStudents(data.students, filters);
   const kpis = computeAcademicKPIs(students);
   const avgScoreByResult = computeAvgScoreByResult(students);
   const avgScoreByModule = computeAvgScoreByModule(students);
 
-  const totalWithScores = students.filter((student) => student.score > 0).length;
+  const totalWithScores = students.filter(
+    (student) => student.score > 0,
+  ).length;
 
   const failRate =
     students.length > 0
@@ -52,7 +48,6 @@ export default function AcademicPerformance({ data }) {
           icon={Star}
           iconBg="#F59E0B"
           highlight
-          
         />
 
         <KPICard

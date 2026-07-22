@@ -1,12 +1,12 @@
 import { GrAnalytics } from "react-icons/gr";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { SiLevelsdotfyi } from "react-icons/si";
-import Loader from "../../components/Loader/Loader";
+import Loader from "../../Components/Loader/Loader";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { IoHome } from "react-icons/io5";
 import { login } from "../../Services/AuthServices";
-import { ErrorFlash, SuccessFlash } from "@/components/UI/FlashMessages";
+import { ErrorFlash, SuccessFlash } from "@/Components/UI/FlashMessages";
 
 export default function SignIn() {
   const navigate = useNavigate();

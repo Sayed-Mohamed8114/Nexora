@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Loader from "@/components/Loader/Loader";
+import Loader from "@/Components/Loader/Loader";
 import { getAssesmentQuestions, submitAnswers } from "@/Services/Assessments";
-import { SuccessFlash, ErrorFlash } from "@/components/UI/FlashMessages";
+import { SuccessFlash, ErrorFlash } from "@/Components/UI/FlashMessages";
 
 export default function TakeAssessment() {
   const { assessmentId } = useParams();

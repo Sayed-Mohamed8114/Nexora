@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "@/mainLayout/DashboardLayout";
-import Checkbox from "@/components/layout/NotificationIcon";
-import NotificationCard from "@/components/Notification/notificationCard";
+import Checkbox from "@/Components/layout/NotificationIcon";
+import NotificationCard from "@/Components/Notification/notificationCard";
 
 import {
   getNotifications,
@@ -9,7 +9,7 @@ import {
   readAllNotifications,
   readNotification,
 } from "@/Services/notifications";
-import Loader from "@/components/Loader/Loader";
+import Loader from "@/Components/Loader/Loader";
 
 const Notification = () => {
   const [notifications, setNotifications] = useState([]);

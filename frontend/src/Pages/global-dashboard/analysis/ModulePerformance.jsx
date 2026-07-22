@@ -1,7 +1,7 @@
-import { FilterProvider } from "@/components/context/FilterContext";
-import { useData } from "@/components/data/useData";
-import Loader from "@/components/Loader/Loader";
-import ModulePerformance from "@/components/pages/ModulePerformance";
+import { FilterProvider } from "@/Components/context/FilterContext";
+import { useData } from "@/Components/data/useData";
+import Loader from "@/Components/Loader/Loader";
+import ModulePerformance from "@/Components/pages/ModulePerformance";
 import { useOutletContext } from "react-router-dom";
 
 function ModulePerfo() {

@@ -1,7 +1,7 @@
-import { FilterProvider } from "@/components/context/FilterContext";
-import { useData } from "@/components/data/useData";
-import Loader from "@/components/Loader/Loader";
-import ExecutiveOverview from "@/components/pages/ExecutiveOverview";
+import { FilterProvider } from "@/Components/context/FilterContext";
+import { useData } from "@/Components/data/useData";
+import Loader from "@/Components/Loader/Loader";
+import ExecutiveOverview from "@/Components/pages/ExecutiveOverview";
 import { useOutletContext } from "react-router-dom";
 
 function Overview() {
