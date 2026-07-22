@@ -1,12 +1,16 @@
 import { FilterProvider } from "@/components/context/FilterContext";
-import { useData } from "@/components/data/useData";
+import { useData } from "@/Components/data/useData";
 import Loader from "@/Components/Loader/Loader";
 import ModulePerformance from "@/components/pages/ModulePerformance";
+import { useOutletContext } from "react-router-dom";
 
 function ModulePerfo() {
-  const { data, loading } = useData();
+  const outlet = useOutletContext();
+  const fallback = useData();
+  const data = outlet?.data ?? fallback.data;
+  const loading = outlet ? outlet.loading : fallback.loading;
 
-  if (loading) {
+  if (loading || !data) {
     return <Loader />;
   }
 

@@ -9,8 +9,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-function MainChart() {
-  const data = [
+function MainChart({ data: propData }) {
+  const defaultData = [
     {
       name: "Jan",
       progress: 4000,
@@ -48,6 +48,8 @@ function MainChart() {
     },
   ];
 
+  const data = propData && propData.length > 0 ? propData : defaultData;
+
   return (
     <div className="w-full h-[40vh] bg-sky-950/90 rounded-3xl p-2.5 shadow-xl ">
       <ResponsiveContainer width="100%" height="100%">
@@ -60,22 +62,11 @@ function MainChart() {
             bottom: 10,
           }}
         >
-          <CartesianGrid
-            strokeDasharray="3 3"
-            stroke="#bae6fd"
-            opacity={0.2}
-          />
+          <CartesianGrid strokeDasharray="3 3" stroke="#bae6fd" opacity={0.2} />
 
-          <XAxis
-            dataKey="name"
-            stroke="#ffffff"
-            tick={{ fill: "#ffffff" }}
-          />
+          <XAxis dataKey="name" stroke="#ffffff" tick={{ fill: "#ffffff" }} />
 
-          <YAxis
-            stroke="#ffffff"
-            tick={{ fill: "#ffffff" }}
-          />
+          <YAxis stroke="#ffffff" tick={{ fill: "#ffffff" }} />
 
           <Tooltip
             contentStyle={{
