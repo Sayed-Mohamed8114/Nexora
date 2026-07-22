@@ -1,16 +1,12 @@
-import { FilterProvider } from "@/Components/context/FilterContext";
-import { useData } from "@/Components/data/useData";
-import AcademicPerformance from "@/Components/pages/AcademicPerformance";
+import { FilterProvider } from "@/components/context/FilterContext";
+import { useData } from "@/components/data/useData";
+import AcademicPerformance from "@/components/pages/AcademicPerformance";
 import Loader from "@/Components/Loader/Loader";
-import { useOutletContext } from "react-router-dom";
 
 function AnalyticsDashboard() {
-  const outlet = useOutletContext();
-  const fallback = useData();
-  const data = outlet?.data ?? fallback.data;
-  const loading = outlet ? outlet.loading : fallback.loading;
+  const { data, loading } = useData();
 
-  if (loading || !data) {
+  if (loading) {
     return <Loader />;
   }
 

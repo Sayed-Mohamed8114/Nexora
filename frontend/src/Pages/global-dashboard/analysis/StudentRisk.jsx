@@ -1,16 +1,12 @@
-import { FilterProvider } from "@/Components/context/FilterContext";
-import { useData } from "@/Components/data/useData";
+import { FilterProvider } from "@/components/context/FilterContext";
+import { useData } from "@/components/data/useData";
 import Loader from "@/Components/Loader/Loader";
-import StudentRisk from "@/Components/pages/StudentRisk";
-import { useOutletContext } from "react-router-dom";
+import StudentRisk from "@/components/pages/StudentRisk";
 
 function Studentrisk() {
-  const outlet = useOutletContext();
-  const fallback = useData();
-  const data = outlet?.data ?? fallback.data;
-  const loading = outlet ? outlet.loading : fallback.loading;
+  const { data, loading } = useData();
 
-  if (loading || !data) {
+  if (loading) {
     return <Loader />;
   }
 

@@ -42,8 +42,8 @@ const Notification = () => {
         prev.map((notification) =>
           notification.id === id
             ? { ...notification, isRead: true }
-            : notification,
-        ),
+            : notification
+        )
       );
 
       setCounter((prev) => Math.max(prev - 1, 0));
@@ -60,7 +60,7 @@ const Notification = () => {
         prev.map((notification) => ({
           ...notification,
           isRead: true,
-        })),
+        }))
       );
 
       setCounter(0);
@@ -73,7 +73,10 @@ const Notification = () => {
     const load = async () => {
       setLoading(true);
 
-      await Promise.all([loadNotifications(), loadUnreadCount()]);
+      await Promise.all([
+        loadNotifications(),
+        loadUnreadCount(),
+      ]);
 
       setLoading(false);
     };
@@ -84,6 +87,7 @@ const Notification = () => {
   return (
     <DashboardLayout>
       <div className="space-y-6">
+
         <nav
           className="
             w-full rounded-xl
@@ -101,12 +105,14 @@ const Notification = () => {
             className="flex items-center text-sky-700 hover:text-sky-900 transition gap-5"
           >
             <Checkbox />
-            <span className="font-bold text-xs lg:text-xl">Read all</span>
+            <span className="font-bold text-xs lg:text-xl">
+              Read all
+            </span>
           </button>
         </nav>
 
         {loading ? (
-          <Loader />
+          <Loader/>
         ) : notifications.length === 0 ? (
           <div className="text-center py-20">
             <h2 className="text-2xl font-bold text-gray-500">
@@ -124,6 +130,7 @@ const Notification = () => {
             ))}
           </div>
         )}
+
       </div>
     </DashboardLayout>
   );

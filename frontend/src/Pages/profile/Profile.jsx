@@ -1,5 +1,5 @@
 import DashboardLayout from "@/mainLayout/DashboardLayout";
-import Form from "../../Components/Profile/Form";
+import Form from '../../Components/Profile/Form'
 
 const Profile = () => {
   return (

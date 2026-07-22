@@ -72,7 +72,9 @@ const QuestionsPage = () => {
       {/* Empty State */}
       {questions.length === 0 ? (
         <div className="mx-auto mt-24 max-w-3xl rounded-3xl bg-transparant p-12 text-center shadow-sm">
-          <h2 className="text-3xl font-bold text-sky-900">No Questions Yet</h2>
+          <h2 className="text-3xl font-bold text-sky-900">
+            No Questions Yet
+          </h2>
 
           <p className="mt-4 text-lg text-slate-600">
             {user?.role === "Tutor"
@@ -92,7 +94,10 @@ const QuestionsPage = () => {
       ) : (
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {questions.map((question) => (
-            <QuestionCard key={question.id} question={question} />
+            <QuestionCard
+              key={question.id}
+              question={question}
+            />
           ))}
         </div>
       )}

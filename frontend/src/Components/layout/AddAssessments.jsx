@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { CreateAssessment } from "@/Services/Assessments";
-import { SuccessFlash, ErrorFlash } from "@/Components/UI/FlashMessages";
+import {
+  SuccessFlash,
+  ErrorFlash,
+} from "@/Components/UI/FlashMessages";
 
 const AddAssessments = ({
   courseName,
@@ -45,7 +48,8 @@ const AddAssessments = ({
       }, 800);
     } catch (err) {
       setFlash({
-        message: err.response?.data?.message || "Failed to create assessment.",
+        message:
+          err.response?.data?.message || "Failed to create assessment.",
         type: "error",
         show: true,
       });
@@ -81,11 +85,7 @@ const AddAssessments = ({
 
       <div className=" bg-transparent p-6 ">
         <h1 className="mb-6 text-2xl font-bold text-sky-800">
-          Your are creating assessment for course (
-          <span className="font-extrabold font-serif text-sky-950">
-            {courseName}
-          </span>
-          )
+          Your are creating assessment for course (<span className="font-extrabold font-serif text-sky-950">{courseName}</span>)
         </h1>
 
         <form onSubmit={handleSubmit} className="space-y-5">
