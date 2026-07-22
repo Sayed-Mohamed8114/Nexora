@@ -9,7 +9,7 @@ const options = [
   { label: "All time", value: "all" },
 ];
 
-function ProgressCard() {
+function ProgressCard({ data }) {
   const [range, setRange] = useState("30d");
 
   return (
@@ -22,11 +22,7 @@ function ProgressCard() {
           className="rounded-md mb-2  p-1.5 text-sky-900 font-bold bg-sky-50 outline-none"
         >
           {options.map((option) => (
-            <option
-              key={option.value}
-              value={option.value}
-              className="border-0"
-            >
+            <option key={option.value} value={option.value} className="border-0">
               {option.label}
             </option>
           ))}
@@ -34,7 +30,7 @@ function ProgressCard() {
       </div>
       <div className="w-full p-1 h-[30vh] items-center justify-center flex">
         <div className="w-full h-full items-center justify-center flex">
-          <WaterfallChart />
+          <WaterfallChart data={data} />
         </div>
       </div>
     </div>
