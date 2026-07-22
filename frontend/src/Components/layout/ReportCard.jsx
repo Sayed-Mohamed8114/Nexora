@@ -1,7 +1,7 @@
 import { rateCourse } from "@/Services/reports";
 import { useState } from "react";
 import { Star, User, Calendar } from "lucide-react";
-import { SuccessFlash, ErrorFlash } from "@/Components/UI/FlashMessages";
+import { SuccessFlash, ErrorFlash } from "@/components/UI/FlashMessages";
 
 function ReportCard({ report, onSubmitted }) {
   const [rating, setRating] = useState(report.rating || 0);
@@ -108,28 +108,28 @@ function ReportCard({ report, onSubmitted }) {
 
           {/* Middle */}
           <div className="xl:w-1/4 flex flex-col  justify-start items-start xl:justify-center xl:items-center">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-5">
-                Course Rating
-              </h3>
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-5">
+              Course Rating
+            </h3>
 
-              <div className="flex gap-2">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star
-                    key={star}
-                    size={36}
-                    onClick={() => !submitted && setRating(star)}
-                    className={`transition ${
-                      submitted
-                        ? "cursor-default"
-                        : "cursor-pointer hover:scale-110"
-                    } ${
-                      star <= rating
-                        ? "fill-sky-500 text-sky-500"
-                        : "text-gray-400"
-                    }`}
-                  />
-                ))}
-              </div>
+            <div className="flex gap-2">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <Star
+                  key={star}
+                  size={36}
+                  onClick={() => !submitted && setRating(star)}
+                  className={`transition ${
+                    submitted
+                      ? "cursor-default"
+                      : "cursor-pointer hover:scale-110"
+                  } ${
+                    star <= rating
+                      ? "fill-sky-500 text-sky-500"
+                      : "text-gray-400"
+                  }`}
+                />
+              ))}
+            </div>
             {/*here*/}
           </div>
 

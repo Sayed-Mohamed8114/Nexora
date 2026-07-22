@@ -1,11 +1,11 @@
-import ChatPage from "@/Components/ChatBot/ChatPage";
-import CourseCard from "@/Components/layout/CourseCard";
-import Loader from "@/Components/Loader/Loader";
+import ChatPage from "@/components/ChatBot/ChatPage";
+import CourseCard from "@/components/layout/CourseCard";
+import Loader from "@/components/Loader/Loader";
 import DashboardLayout from "@/mainLayout/DashboardLayout";
 import { enroll } from "@/Services/courses";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect, useMemo } from "react";
-import { SuccessFlash, ErrorFlash } from "@/Components/UI/FlashMessages";
+import { SuccessFlash, ErrorFlash } from "@/components/UI/FlashMessages";
 import { getRecommendation } from "@/Services/recommendation";
 
 const Recommendation = () => {

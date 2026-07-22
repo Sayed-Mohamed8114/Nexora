@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { addQuestions } from "@/Services/Assessments";
-import { SuccessFlash, ErrorFlash } from "@/Components/UI/FlashMessages";
+import { SuccessFlash, ErrorFlash } from "@/components/UI/FlashMessages";
 
 const AddQuestionForm = ({ assessment, onSuccess, onClose }) => {
   const [text, setText] = useState("");

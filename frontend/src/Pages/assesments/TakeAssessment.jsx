@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Loader from "@/Components/Loader/Loader";
-import {
-  getAssesmentQuestions,
-  submitAnswers,
-} from "@/Services/Assessments";
-import {
-  SuccessFlash,
-  ErrorFlash,
-} from "@/Components/UI/FlashMessages";
+import Loader from "@/components/Loader/Loader";
+import { getAssesmentQuestions, submitAnswers } from "@/Services/Assessments";
+import { SuccessFlash, ErrorFlash } from "@/components/UI/FlashMessages";
 
 export default function TakeAssessment() {
   const { assessmentId } = useParams();
@@ -90,9 +84,7 @@ export default function TakeAssessment() {
       });
     } catch (err) {
       setFlash({
-        message:
-          err.response?.data?.message ||
-          "Failed to submit assessment.",
+        message: err.response?.data?.message || "Failed to submit assessment.",
         type: "error",
         show: true,
       });
@@ -130,9 +122,7 @@ export default function TakeAssessment() {
 
       <div className="mx-auto max-w-5xl p-10">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-sky-900">
-            Take Assessment
-          </h1>
+          <h1 className="text-3xl font-bold text-sky-900">Take Assessment</h1>
 
           <p className="mt-2 text-slate-600">
             Answer all questions, then submit your assessment.
@@ -159,9 +149,7 @@ export default function TakeAssessment() {
                     Question {index + 1}
                   </h2>
 
-                  <p className="mb-6 text-slate-700">
-                    {question.text}
-                  </p>
+                  <p className="mb-6 text-slate-700">{question.text}</p>
 
                   <div className="space-y-3">
                     {question.options.map((option) => (
@@ -177,14 +165,9 @@ export default function TakeAssessment() {
                           type="radio"
                           disabled={submitted}
                           name={`question-${question.id}`}
-                          checked={
-                            answers[question.id] === option.id
-                          }
+                          checked={answers[question.id] === option.id}
                           onChange={() =>
-                            handleSelectOption(
-                              question.id,
-                              option.id
-                            )
+                            handleSelectOption(question.id, option.id)
                           }
                         />
 
@@ -203,8 +186,8 @@ export default function TakeAssessment() {
                 {submitted
                   ? "Assessment Submitted"
                   : submitting
-                  ? "Submitting..."
-                  : "Submit Assessment"}
+                    ? "Submitting..."
+                    : "Submit Assessment"}
               </button>
             </div>
 
@@ -220,15 +203,20 @@ export default function TakeAssessment() {
                   </p>
 
                   <p>
-                    <strong>Correct Answers:</strong>{" "}
-                    {result.correctAnswers} / {result.totalQuestions}
+                    <strong>Correct Answers:</strong> {result.correctAnswers} /{" "}
+                    {result.totalQuestions}
                   </p>
 
                   <p>
                     <strong>Message:</strong> {result.message}
                   </p>
-                  <button onClick={()=>{navigate(-1)}} className=" mt-5 w-[50%] font-extrabold font-serif bg-sky-800 p-2 rounded-md hover:bg-sky-900 transition duration-700 cursor-pointer text-sky-50">
-                    Back to assessments 
+                  <button
+                    onClick={() => {
+                      navigate(-1);
+                    }}
+                    className=" mt-5 w-[50%] font-extrabold font-serif bg-sky-800 p-2 rounded-md hover:bg-sky-900 transition duration-700 cursor-pointer text-sky-50"
+                  >
+                    Back to assessments
                   </button>
                 </div>
               </div>

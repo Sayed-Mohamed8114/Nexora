@@ -1,6 +1,6 @@
 import { FilterProvider } from "@/components/context/FilterContext";
 import { useData } from "@/components/data/useData";
-import Loader from "@/Components/Loader/Loader";
+import Loader from "@/components/Loader/Loader";
 import StudentRisk from "@/components/pages/StudentRisk";
 import { useOutletContext } from "react-router-dom";
 

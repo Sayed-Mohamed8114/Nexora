@@ -1,15 +1,15 @@
-import CourseCard from "@/Components/layout/CourseCard";
-import Loader from "@/Components/Loader/Loader";
+import CourseCard from "@/components/layout/CourseCard";
+import Loader from "@/components/Loader/Loader";
 import DashboardLayout from "@/mainLayout/DashboardLayout";
 import { getCourses, enroll, enrolled } from "@/Services/courses";
 import { AnimatePresence, motion } from "framer-motion";
 import { getCurrentUser } from "@/Services/user";
 import { useState, useEffect, useMemo } from "react";
-import AddCourseForm from "@/Components/layout/AddCourseForm";
-import { SuccessFlash, ErrorFlash } from "@/Components/UI/FlashMessages";
-import EditCourseForm from "@/Components/layout/EditCourseForm";
-import DeleteCourseCard from "@/Components/layout/DeleteCourseCard";
-import AddAssessments from "@/Components/layout/AddAssessments";
+import AddCourseForm from "@/components/layout/AddCourseForm";
+import { SuccessFlash, ErrorFlash } from "@/components/UI/FlashMessages";
+import EditCourseForm from "@/components/layout/EditCourseForm";
+import DeleteCourseCard from "@/components/layout/DeleteCourseCard";
+import AddAssessments from "@/components/layout/AddAssessments";
 
 const Courses = () => {
   const [showAssessmentForm, setShowAssessmentForm] = useState(false);

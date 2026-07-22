@@ -1,9 +1,8 @@
-import ReportCard from "@/Components/layout/ReportCard";
-import Loader from "@/Components/Loader/Loader";
+import ReportCard from "@/components/layout/ReportCard";
+import Loader from "@/components/Loader/Loader";
 import DashboardLayout from "@/mainLayout/DashboardLayout";
 import { getReports } from "@/Services/reports";
 import { useEffect, useState } from "react";
-
 
 const Reports = () => {
   const [reports, setReports] = useState([]);

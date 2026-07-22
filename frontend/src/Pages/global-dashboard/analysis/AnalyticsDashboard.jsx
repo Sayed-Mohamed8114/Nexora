@@ -1,7 +1,7 @@
-import { FilterProvider } from "@/Components/context/FilterContext";
-import { useData } from "@/Components/data/useData";
-import AcademicPerformance from "@/Components/pages/AcademicPerformance";
-import Loader from "@/Components/Loader/Loader";
+import { FilterProvider } from "@/components/context/FilterContext";
+import { useData } from "@/components/data/useData";
+import AcademicPerformance from "@/components/pages/AcademicPerformance";
+import Loader from "@/components/Loader/Loader";
 import { useOutletContext } from "react-router-dom";
 
 function AnalyticsDashboard() {

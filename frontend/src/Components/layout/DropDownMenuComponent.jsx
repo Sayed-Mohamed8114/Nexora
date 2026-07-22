@@ -4,19 +4,11 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/Components/UI/dropdown-menu";
+} from "@/components/UI/dropdown-menu";
 
-import {
-  EllipsisVertical,
-  PencilIcon,
-  TrashIcon,
-} from "lucide-react";
+import { EllipsisVertical, PencilIcon, TrashIcon } from "lucide-react";
 
-const DropdownMenuComponent = ({
-  course,
-  onEdit,
-  onDelete,
-}) => {
+const DropdownMenuComponent = ({ course, onEdit, onDelete }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -27,11 +19,13 @@ const DropdownMenuComponent = ({
 
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
-          <DropdownMenuItem onClick={() => onEdit(course)} className={"cursor-pointer"}>
+          <DropdownMenuItem
+            onClick={() => onEdit(course)}
+            className={"cursor-pointer"}
+          >
             <PencilIcon className="mr-2 h-4 w-4 " />
             Edit
           </DropdownMenuItem>
-
 
           <DropdownMenuItem
             variant="destructive"

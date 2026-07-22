@@ -1,9 +1,9 @@
-import Hero from "../Components/Hero/Hero";
-import WhyCreated from "../Components/WhyCreated/WhyCreated";
-import Navbar from "../Components/Navbar/Navbar";
-import Questions from "../Components/Questions/Questions";
-import Reviews from "@/Components/Reviews/Reviews";
-import Footer from "../Components/Footer/Footer";
+import Hero from "../components/Hero/Hero";
+import WhyCreated from "../components/WhyCreated/WhyCreated";
+import Navbar from "../components/Navbar/Navbar";
+import Questions from "../components/Questions/Questions";
+import Reviews from "@/components/Reviews/Reviews";
+import Footer from "../components/Footer/Footer";
 
 export default function Home() {
   return (

@@ -1,6 +1,6 @@
 import { getCurrentUser, updateProfile } from "@/Services/user";
 import { useEffect, useState } from "react";
-import { ErrorFlash, SuccessFlash } from "@/Components/UI/FlashMessages";
+import { ErrorFlash, SuccessFlash } from "@/components/UI/FlashMessages";
 
 export default function Form() {
   const [flash, setFlash] = useState({
@@ -128,10 +128,12 @@ export default function Form() {
 
   return (
     <>
-    {flash.show && (flash.type==="error" ? (
-      <ErrorFlash content={flash.message} />
-    ): (<SuccessFlash content={flash.message}/>)
-  )}
+      {flash.show &&
+        (flash.type === "error" ? (
+          <ErrorFlash content={flash.message} />
+        ) : (
+          <SuccessFlash content={flash.message} />
+        ))}
       <section className="mt-4 bg-white/90 shadow-2xl shadow-sky-900/10 rounded-3xl backdrop-blur p-6 pt-10 ">
         <div className="flex flex-col gap-10">
           {/*  first name, last name  */}

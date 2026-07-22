@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "@/mainLayout/DashboardLayout";
 import { NavLink, Outlet } from "react-router-dom";
-import MainChart from "@/Components/layout/MainChart";
+import MainChart from "@/components/layout/MainChart";
 import { getCurrentUser } from "@/Services/user";
 import {
   buildAnalyticsData,
@@ -46,9 +46,7 @@ const GlobalDashboard = () => {
     `
     p-2.5 rounded-md duration-700 font-bold text-lg transition whitespace-nowrap
     ${
-      isActive
-        ? "bg-sky-600 text-sky-50"
-        : "hover:bg-sky-600 hover:text-sky-50"
+      isActive ? "bg-sky-600 text-sky-50" : "hover:bg-sky-600 hover:text-sky-50"
     }
     `;
 
