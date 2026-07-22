@@ -1,6 +1,6 @@
-import { FilterProvider } from "@/components/context/FilterContext";
+import { FilterProvider } from "@/Components/context/FilterContext";
 import { useData } from "@/Components/data/useData";
-import AcademicPerformance from "@/components/pages/AcademicPerformance";
+import AcademicPerformance from "@/Components/pages/AcademicPerformance";
 import Loader from "@/Components/Loader/Loader";
 import { useOutletContext } from "react-router-dom";
 
