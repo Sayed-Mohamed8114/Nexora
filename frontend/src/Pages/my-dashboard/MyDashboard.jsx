@@ -13,6 +13,7 @@ import {
   getWaterfallChartData,
   normalizeDashboardResponse,
 } from "@/Services/dashboard";
+import Loader from "@/Components/Loader/Loader";
 
 const tutorRoles = ["Tutor", "Instructor"];
 
@@ -53,13 +54,7 @@ const MyDashboard = () => {
 
   if (isLoading) {
     return (
-      <DashboardLayout>
-        <div className="flex min-h-[55vh] w-full items-center justify-center rounded-md bg-white/80 p-6 text-center shadow-sm">
-          <p className="text-base font-semibold text-sky-950">
-            Loading dashboard...
-          </p>
-        </div>
-      </DashboardLayout>
+      <Loader/>
     );
   }
 
@@ -190,13 +185,13 @@ const TutorDashboard = ({ dashboardData }) => {
 };
 
 const TutorCourseCard = ({ course }) => (
-  <article className="flex min-h-full flex-col rounded-md border border-sky-100 bg-white p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-5">
+  <article className="flex min-h-full flex-col rounded-2xl border border-sky-100 bg-sky-50 p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-5">
     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
       <div className="min-w-0">
         <p className="text-sm font-bold uppercase text-sky-700">
           {course.codeModule} / {course.codePresentation}
         </p>
-        <h2 className="mt-1 break-words text-xl font-extrabold text-sky-950">
+        <h2 className="mt-1 wrap-break-word  text-xl font-extrabold text-sky-950">
           {course.name || "Untitled course"}
         </h2>
       </div>
