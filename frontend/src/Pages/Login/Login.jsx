@@ -211,7 +211,7 @@ export default function SignIn() {
             </button>
 
             <p className="mt-6 text-center text-sm  text-sky-700">
-              Already have an account?{" "}
+              Don't have an account?{" "}
               <span
                 onClick={navigateSignupPage}
                 className="cursor-pointer text-sky-900 hover:underline"
