@@ -13,13 +13,13 @@ function ProgressCard({ data }) {
   const [range, setRange] = useState("30d");
 
   return (
-    <div className="bg-linear-to-b from-sky-900 to-sky-600 w-full lg:w-sm h-auto flex flex-col items-center justify-start py-2 px-2.5 rounded-b-2xl rounded-2xl">
-      <div className=" flex items-center justify-between w-full">
-        <h3 className="text-sky-50 font-bold text-2xl">Progress</h3>
+    <div className="flex h-auto min-h-[320px] w-full flex-col items-center justify-start rounded-md bg-linear-to-b from-sky-900 to-sky-600 px-2.5 py-2 lg:max-w-sm">
+      <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <h3 className="text-xl font-bold text-sky-50 sm:text-2xl">Progress</h3>
         <select
           value={range}
           onChange={(e) => setRange(e.target.value)}
-          className="rounded-md mb-2  p-1.5 text-sky-900 font-bold bg-sky-50 outline-none"
+          className="w-full rounded-md bg-sky-50 p-1.5 font-bold text-sky-900 outline-none sm:w-auto"
         >
           {options.map((option) => (
             <option key={option.value} value={option.value} className="border-0">
@@ -28,10 +28,8 @@ function ProgressCard({ data }) {
           ))}
         </select>
       </div>
-      <div className="w-full p-1 h-[30vh] items-center justify-center flex">
-        <div className="w-full h-full items-center justify-center flex">
-          <WaterfallChart data={data} />
-        </div>
+      <div className="flex h-[260px] w-full items-center justify-center p-1 sm:h-[30vh]">
+        <WaterfallChart data={data} />
       </div>
     </div>
   );

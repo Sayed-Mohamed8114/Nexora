@@ -23,21 +23,29 @@ function MainChart({ data: propData }) {
   const data = propData?.length ? propData : defaultData;
 
   return (
-    <div className="w-full h-[40vh] bg-sky-950/90 rounded-3xl p-2.5 shadow-xl ">
+    <div className="h-[320px] min-h-[280px] w-full rounded-md bg-sky-950/90 p-2 shadow-xl sm:h-[40vh]">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 10, right: 20, left: 0, bottom: 10 }}>
+        <LineChart
+          data={data}
+          margin={{ top: 10, right: 12, left: -8, bottom: 8 }}
+        >
           <CartesianGrid strokeDasharray="3 3" stroke="#bae6fd" opacity={0.2} />
-          <XAxis dataKey="name" stroke="#ffffff" tick={{ fill: "#ffffff" }} />
-          <YAxis stroke="#ffffff" tick={{ fill: "#ffffff" }} />
+          <XAxis
+            dataKey="name"
+            stroke="#ffffff"
+            tick={{ fill: "#ffffff", fontSize: 12 }}
+            interval="preserveStartEnd"
+          />
+          <YAxis stroke="#ffffff" tick={{ fill: "#ffffff", fontSize: 12 }} />
           <Tooltip
             contentStyle={{
               backgroundColor: "oklch(12.9% 0.042 264.695)",
-              borderRadius: "12px",
+              borderRadius: "8px",
               border: "none",
               color: "#ffffff",
             }}
           />
-          <Legend wrapperStyle={{ color: "#ffffff" }} />
+          <Legend wrapperStyle={{ color: "#ffffff", fontSize: 12 }} />
           <Line
             type="monotone"
             dataKey="progress"
@@ -45,7 +53,7 @@ function MainChart({ data: propData }) {
             stroke="oklch(90.1% 0.058 230.902)"
             strokeWidth={3}
             dot={{ fill: "#f0f9ff", stroke: "#000000", strokeWidth: 2 }}
-            activeDot={{ r: 8, fill: "#075985" }}
+            activeDot={{ r: 7, fill: "#075985" }}
           />
           <Line
             type="monotone"
@@ -54,7 +62,7 @@ function MainChart({ data: propData }) {
             stroke="oklch(92.8% 0.006 264.531)"
             strokeWidth={3}
             dot={{ fill: "#f0f9ff", stroke: "#075985", strokeWidth: 2 }}
-            activeDot={{ r: 8, fill: "#000000" }}
+            activeDot={{ r: 7, fill: "#000000" }}
           />
         </LineChart>
       </ResponsiveContainer>

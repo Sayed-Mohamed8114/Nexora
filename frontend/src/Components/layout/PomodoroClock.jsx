@@ -13,31 +13,19 @@ function PomodoroClock() {
     const interval = setInterval(() => {
       if (seconds > 0) {
         setSeconds((prev) => prev - 1);
+      } else if (minutes > 0) {
+        setMinutes((prev) => prev - 1);
+        setSeconds(59);
+      } else if (isBreak) {
+        setMinutes(25);
+        setSeconds(0);
+        setIsBreak(false);
       } else {
-        if (minutes > 0) {
-          setMinutes((prev) => prev - 1);
-          setSeconds(59);
-        } else {
-          if (isBreak) {
-            // Break finished → Work
-            setMinutes(25);
-            setSeconds(0);
-            setIsBreak(false);
-          } else {
-            // Work finished → Break
-            const newSessions = sessions + 1;
-            setSessions(newSessions);
-
-            if (newSessions % 4 === 0) {
-              setMinutes(15); // Long break
-            } else {
-              setMinutes(5); // Short break
-            }
-
-            setSeconds(0);
-            setIsBreak(true);
-          }
-        }
+        const newSessions = sessions + 1;
+        setSessions(newSessions);
+        setMinutes(newSessions % 4 === 0 ? 15 : 5);
+        setSeconds(0);
+        setIsBreak(true);
       }
     }, 1000);
 
@@ -53,47 +41,38 @@ function PomodoroClock() {
   };
 
   return (
-    <div
-      className="group overflow-hidden relative rounded-2xl shadow-inner shadow-white flex flex-col
-     justify-between items-center w-full h-80 bg-gray-700 text-gray-50 p-6"
-    >
-      {/* Background Glow */}
-      <div className="after:absolute after:w-16 after:h-16 after:bg-white after:rounded-full after:blur-3xl after:bottom-24 after:right-10 before:absolute before:w-16 before:h-16 before:bg-sky-400 before:rounded-full before:blur-3xl before:top-10 before:left-8"></div>
-
-      {/* Mode */}
-      <div className="z-10 text-lg font-bold text-sky-50">
-        {isBreak ? "☕ Break Time" : " Focus Time"}
+    <div className="relative flex h-[320px] w-full flex-col items-center justify-between overflow-hidden rounded-md bg-gray-700 p-5 text-gray-50 shadow-inner shadow-white sm:h-80 sm:p-6">
+      <div className="z-10 text-base font-bold text-sky-50 sm:text-lg">
+        {isBreak ? "Break Time" : "Focus Time"}
       </div>
 
-      {/* Timer */}
-      <div className="z-10 flex flex-col items-center">
-        <div className="text-7xl font-extrabold tracking-wider text-sky-200/60">
+      <div className="z-10 flex flex-col items-center leading-none">
+        <div className="text-5xl font-extrabold text-sky-200/70 sm:text-7xl">
           {String(minutes).padStart(2, "0")}
         </div>
-
-        <div className="text-6xl font-extrabold text-sky-200/60">
+        <div className="text-5xl font-extrabold text-sky-200/70 sm:text-6xl">
           {String(seconds).padStart(2, "0")}
         </div>
       </div>
 
-      {/* Sessions */}
-      <div className="z-10 text-sm text-gray-200">
+      <div className="z-10 text-center text-sm text-gray-200">
         Sessions Completed: {sessions}
       </div>
 
-      {/* Buttons */}
-      <div className="z-10 flex gap-3">
+      <div className="z-10 flex w-full gap-3 sm:w-auto">
         {!isRunning ? (
           <button
             onClick={() => setIsRunning(true)}
-            className="px-4 py-2 rounded-lg bg-sky-800 hover:bg-sky-950 text-white duration-300"
+            className="flex-1 rounded-md bg-sky-800 px-4 py-2 text-white duration-300 hover:bg-sky-950 sm:flex-none"
+            type="button"
           >
             Start
           </button>
         ) : (
           <button
             onClick={() => setIsRunning(false)}
-            className="px-4 py-2 rounded-lg bg-sky-400 hover:bg-sky-600 duration-300"
+            className="flex-1 rounded-md bg-sky-400 px-4 py-2 duration-300 hover:bg-sky-600 sm:flex-none"
+            type="button"
           >
             Pause
           </button>
@@ -101,7 +80,8 @@ function PomodoroClock() {
 
         <button
           onClick={resetTimer}
-          className="px-4 py-2 rounded-lg bg-black hover:bg-gray-600 text-white duration-300"
+          className="flex-1 rounded-md bg-black px-4 py-2 text-white duration-300 hover:bg-gray-600 sm:flex-none"
+          type="button"
         >
           Reset
         </button>
