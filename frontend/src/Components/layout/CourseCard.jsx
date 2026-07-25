@@ -32,12 +32,12 @@ const CourseCard = ({
 
   return (
     <div
-      className="overflow-hidden rounded-xl border h-auto min-h-[40vh]
+      className="overflow-hidden rounded-xl border h-full min-h-[28rem] flex flex-col
       border-slate-200 bg-linear-to-t from-sky-100 to-sky-50 shadow-sm
       transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
       {/* Header */}
-      <div className="flex items-start justify-between border-b border-sky-50 p-5">
+      <div className="flex items-start justify-between border-b border-sky-50 p-5 flex-shrink-0">
         <div>
           <h2 className="text-xl font-bold text-sky-900">{course.name}</h2>
 
@@ -55,100 +55,106 @@ const CourseCard = ({
         )}
       </div>
 
-      {/* Description */}
-      <div className="px-5 pt-4">
-        <p className="line-clamp-3 text-sm text-slate-600">
-          {course.description}
-        </p>
-      </div>
-
-      {/* Skills */}
-      <div className="flex flex-wrap gap-2 px-5 pt-4">
-        {course.skills?.map((skill) => (
-          <span
-            key={skill}
-            className="rounded-full bg-sky-100 px-3 py-1 text-xs font-medium text-sky-800"
-          >
-            {skill}
-          </span>
-        ))}
-      </div>
-
-      {/* Course Info */}
-      <div className="mt-5 space-y-3 px-5">
-        <div className="flex justify-between">
-          <span className="text-slate-500">Tutor</span>
-          <span className="font-medium">{course.tutorName ?? "Unknown"}</span>
+      {/* Content wrapper - takes remaining space */}
+      <div className="flex-1 flex flex-col">
+        {/* Description */}
+        <div className="px-5 pt-4">
+          <p className="line-clamp-3 text-sm text-slate-600">
+            {course.description}
+          </p>
         </div>
 
-        <div className="flex justify-between">
-          <span className="text-slate-500">Hours</span>
-          <span className="font-medium">{course.hours ?? 0} hrs</span>
+        {/* Skills */}
+        <div className="flex flex-wrap gap-2 px-5 pt-4">
+          {course.skills?.map((skill) => (
+            <span
+              key={skill}
+              className="rounded-full bg-sky-100 px-3 py-1 text-xs font-medium text-sky-800"
+            >
+              {skill}
+            </span>
+          ))}
         </div>
 
-        <div className="flex justify-between">
-          <span className="text-slate-500">Students</span>
-          <span className="font-medium">{course.enrolledCount ?? 0}</span>
-        </div>
-      </div>
+        {/* Course Info */}
+        <div className="mt-5 space-y-3 px-5">
+          <div className="flex justify-between">
+            <span className="text-slate-500">Tutor</span>
+            <span className="font-medium">{course.tutorName ?? "Unknown"}</span>
+          </div>
 
-      {/* Buttons */}
-      <div className="flex gap-1.5 p-5">
-        {user?.role === "Student" ? (
-          <>
-            {isEnrolled && (
+          <div className="flex justify-between">
+            <span className="text-slate-500">Hours</span>
+            <span className="font-medium">{course.hours ?? 0} hrs</span>
+          </div>
+
+          <div className="flex justify-between">
+            <span className="text-slate-500">Students</span>
+            <span className="font-medium">{course.enrolledCount ?? 0}</span>
+          </div>
+        </div>
+
+        {/* Empty spacer - pushes buttons to bottom */}
+        <div className="flex-1"></div>
+
+        {/* Buttons - always at the bottom */}
+        <div className="flex gap-1.5 p-5 mt-auto flex-shrink-0">
+          {user?.role === "Student" ? (
+            <>
+              {isEnrolled && (
+                <Link
+                  to={`/courses/${course.codeModule}/${course.codePresentation}/assessments`}
+                  className="flex-1 px-1 rounded-lg border border-slate-300 bg-sky-700 py-2 text-center font-bold text-white transition duration-700 hover:bg-sky-400 hover:text-sky-50"
+                >
+                  Take Assessment
+                </Link>
+              )}
+
+              {showUnEnroll ? (
+                <button
+                  onClick={() =>
+                    onUnEnroll(course.codeModule, course.codePresentation)
+                  }
+                  className="flex-1 rounded-lg bg-red-600 py-2 font-bold text-white transition hover:bg-red-700"
+                >
+                  Unenroll
+                </button>
+              ) : (
+                !hideEnroll && (
+                  <button
+                    disabled={isEnrolled}
+                    onClick={() =>
+                      onEnroll(course.codeModule, course.codePresentation)
+                    }
+                    className={`flex-1 rounded-lg py-2 font-bold text-white transition ${
+                      isEnrolled
+                        ? "cursor-not-allowed bg-green-600"
+                        : "bg-sky-900 hover:bg-sky-800"
+                    }`}
+                  >
+                    {isEnrolled ? "Enrolled" : "Enroll"}
+                  </button>
+                )
+              )}
+            </>
+          ) : (
+            <div className="flex flex-row md:flex-col-reverse lg:flex-row items-center justify-between gap-3 w-full">
+              <button
+                onClick={() => onAddAssessment(course)}
+                className="w-full rounded-lg border border-slate-300 bg-sky-700 py-2 text-center font-bold text-white transition duration-700 hover:bg-green-600 hover:text-sky-50"
+              >
+                Add Assessment
+              </button>
+
               <Link
                 to={`/courses/${course.codeModule}/${course.codePresentation}/assessments`}
-                className="flex-1 px-1 rounded-lg border border-slate-300 bg-sky-700 py-2 text-center font-bold text-white transition duration-700 hover:bg-sky-400 hover:text-sky-50"
+                className="w-full rounded-lg border border-slate-300 bg-sky-700 py-2 text-center font-bold text-white transition duration-700 hover:bg-sky-400 hover:text-sky-50"
               >
-                Take Assessment
+                View Assessments
               </Link>
-            )}
-
-            {showUnEnroll ? (
-              <button
-                onClick={() =>
-                  onUnEnroll(course.codeModule, course.codePresentation)
-                }
-                className="flex-1 rounded-lg bg-red-600 py-2 font-bold text-white transition hover:bg-red-700"
-              >
-                Unenroll
-              </button>
-            ) : (
-              !hideEnroll && (
-                <button
-                  disabled={isEnrolled}
-                  onClick={() =>
-                    onEnroll(course.codeModule, course.codePresentation)
-                  }
-                  className={`flex-1 rounded-lg py-2 font-bold text-white transition ${
-                    isEnrolled
-                      ? "cursor-not-allowed bg-green-600"
-                      : "bg-sky-900 hover:bg-sky-800"
-                  }`}
-                >
-                  {isEnrolled ? "Enrolled" : "Enroll"}
-                </button>
-              )
-            )}
-          </>
-        ) : (
-          <div className="flex items-center justify-between gap-3 w-full">
-            <button
-              onClick={() => onAddAssessment(course)}
-              className="w-full rounded-lg border border-slate-300 bg-sky-700 py-2 text-center font-bold text-white transition duration-700 hover:bg-green-600 hover:text-sky-50"
-            >
-              Add Assessment
-            </button>
-
-            <Link
-              to={`/courses/${course.codeModule}/${course.codePresentation}/assessments`}
-              className="w-full rounded-lg border border-slate-300 bg-sky-700 py-2 text-center font-bold text-white transition duration-700 hover:bg-sky-400 hover:text-sky-50"
-            >
-              View Assessments
-            </Link>
-          </div>
-        )}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

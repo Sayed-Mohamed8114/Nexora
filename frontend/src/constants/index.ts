@@ -10,11 +10,6 @@ import {
 
 export const sidebarLinksForStudent = [
   {
-    path: "/GlobalDashboard",
-    label: "Global Dashboard",
-    icon: LayoutDashboard,
-  },
-  {
     path: "/dashboard",
     label: "Dashboard",
     icon: House,
@@ -53,6 +48,11 @@ export const sidebarLinksForStudent = [
 ];
 
 export const sidebarLinksForAdmin = [
+  {
+    path: "/GlobalDashboard",
+    label: "Global Dashboard",
+    icon: LayoutDashboard,
+  },
   {
     path: "/dashboard",
     label: "Dashboard",

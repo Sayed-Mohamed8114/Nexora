@@ -72,11 +72,11 @@ const MyDashboard = () => {
             </div>
             <ProgressCard data={waterfallData} />
           </div>
-          <div className="mt-5 flex w-full flex-col items-start justify-center px-2 py-1.5">
+          <div className="mt-5 flex w-full  flex-col items-start justify-center px-2 py-1.5">
             <h2 className="mb-2 bg-linear-to-r from-sky-700 to-sky-950 bg-clip-text font-serif text-2xl font-extrabold text-transparent shadow-2xl shadow-white sm:text-3xl">
               Skills Progress
             </h2>
-            <div className="no-scrollbar max-h-[35vh] w-full flex-1 cursor-grab space-y-3 overflow-y-auto pr-3 lg:w-1/2 xl:w-1/2">
+            <div className="no-scrollbar max-h-[35vh] w-full flex-1 cursor-grab space-y-3 overflow-y-auto pr-3 ">
               {skillsProgress.map((skill) => (
                 <ProgressBar
                   key={skill.name}
