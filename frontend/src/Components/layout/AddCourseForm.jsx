@@ -43,7 +43,7 @@ const AddCourseForm = ({onSuccess}) =>{
   };
 
   return (
-    <form onSubmit={handleCreateCourse} className="h-[90vh] md:h-[75vh]  text-sky-950 font-bold space-y-2.5  px-5">
+    <form onSubmit={handleCreateCourse} className="h-[80vh] md:h-[75vh]  text-sky-950 font-bold space-y-2.5  px-5">
       <h2 className="text-xl md:text-2xl font-extrabold bg-linear-to-r from-sky-700 to-sky-950 bg-clip-text text-transparent">
         Add Course
       </h2>

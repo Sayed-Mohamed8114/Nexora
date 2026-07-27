@@ -191,7 +191,7 @@ const Courses = () => {
                       stiffness: 250,
                       damping: 25,
                     }}
-                    className="fixed top-30 right-0 z-998 w-[60%] lg:w-[50%] rounded-lg p-3 
+                    className="fixed top-30 right-0 z-998 w-[80%] lg:w-[50%] rounded-lg p-3 
                     bg-white/40 shadow-2xl shadow-sky-900/10 backdrop-blur
                      full"
                   >

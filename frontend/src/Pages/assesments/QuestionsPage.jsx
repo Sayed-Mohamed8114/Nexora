@@ -56,14 +56,14 @@ const QuestionsPage = () => {
       >
         <Link
           to="/courses"
-          className="bg-linear-to-r from-sky-400 to-sky-700 bg-clip-text text-2xl font-extrabold text-transparent"
+          className="bg-linear-to-r from-sky-400 to-sky-700 hover:text-black duration-700  bg-clip-text text-sm lg:text-2xl font-extrabold text-transparent"
         >
           Return to Courses
         </Link>
 
         <button
           onClick={() => navigate(-1)}
-          className="bg-linear-to-r from-sky-400 to-sky-700 bg-clip-text text-2xl font-extrabold text-transparent cursor-pointer"
+          className="bg-linear-to-r from-sky-400 to-sky-700 bg-clip-text text-sm hover:text-black duration-700 lg:text-2xl font-extrabold text-transparent cursor-pointer"
         >
           Return to Assessments
         </button>

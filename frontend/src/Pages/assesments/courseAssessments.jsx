@@ -76,7 +76,7 @@ const CourseAssessments = () => {
               stiffness: 250,
               damping: 25,
             }}
-            className="fixed top-5 right-0 z-50 w-[55%] rounded-lg bg-white/80 p-3 shadow-2xl backdrop-blur"
+            className="fixed top-5 right-0 z-50 w-[80%] md:w-[55%] rounded-lg bg-white/80 p-3 shadow-2xl backdrop-blur"
           >
             <AddQuestionForm
               assessment={selectedAssessment}
@@ -96,7 +96,7 @@ const CourseAssessments = () => {
         >
           <Link
             to={"/courses"}
-            className="bg-linear-to-r from-sky-400 to-sky-700 text-3xl bg-clip-text text-transparent font-extrabold"
+            className="bg-linear-to-r from-sky-400  to-sky-700 text-md hover:text-black duration-700 lg:text-3xl bg-clip-text text-transparent font-extrabold"
           >
             Back to courses dashboard
           </Link>

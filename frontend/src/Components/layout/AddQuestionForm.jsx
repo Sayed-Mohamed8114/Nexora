@@ -171,7 +171,7 @@ const AddQuestionForm = ({ assessment, onSuccess, onClose }) => {
           <div className="flex gap-3 pt-4">
             <button
               type="submit"
-              className="flex-1 rounded-md bg-sky-700 p-3 font-semibold text-white transition hover:bg-sky-800"
+              className="flex-1 rounded-md cursor-pointer hover:bg-green-700 bg-sky-700 p-3 font-semibold text-white transition duration-700"
             >
               Add Question
             </button>
@@ -179,7 +179,7 @@ const AddQuestionForm = ({ assessment, onSuccess, onClose }) => {
             <button
               type="button"
               onClick={onClose}
-              className="rounded-md border px-6 transition hover:bg-gray-100"
+              className="rounded-md border duration-700  px-6 transition hover:text-white font-bold hover:bg-red-500"
             >
               Cancel
             </button>
